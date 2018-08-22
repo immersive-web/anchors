@@ -15,7 +15,7 @@ Augmented Reality systems are examples of systems that are constantly evolving t
         1.  An arbitrary pose in 3D space that needs to be tracked. Anchors that represent an arbitrary pose can be created and registered in ARKit. This is the same as the anchor concept in this explainer.
         1.  A real world object that the system is able to identify from the real world understanding. These elements also happen to have have a pose (every element has one) but they also include other information like geometry. At the moment of the publication of this explainer ARKit is able to understand [ARPlaneAnchor](https://developer.apple.com/documentation/arkit/arplaneanchor), [ARFaceAnchor](https://developer.apple.com/documentation/arkit/arfaceanchor) and [ARImageAnchor](https://developer.apple.com/documentation/arkit/arimageanchor) as anchors.
 
-    The main difference is that while ARKit uses the concept of an anchor to represent the identified real world object (that happens to have a pose) while this explainer uses the term anchor to only represent poses. Basic arbitrary [ARAnchor](https://developer.apple.com/documentation/arkit/aranchor) (1) in ARKit would be equivalent of the concept of an anchor in this explainer. The representation of the real world objects is out of the scope of this explainer. This differentiation between the concept of an anchor in ARKit and in the scope of this explainer is subtle but important.
+        The main difference is that while ARKit uses the concept of an anchor to represent the identified real world object (that happens to have a pose) while this explainer uses the term anchor to only represent poses. Basic arbitrary [ARAnchor](https://developer.apple.com/documentation/arkit/aranchor) (1) in ARKit would be equivalent of the concept of an anchor in this explainer. The representation of the real world objects is out of the scope of this explainer. This differentiation between the concept of an anchor in ARKit and in the scope of this explainer is subtle but important.
 
 
 
@@ -26,16 +26,16 @@ Anchors can represent different concepts:
 
 
 1.  An arbitrary three dimensional pose that must be updated as the understanding of the world coordinate system evolves.
-1.  A pose relative to a specific real world object the system has been able to identify and track.
+2.  A pose relative to a specific real world object the system has been able to identify and track.
 
 Anchors could also represent poses that:
 
 
 
-1.  Persist, meaning that the anchor is able to live between executions of the same application.
-1.  Are shared between different applications.
+3.  Persist, meaning that the anchor is able to live between executions of the same application.
+4.  Are shared between different applications.
 
-This explainer focuses on just the concept of arbitrary anchors (1) but opening the possibility for (2) mainly for API simplicity and to allow the developer to try to always do the right thing. Creating anchors when placing virtual objects once the system has some understanding of the real world around it (hitting on a real world object) is a very common practice.
+This explainer focuses on just the concept of arbitrary anchors (1) but opening the possibility for real world understanding (2) mainly for API simplicity and to allow the developer to try to always do the right thing. Creating anchors when placing virtual objects once the system has some understanding of the real world around it (hitting on a real world object for example) is a very common and recommended practice.
 
 The reasons for this limited scope are:
 
