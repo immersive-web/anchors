@@ -14,7 +14,7 @@ The main idea behind the concept of an anchor is that as the underlying platform
         1.  An arbitrary pose in 3D space that needs to be updated relative to the physical world. Anchors that represent an arbitrary pose can be created and registered in ARKit. This is the same as the anchor concept in this explainer.
         1.  A real world object that the system is able to identify from the real world understanding. These elements have a pose, but also include other information such as geometry. At the moment of the publication of this explainer ARKit is able to understand [ARPlaneAnchor](https://developer.apple.com/documentation/arkit/arplaneanchor), [ARFaceAnchor](https://developer.apple.com/documentation/arkit/arfaceanchor) and [ARImageAnchor](https://developer.apple.com/documentation/arkit/arimageanchor) as anchors.
 
-        While ARKit uses the concept of an anchor to represent the pose and the identified real world object, this explainer currently uses the term anchor to only represent an object with a pose that specifies it's location relative to the physical world. The [ARAnchor](https://developer.apple.com/documentation/arkit/aranchor) (1) base class in ARKit would be equivalent of the concept of an anchor in this explainer. Additional information about the representation of real world objects is out of the scope of this explainer. This differentiation between the concept of an anchor in ARKit and in the scope of this explainer is subtle but important.
+        While ARKit uses the concept of an anchor to represent the pose and the identified real world object, this explainer currently uses the term anchor to only represent an object with a pose that specifies its location relative to the physical world. The [ARAnchor](https://developer.apple.com/documentation/arkit/aranchor) (1) base class in ARKit would be equivalent of the concept of an anchor in this explainer. Additional information about the representation of real world objects is out of the scope of this explainer. This differentiation between the concept of an anchor in ARKit and in the scope of this explainer is subtle but important.
 
 
 # Scope
@@ -42,7 +42,7 @@ The reasons for this limited scope are:
 *   Understanding the semantics of the physical world (such as detecting and tracking markers, images, faces or objects) is outside the scope of this explainer. Currently, there is no specific proposal on how to expose even basic understanding of the physical world to the web, much less more interesting objects. Whenever such proposal is agreed upon, the scope of the anchor API could evolve to support it. But even in that case, there will still be a need for anchors with arbitrary 3D poses.  Currently, anchors **are not** intended to track moving objects.
 *   Persisting and sharing anchors is outside of the current scope of this explainer, since platform-level anchors (used to implement the anchor concept) are opaque and not compatible across different platforms.
 
-Anchors are intended to maintain a pose that corresponds to a location in the physical world, and will be updated by the system as it's understanding of the physical-world changes. 
+Anchors are intended to maintain a pose that corresponds to a location in the physical world, and will be updated by the system as its understanding of the physical-world changes.
 
 # Use Cases
 
@@ -59,7 +59,7 @@ Although most use cases for anchor creation might be related to real-world under
 Two examples where Anchors might update as real-world understanding improves are:
 
 1.  The system gains a more precise understanding of where a physical object is, which affects the pose created relative to it. For example, if a pose was created relative to a plane perceived at 1m above the floor, and as the user moves around the system refines this estimate to being 0.95m above the floor, then the Anchor pose will be updated;
-1.  The system shifts the world coordinate system used to specify the camera location. For example, if a pose was created (relative to the physical world, or to the camera) such that the world position is (1,1,1), and the system subsequently shifts it's world coordiantes such that the position that was formerly (1,1,1) is now (0.75,1,1), then the Anchor pose must be updated accordingly.
+1.  The system shifts the world coordinate system used to specify the camera location. For example, if a pose was created (relative to the physical world, or to the camera) such that the world position is (1,1,1), and the system subsequently shifts its world coordiantes such that the position that was formerly (1,1,1) is now (0.75,1,1), then the Anchor pose must be updated accordingly.
 
 
 # Possible API Considerations
@@ -72,18 +72,18 @@ Two examples where Anchors might update as real-world understanding improves are
 
 # IDL proposal
 
-```
+```webidl
 [SecureContext, Exposed=Window] interface XRAnchor : EventTarget {
   // Attributes
-  readonly attribute Float32Array modelMatrix;
+  readonly attribute XRSpace anchorSpace;
 
   // Events
   attribute EventHandler onupdate;
 };
 
 partial interface XRSession {
-  Promise<XRAnchor> addAnchor(Float32Array modelMatrix, XRCoordinateSystem coordinateSystem);
-  Promise<XRAnchor> addAnchor(XRHitResult hitResult, XRCoordinateSystem coordinateSystem);
+  Promise<XRAnchor> addAnchor(XRPose pose, XRReferenceSpace referenceSpace);
+  Promise<XRAnchor> addAnchor(XRHitResult hitResult, XRReferenceSpace referenceSpace);
   Promise<XRAnchor> removeAnchor(XRAnchor anchor);
 }
 ```
@@ -91,18 +91,17 @@ partial interface XRSession {
 ## API Details
 
 `addAnchor` has 2 overloads based on the first parameter:
-*   modelMatrix - a 4x4 matrix representing the initial pose where the anchor should be created. The system will make sure that the relationship with the physical world made at this moment in time is maintained as the tracking system evolves.
+*   pose - the initial pose where the anchor should be created. The system will make sure that the relationship with the physical world made at this moment in time is maintained as the tracking system evolves.
 *   hitResult - the hit test result to create the anchor from. This overload tries to achieve 2 goals. On one hand it tries to make it easy for the developer to create anchors from a hit result, a practice expected to be common.  Hit results are expected to be a common way for users to point a places in the world, and thus a common place for developers to locate virtual content. 
-*   coordinateSystem - the coordinate system the pose is relative to.
+*   referenceSpace - the frame of reference the pose is relative to.
 *   To enable feature detection of possible future versions of the API with  additional parameters, an error is thrown if additional arguments are given to the function.
 
 `addAnchor` return value (applicable for both overloads)
 *   Returns a Promise<XRAnchor>. The meaning of the promise resolution is as follows:
     *   If the promise rejects, there was an error (should be detailed in a returned string). It could be that the API is unsupported by the platform or the XRSession is not of the right type for creating anchors. It could be an internal error of some kind.
     *   If the promise resolves, the anchor was successfully added to the underlying system and a valid XRAnchor should be provided.
-*   As this function returns a promise, the actual XRAnchor will be provided to the application in near future. In the case of anchors, the creation of the anchor should happen in the next frame and before the request animation frame of the session is called, if called during a animation frame callback.  If called outside of an animation callback, the promise might resolve before the next request animation frame, but may not. The promise should provide an XRAnchor whose internal pose (represented by the modelMatrix attribute) should always be up to date. For that reason, the app should be aware that it could be possible that the modelMatrix of the XRAnchor to be different than the original pose passed to create the anchor, and to possibly change each frame.
-*   XRAnchor.modelMatrix is a 4x4 matrix representing the always up to date pose of the anchor. The app should always update any virtual objects that should be located relative to the anchor, using the value of this pose.
-
+*   As this function returns a promise, the actual XRAnchor will be provided to the application in near future. In the case of anchors, the creation of the anchor should happen in the next frame and before the request animation frame of the session is called, if called during an animation frame callback. If called outside of an animation callback, the promise might resolve before the next request animation frame, but may not. The promise should provide an XRAnchor whose internal pose should always be up to date. For that reason, the app should be aware that it could be possible that the pose of the XRAnchor to be different than the original pose passed to create the anchor, and to possibly change each frame.
+*   XRAnchor.anchorSpace can be used to obtain an anchor pose that is always up to date. The app should always update any virtual objects that should be located relative to the anchor, using the value of this pose.
 
 ## Code examples
 
@@ -110,14 +109,12 @@ The following code examplesa try to clarify the proposed IDL API. They use Three
 
 ### Adding anchors
 
-```
-var scale = new THREE.Vector3(); // Not really used as we are not interested in anchor pose scale
+```javascript
 var anchorToModelMap = new Map();
 // Create an arbitrary anchor
-session.addAnchor(modelMatrix, eyeLevelFoR).then((anchor) => {
+session.addAnchor(anchorPose, eyeLevelFoR).then((anchor) => {
   // Somehow retrieve the virtual object model that will be related to the anchor.
-  model.matrixWorld.fromArray(anchor.modelMatrix);
-  model.matrixWorld.decompose(model.position, model.quaternion, scale);
+  let model = ...;
   anchorToModelMap.put(anchor, model);
 }, (error) {
   console.error(“Could not create arbitrary anchor: “ + error);
@@ -127,8 +124,7 @@ session.requestHitTest(origin, direction, eyeLevelFoR).then((hits) => {
   if (hits.length > 0) {
     session.addAnchor(hits[0], eyeLevelFoR).then((anchor) => {
       // Somehow retrieve the virtual object model that will be related to the anchor.
-      model.matrixWorld.fromArray(anchor.modelMatrix);
-      model.matrixWorld.decompose(model.position, model.quaternion, scale);
+      let model = ...;
       anchorToModelMap.set(anchor, model);
     }, (error) {
       console.error(“Could not create the anchor based on a hit result: “ + error);
@@ -141,7 +137,7 @@ session.requestHitTest(origin, direction, eyeLevelFoR).then((hits) => {
 
 ### Removing anchors
 
-```
+```javascript
 for(var anchor of anchorToModelMap.keys()) {
   session.removeAnchor(anchor);
 }
@@ -150,11 +146,11 @@ anchorToModelMap.clear();
 
 ### Updating anchors
 
-```
+```javascript
   anchor.addEventListener(“update”, (event) => {
     var anchor = event.source;
     var model = anchorToModelMap.get(anchor);
-    model.matrixWorld.fromArray(anchor.modelMatrix);
-    model.matrixWorld.decompose(model.position, model.quaternion, scale);
+
+    // Update the position of the model based on current pose of the anchor.
   });
 ```
