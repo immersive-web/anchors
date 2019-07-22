@@ -79,12 +79,14 @@ Two examples where Anchors might update as real-world understanding improves are
 
   // Events
   attribute EventHandler onupdate;
+
+  // Methods
+  void detach();
 };
 
 partial interface XRSession {
   Promise<XRAnchor> addAnchor(XRPose pose, XRReferenceSpace referenceSpace);
   Promise<XRAnchor> addAnchor(XRHitResult hitResult, XRReferenceSpace referenceSpace);
-  Promise<XRAnchor> removeAnchor(XRAnchor anchor);
 }
 ```
 
@@ -105,7 +107,7 @@ partial interface XRSession {
 
 ## Code examples
 
-The following code examplesa try to clarify the proposed IDL API. They use ThreeJS to simplify some concepts representing the virtual objects/models.
+The following code examplesa try to clarify the proposed IDL API.
 
 ### Adding anchors
 
@@ -139,7 +141,7 @@ session.requestHitTest(origin, direction, eyeLevelFoR).then((hits) => {
 
 ```javascript
 for(var anchor of anchorToModelMap.keys()) {
-  session.removeAnchor(anchor);
+  anchor.detach();
 }
 anchorToModelMap.clear();
 ```
