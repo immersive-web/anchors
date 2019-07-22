@@ -107,7 +107,7 @@ partial interface XRSession {
 
 ## Code examples
 
-The following code examplesa try to clarify the proposed IDL API.
+The following code examples try to clarify the proposed IDL API.
 
 ### Adding anchors
 
