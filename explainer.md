@@ -44,6 +44,8 @@ The reasons for this limited scope are:
 
 Anchors are intended to maintain a pose that corresponds to a location in the physical world, and will be updated by the system as its understanding of the physical-world changes.
 
+This document assumes that WebXR supports hit-testing API as described by the [hit-testing explainer](https://github.com/immersive-web/webxr/blob/master/hit-testing-explainer.md).
+
 # Use Cases
 
 In general, applications should use anchors whenever a virtual object is placed in the scene. This is the only way to ensure the pose of the virtual object will be continuously updated to maintain a fixed relationship (i.e., position/orientation) with the physical world over time.
@@ -68,6 +70,7 @@ Two examples where Anchors might update as real-world understanding improves are
 *   Because it has major implications both in terms of performance and the future requirements of concepts like sharing and persistency, anchors should be created in an asynchronous way.
 *   As WebXR introduces the concept of coordinate systems in anything related to poses, and anchors are created in relation to poses, it is reasonable to assume that the anchor API should have a strong coupling to coordinate systems.
 *   As the most common use case for anchors is to attach a virtual object to a location in the physical world based on the underlying system's understanding of the world, anchors might need to be tightly coupled to world understanding APIs inside the WebXR Device API. For example, an anchor should be created when placing a virtual object on the pose provided by a hit test result. Linking anchors to the hit test API proposal seems like a good idea.
+*   Anchors can lose tracking without application's intervention - there needs to be a way to notify the application of the fact that an anchor is no longer tracked by the system.
 
 
 # IDL proposal
@@ -76,6 +79,7 @@ Two examples where Anchors might update as real-world understanding improves are
 [SecureContext, Exposed=Window] interface XRAnchor : EventTarget {
   // Attributes
   readonly attribute XRSpace anchorSpace;
+  readonly attribute DOMHighResTimeStamp lastChangedTime;
 
   // Events
   attribute EventHandler onupdate;
