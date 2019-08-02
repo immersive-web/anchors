@@ -32,19 +32,18 @@ Anchors could also represent entities with poses that:
 
 The two uses are currently out of the scope of the anchor proposal.
 
-This explainer focuses on just the first concept of anchors (1) as specifying the pose of a location in the world, but leaves open the possibility for anchors knowing their relationship to semantically meaningful parts of the physical real world that the system has detected (2). 
+This explainer focuses on the first two concepts of anchors: as specifying the pose of a location in the world (1), and as establishing a relationship to semantically meaningful parts of the physical real world that the system has detected (2). 
 
 Creating anchors in relation to the structure of the physical world around the user (such as if the system supports intersecting a ray with the system's understanding of the physical world) is expected to be a very common practice.
 
 The reasons for this limited scope are:
 
 *   Arbitrary anchors are the most basic yet useful type of anchors. There is always a need, no matter the granularity of the real world understanding the system has, to create arbitrary 3D poses as anchors. Moreover, anchors that represent arbitrary 3d poses can be used to represent positions relative to detected or tracked objects when world understanding is expended to include object detection and tracking.
-*   Understanding the semantics of the physical world (such as detecting and tracking markers, images, faces or objects) is outside the scope of this explainer. Currently, there is no specific proposal on how to expose even basic understanding of the physical world to the web, much less more interesting objects. Whenever such proposal is agreed upon, the scope of the anchor API could evolve to support it. But even in that case, there will still be a need for anchors with arbitrary 3D poses.  Currently, anchors **are not** intended to track moving objects.
 *   Persisting and sharing anchors is outside of the current scope of this explainer, since platform-level anchors (used to implement the anchor concept) are opaque and not compatible across different platforms.
 
-Anchors are intended to maintain a pose that corresponds to a location in the physical world, and will be updated by the system as its understanding of the physical-world changes.
+Anchors are intended to maintain a pose that corresponds to a location in the physical world, and will be updated by the system as its understanding of the physical-world changes. Anchors are currently **not** intended to track moving objects.
 
-This document assumes that WebXR supports hit-testing API as described by the [hit-testing explainer](https://github.com/immersive-web/webxr/blob/master/hit-testing-explainer.md).
+This document assumes that WebXR supports hit-testing API as described by the [hit-testing explainer](https://github.com/immersive-web/webxr/blob/master/hit-testing-explainer.md). Real-world geometry (RWG) detection APIs are currently incubated in its own [repository](https://github.com/immersive-web/real-world-geometry/).
 
 # Use Cases
 
