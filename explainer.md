@@ -73,36 +73,15 @@ Two examples where Anchors might update as real-world understanding improves are
 *   Anchors can lose tracking without application's intervention - there needs to be a way to notify the application of the fact that an anchor is no longer tracked by the system.
 
 
-# IDL proposal
+## Add anchor - API Details
 
-```webidl
-[SecureContext, Exposed=Window] interface XRAnchor : EventTarget {
-  // Attributes
-  readonly attribute XRSpace anchorSpace;
-  readonly attribute DOMHighResTimeStamp lastChangedTime;
-
-  // Events
-  attribute EventHandler onupdate;
-
-  // Methods
-  void detach();
-};
-
-partial interface XRSession {
-  Promise<XRAnchor> addAnchor(XRPose pose, XRReferenceSpace referenceSpace);
-  Promise<XRAnchor> addAnchor(XRHitResult hitResult, XRReferenceSpace referenceSpace);
-}
-```
-
-## API Details
-
-`addAnchor` has 2 overloads based on the first parameter:
+`addAnchor` parameters
 *   pose - the initial pose where the anchor should be created. The system will make sure that the relationship with the physical world made at this moment in time is maintained as the tracking system evolves.
-*   hitResult - the hit test result to create the anchor from. This overload tries to achieve 2 goals. On one hand it tries to make it easy for the developer to create anchors from a hit result, a practice expected to be common.  Hit results are expected to be a common way for users to point a places in the world, and thus a common place for developers to locate virtual content. 
 *   referenceSpace - the frame of reference the pose is relative to.
-*   To enable feature detection of possible future versions of the API with  additional parameters, an error is thrown if additional arguments are given to the function.
 
-`addAnchor` return value (applicable for both overloads)
+To enable feature detection of possible future versions of the API with additional parameters, an error is thrown if additional arguments are given to the function.
+
+`addAnchor` return value
 *   Returns a Promise<XRAnchor>. The meaning of the promise resolution is as follows:
     *   If the promise rejects, there was an error (should be detailed in a returned string). It could be that the API is unsupported by the platform or the XRSession is not of the right type for creating anchors. It could be an internal error of some kind.
     *   If the promise resolves, the anchor was successfully added to the underlying system and a valid XRAnchor should be provided.
@@ -118,26 +97,12 @@ The following code examples try to clarify the proposed IDL API.
 ```javascript
 var anchorToModelMap = new Map();
 // Create an arbitrary anchor
-session.addAnchor(anchorPose, eyeLevelFoR).then((anchor) => {
+session.addAnchor(anchorPose, eyeLevelReferenceSpace).then((anchor) => {
   // Somehow retrieve the virtual object model that will be related to the anchor.
   let model = ...;
   anchorToModelMap.put(anchor, model);
 }, (error) {
   console.error(“Could not create arbitrary anchor: “ + error);
-});
-// Create an anchor based on a hit result
-session.requestHitTest(origin, direction, eyeLevelFoR).then((hits) => {
-  if (hits.length > 0) {
-    session.addAnchor(hits[0], eyeLevelFoR).then((anchor) => {
-      // Somehow retrieve the virtual object model that will be related to the anchor.
-      let model = ...;
-      anchorToModelMap.set(anchor, model);
-    }, (error) {
-      console.error(“Could not create the anchor based on a hit result: “ + error);
-    });
-  }
-}, (error) {
-  console.error(“requestHitTest failed: “ + error);
 });
 ```
 
