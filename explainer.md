@@ -30,8 +30,6 @@ Anchors could also represent entities with poses that:
 3.  Persist, meaning that the anchor is able to live between executions of the same application.
 4.  Are shared between different applications.
 
-The two uses are currently out of the scope of the anchor proposal.
-
 This explainer focuses on the first two concepts of anchors: (1) anchors that are specifying the pose of a location in the world, & (2) anchors that are establishing a relationship to semantically meaningful parts of the physical real world that the system has detected.
 
 Creating anchors in relation to the structure of the physical world around the user (such as if the system supports intersecting a ray with the system's understanding of the physical world) is expected to be a very common practice.
