@@ -41,7 +41,7 @@ The reasons for this limited scope are:
 
 Anchors are intended to maintain a pose that corresponds to a location in the physical world, and will be updated by the system as its understanding of the physical-world changes. Anchors capable of tracking moving objects are out of scope of this document.
 
-Concept (2) requires that there is a mechanism for obtaining information about objects in the real world. Such APIs are out of scope for this explainer, but may include [hit-testing](https://github.com/immersive-web/webxr-ar-module/blob/master/hit-testing-explainer.md) and [real-world geometry](https://github.com/immersive-web/real-world-geometry/), which are being incubated separately.
+Concept (2) requires that there is a mechanism for obtaining information about objects in the real world. Such APIs are out of scope for this explainer, but may include [hit-testing](https://github.com/immersive-web/hit-test) and [real-world geometry](https://github.com/immersive-web/real-world-geometry/), which are being incubated separately.
 
 # Use Cases
 
