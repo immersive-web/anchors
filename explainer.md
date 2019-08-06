@@ -32,7 +32,7 @@ Anchors could also represent entities with poses that:
 
 The two uses are currently out of the scope of the anchor proposal.
 
-This explainer focuses on the first two concepts of anchors: as specifying the pose of a location in the world (1), and as establishing a relationship to semantically meaningful parts of the physical real world that the system has detected (2). 
+This explainer focuses on the first two concepts of anchors: (1) anchors that are specifying the pose of a location in the world, & (2) anchors that are establishing a relationship to semantically meaningful parts of the physical real world that the system has detected.
 
 Creating anchors in relation to the structure of the physical world around the user (such as if the system supports intersecting a ray with the system's understanding of the physical world) is expected to be a very common practice.
 
@@ -41,9 +41,9 @@ The reasons for this limited scope are:
 *   Arbitrary anchors are the most basic yet useful type of anchors. There is always a need, no matter the granularity of the real world understanding the system has, to create arbitrary 3D poses as anchors. Moreover, anchors that represent arbitrary 3d poses can be used to represent positions relative to detected or tracked objects when world understanding is expanded to include object detection and tracking.
 *   Persisting and sharing anchors is outside of the current scope of this explainer, since platform-level anchors (used to implement the anchor concept) are opaque and not compatible across different platforms.
 
-Anchors are intended to maintain a pose that corresponds to a location in the physical world, and will be updated by the system as its understanding of the physical-world changes. Anchors are currently **not** intended to track moving objects.
+Anchors are intended to maintain a pose that corresponds to a location in the physical world, and will be updated by the system as its understanding of the physical-world changes. Anchors capable of tracking moving objects are out of scope of this document.
 
-This document assumes that WebXR supports hit-testing API as described by the [hit-testing explainer](https://github.com/immersive-web/webxr/blob/master/hit-testing-explainer.md). Real-world geometry (RWG) detection APIs are currently incubated in its own [repository](https://github.com/immersive-web/real-world-geometry/).
+Concept (2) requires that there is a mechanism for obtaining information about objects in the real world. Such APIs are out of scope for this explainer, but may include [hit-testing](https://github.com/immersive-web/webxr-ar-module/blob/master/hit-testing-explainer.md) and [real-world geometry](https://github.com/immersive-web/real-world-geometry/), which are being incubated separately.
 
 # Use Cases
 
