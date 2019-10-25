@@ -80,7 +80,7 @@ To enable feature detection of possible future versions of the API with addition
 
 `addAnchor` return value
 *   Returns a Promise<XRAnchor>. The meaning of the promise resolution is as follows:
-    *   If the promise rejects, there was an error (should be detailed in a returned string). It could be that the API is unsupported by the platform or the XRSession is not of the right type for creating anchors. It could be an internal error of some kind.
+    *   If the promise rejects, there was an error (should be detailed in a returned string). It could be that the API is unsupported by the platform or the XRFrame is not of the right type or in incorrect state to create anchors. It could be an internal error of some kind.
     *   If the promise resolves, the anchor was successfully added to the underlying system and a valid XRAnchor should be provided.
 *   As this function returns a promise, the actual XRAnchor will be provided to the application in the near future. In the case of anchors, the creation of the anchor should happen in the next frame and before the request animation frame of the session is called, if called during an animation frame callback. If called outside of an animation callback, the promise might resolve before the next request animation frame, but may not. The promise should provide an XRAnchor whose internal pose should always be up to date. For that reason, the app should be aware that it could be possible that the pose of the XRAnchor to be different than the original pose passed to create the anchor, and to possibly change each frame.
 *   XRAnchor.anchorSpace can be used to obtain an anchor pose that is always up to date. The app should always update any virtual objects that should be located relative to the anchor, using the value of this pose.
@@ -94,7 +94,7 @@ The following code examples try to clarify the proposed IDL API.
 ```javascript
 var anchorToModelMap = new Map();
 // Create an arbitrary anchor
-session.addAnchor(anchorPose, eyeLevelReferenceSpace).then((anchor) => {
+frame.addAnchor(anchorPose, eyeLevelReferenceSpace).then((anchor) => {
   // Somehow retrieve the virtual object model that will be related to the anchor.
   let model = ...;
   anchorToModelMap.put(anchor, model);
