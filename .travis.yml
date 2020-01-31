@@ -1,6 +1,6 @@
 language: generic
 
-script: bash ./deploy.sh
+script: bash ./compile.sh
 
 branches:
   only:
