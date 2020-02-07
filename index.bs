@@ -19,15 +19,28 @@ Abstract: Describes a method to create anchors tracked by underlying system.
 
 <pre class="link-defaults">
 spec:webxr device api - level 1; type:dfn; for:/; text:xr device
+spec:webxr-ar-module-1; type:enum-value; text:"immersive-ar"
 </pre>
 
 <pre class="anchors">
 spec: WebXR Device API - Level 1; urlPrefix: https://www.w3.org/TR/webxr/#
+    for: XRFrame;
+        type: dfn; text: active; url: xrframe-active
+        type: dfn; text: session; url: dom-xrframe-session
+        type: dfn; text: time; url: xrframe-time
+    for: XRSession;
+        type: dfn; text: XR device; url: xrsession-xr-device
     for: XRSpace;
         type: dfn; text: effective origin; url: xrspace-effective-origin
         type: dfn; text: native origin; url: xrspace-native-origin
         type: dfn; text: origin offset; url: xrspace-origin-offset
         type: dfn; text: session; url: xrspace-session
+    type: dfn; text: identity transform; url: identity-transform
+spec: WebXR Hit Test Module; urlPrefix: https://immersive-web.github.io/hit-test/#
+    type: interface; text: XRHitTestResult; url: xrhittestresult
+    for: XRHitTestResult;
+        type: dfn; text: frame; url: xrhittestresult-frame
+        type: dfn; text: native origin; url: xrhittestresult-native-origin
 </pre>
 
 <style>
@@ -88,14 +101,19 @@ Introduction {#intro}
 
 <section class="non-normative">
 
-Intro.
+WebXR Anchors module enables applications to ask the underlying XR system to track changes to a particular three-dimensional pose (position and orientation) as the system's understanding of the world changes. This allows the application to adjust the location of the virtual objects that it placed in the scene in a way that helps with maintaining the illusion that the placed objects are really present in the user's environment.
 
 </section>
 
 Terminology {#terminology}
 -----------
 
-Terminology.
+Anchor, as understood by this document, is an entity that keeps track of the pose (position and orientation) that is fixed relative to the real world.
+
+Feature activation {#feature-activation}
+==================
+
+The anchors feature is assumed to be always active and supported on all devices that support {{XRSessionMode/"immersive-ar"}} mode.
 
 Anchors {#anchors}
 =======
@@ -109,10 +127,131 @@ interface XRAnchor {
   readonly attribute DOMHighResTimeStamp? lastUpdatedTime;
   readonly attribute XRSpace? anchorSpace;
 
-  [SameObject] 
   void detach();
 };
 </script>
+
+An {{XRAnchor}} contains {{XRAnchor/lastUpdatedTime}}.
+
+An {{XRAnchor}} contains {{XRAnchor/anchorSpace}} that can be used to locate the anchor.
+
+Each {{XRAnchor}} has an associated <dfn for=XRAnchor>initialized</dfn> boolean value that is initially set to <code>false</code>.
+
+Each {{XRAnchor}} has an associated <dfn for=XRAnchor>native origin</dfn>.
+
+Each {{XRAnchor}} has an associated <dfn for=XRAnchor>session</dfn>.
+
+<div class="algorithm" data-algorithm="create-anchor-object">
+In order to <dfn>create new anchor object</dfn> from |native origin| and |session|, the user agent MUST run the following steps:
+    1. Let |anchor| be a new {{XRAnchor}}.
+    1. Set |anchor|'s [=XRAnchor/native origin=] to |native origin|.
+    1. Set |anchor|'s [=XRAnchor/session=] to |session|.
+    1. Set |anchor|'s [=XRAnchor/initialized=] to <code>false</code>.
+    1. Set |anchor|'s {{XRAnchor/anchorSpace}} to <code>null</code>.
+    1. Set |anchor|'s {{XRAnchor/lastUpdatedTime}} to <code>null</code>.
+    1. Return |anchor|.
+</div>
+
+<div class="algorithm" data-algorithm="update-anchor-object">
+In order to <dfn>update an anchor object</dfn> |anchor| in frame |frame|, the user agent MUST run the following steps:
+    1. If {{XRAnchor/anchorSpace}} is <code>null</code>, initialize it to a new {{XRSpace}} object created with [=XRSpace/session=] set to |anchor|'s [=XRAnchor/session=] and [=XRSpace/native origin=] set to [=XRAnchor/native origin=].
+    1. Set {{XRAnchor/lastUpdatedTime}} to |frame|'s [=XRFrame/time=].
+    1. Set [=XRAnchor/initialized=] to <code>true</code>.
+</div>
+
+Anchor creation {#anchor-creation}
+===============
+
+<script type="idl">
+partial interface XRFrame {
+  Promise<XRAnchor> createAnchor(XRRigidTransform pose, XRSpace space);
+};
+
+partial interface XRHitTestResult {
+  Promise<XRAnchor> createAnchor(XRRigidTransform pose);
+};
+</script>
+
+The {{XRHitTestResult}} is extended to contain an associated <dfn for=XRHitTestResult>native entity</dfn>. If the underlying system does not provide information about native entity that resulted in computing the result, it will be assumed that [=XRHitTestResult/native entity=] is set to <code>null</code>.
+
+The application can create an anchor using either of the 2 ways:
+- By [=create an anchor from frame|create an anchor from frame=].
+- By [=create an anchor from hit test result|create an anchor from hit test result=].
+
+In order to <dfn>create an anchor from frame</dfn>, the application can call {{XRFrame/createAnchor(pose, space)}}.
+
+<div class="algorithm" data-algorithm="create-anchor-from-frame">
+The {{XRFrame/createAnchor(pose, space)}} method, when invoked on an {{XRFrame}} |frame| with |pose| and |space|, MUST run the following steps:
+    1. Let |promise| be [=a new Promise=].
+    1. If |frame|'s [=XRFrame/active=] boolean is <code>false</code>, [=/reject=] |promise| with {{InvalidStateError}} and abort these steps.
+    1. Add [=update anchors=] algorithm to session’s list of frame updates if it is not already present there.
+    1. Let |session| be |frame|'s [=XRFrame/session=].
+    1. Let |device| be |session|'s [=XRSession/XR device=].
+    1. Let |native origin| be |space|'s [=XRSpace/native origin=].
+    1. Let |anchor native origin| be a new native origin returned from the |device|'s call to create a new anchor using |pose|, interpreted as if expressed relative to |native origin|.
+    1. [=Create new anchor object=] |anchor| using |anchor native origin| and |session|.
+    1. Add |anchor| to |session|'s [=XRSession/set of created anchors=].
+    1. Resolve |promise| with |anchor|.
+</div>
+
+In order to <dfn>create an anchor from hit test result</dfn>, the application can call {{XRHitTestResult/createAnchor(pose)}}.
+
+<div class="algorithm" data-algorithm="create-anchor-from-hit-test-result">
+The {{XRHitTestResult/createAnchor(pose)}} method, when invoked on an {{XRHitTestResult}} |hitTestResult| with |pose|, MUST run the following steps:
+    1. Let |promise| be [=a new Promise=].
+    1. Let |frame| be |hitTestResult|'s [=XRHitTestResult/frame=].
+    1. If |frame|'s [=XRFrame/active=] boolean is <code>false</code>, [=/reject=] |promise| with {{InvalidStateError}} and abort these steps.
+    1. Add [=update anchors=] algorithm to session’s list of frame updates if it is not already present there.
+    1. Let |session| be |frame|'s [=XRFrame/session=].
+    1. Let |device| be |session|'s [=XRSession/XR device=].
+    1. Let |nativeEntity| be the |hitTestResult|'s [=XRHitTestResult/native entity=].
+    1. Let |anchor native origin| be a new native origin returned from the |device|'s call to create a new anchor using |pose|, interpreted as if expressed relative to |hitTestResult|'s [=XRHitTestResult/native origin=] and [=attached=] to |nativeEntity|.
+    1. [=Create new anchor object=] |anchor| using |anchor native origin| and |session|.
+    1. Add |anchor| to |session|'s [=XRSession/set of created anchors=].
+    1. Resolve |promise| with |anchor|.
+</div>
+
+Issue: Session's "list of frame updates" should have a way of specifying ordering - some algorithms may depend on others.
+
+Anchor updates {#anchor-updates}
+==============
+
+The {{XRSession}} is extended to contain an associated <dfn for=XRSession>set of created anchors</dfn>.
+
+<script type="idl">
+partial interface XRFrame {
+  readonly attribute FrozenArray<XRAnchor> trackedAnchors;
+};
+</script>
+
+An {{XRFrame}} contains a {{XRFrame/trackedAnchors}} array that is initially empty.
+
+<div class="algorithm" data-algorithm="update-anchors">
+In order to <dfn>update anchors</dfn> for |frame|, the User Agent MUST run the following steps:
+    1. Let |session| be a |frame|'s [=XRFrame/session=].
+    1. Let |device| be a |session|'s [=XRSession/XR device=].
+    1. For each |anchor| in |session|'s [=XRSession/set of created anchors=], run:
+        1. Query the |device|'s tracking system for the |anchor|'s [=XRAnchor/native origin=] information.
+        1. If the |device|'s tracking system no longer [=tracks=] the |anchor|, remove it from the |session|'s [=XRSession/set of created anchors=] and continue to the next entry.
+        1. If the |device|'s tracking system reports that the anchor was [=updated=], [=update an anchor object=] anchor.
+        1. Add |anchor| to |frame|'s {{XRFrame/trackedAnchors}} array.
+</div>
+
+Issue: fill this out.
+
+Native device concepts {#native-device-concepts}
+======================
+
+<section class="non-normative">
+</section>
+
+Native anchor {#native-anchor}
+-------------
+
+<dfn>Attached</dfn>.
+
+Issue: fill this out.
+
 
 Privacy & Security Considerations {#privacy-security}
 =================================
@@ -120,7 +259,9 @@ Privacy & Security Considerations {#privacy-security}
 <section class="non-normative">
 </section>
 
+Issue: fill this out.
+
 Acknowledgements {#ack}
 ================
 
-The following individuals have contributed to the design of the WebXR Hit Test specification:
+The following individuals have contributed to the design of the WebXR Anchors specification:
