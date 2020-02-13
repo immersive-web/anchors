@@ -38,7 +38,7 @@ The reasons for this limited scope are:
 *   Arbitrary anchors are the most basic yet useful type of anchors. There is always a need, no matter the granularity of the real world understanding the system has, to create arbitrary 3D poses as anchors. Moreover, anchors that represent arbitrary 3d poses can be used to represent positions relative to detected or tracked objects when world understanding is expanded to include object detection and tracking.
 *   Persisting and sharing anchors is outside of the current scope of this explainer, since platform-level anchors (used to implement the anchor concept) are opaque and not compatible across different platforms.
 
-Anchors are intended to maintain a pose that corresponds to a location in the physical world, and will be updated by the system as its understanding of the physical world changes. Anchors capable of tracking moving objects are out of scope of this document.
+Anchors are intended to maintain a pose that corresponds to a location in the physical world, and will be updated by the system as its understanding of the physical world changes.
 
 Concept (2) requires that there is a mechanism for obtaining information about objects in the real world. Such APIs are out of scope for this explainer, but may include [hit-testing](https://github.com/immersive-web/hit-test) and [real-world geometry](https://github.com/immersive-web/real-world-geometry/), which are being incubated separately.
 
