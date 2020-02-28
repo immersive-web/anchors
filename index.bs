@@ -138,18 +138,13 @@ XRAnchor {#xr-anchor}
 <script type="idl">
 [SecureContext, Exposed=Window]
 interface XRAnchor {
-  readonly attribute DOMHighResTimeStamp? lastUpdatedTime;
   readonly attribute XRSpace? anchorSpace;
 
   void detach();
 };
 </script>
 
-An {{XRAnchor}} contains {{XRAnchor/lastUpdatedTime}} which signifies the last time an anchor object was updated. If this attribute is accessed when [=XRAnchor/detached=] is set to <code>true</code>, the user agent MUST throw an {{InvalidStateError}}.
-
 An {{XRAnchor}} contains {{XRAnchor/anchorSpace}} that can be used to locate the anchor relative to other {{XRSpace|XRSpaces}}. If this attribute is accessed when [=XRAnchor/detached=] is set to <code>true</code>, the user agent MUST throw an {{InvalidStateError}}.
-
-Note: {{XRAnchor/lastUpdatedTime}} cannot reliably be used to determine whether the poses of an {{XRAnchor/anchorSpace}} have changed relative to other reference spaces, since anchor poses relative to other reference spaces can change even if a particular anchor remained unchanged.
 
 Each {{XRAnchor}} has an associated <dfn for=XRAnchor>detached</dfn> boolean value that is initially set to <code>false</code>.
 
@@ -163,16 +158,8 @@ In order to <dfn>create new anchor object</dfn> from |native origin| and |sessio
     1. Set |anchor|'s [=XRAnchor/native origin=] to |native origin|.
     1. Set |anchor|'s [=XRAnchor/session=] to |session|.
     1. Set |anchor|'s [=XRAnchor/detached=] to <code>false</code>.
-    1. Set |anchor|'s {{XRAnchor/anchorSpace}} to <code>null</code>.
-    1. Set |anchor|'s {{XRAnchor/lastUpdatedTime}} to <code>null</code>.
+    1. Set |anchor|'s {{XRAnchor/anchorSpace}} to a new {{XRSpace}} object created with [=XRSpace/session=] set to |anchor|'s [=XRAnchor/session=] and [=XRSpace/native origin=] set to [=XRAnchor/native origin=].
     1. Return |anchor|.
-</div>
-
-<div class="algorithm" data-algorithm="update-anchor-object">
-In order to <dfn>update an anchor object</dfn> |anchor| in frame |frame|, the user agent MUST run the following steps:
-    1. If [=XRAnchor/detached=] is <code>true</code>, abort these steps.
-    1. If {{XRAnchor/anchorSpace}} is <code>null</code>, initialize it to a new {{XRSpace}} object created with [=XRSpace/session=] set to |anchor|'s [=XRAnchor/session=] and [=XRSpace/native origin=] set to [=XRAnchor/native origin=].
-    1. Set {{XRAnchor/lastUpdatedTime}} to |frame|'s [=XRFrame/time=].
 </div>
 
 Anchor creation {#anchor-creation}
@@ -260,7 +247,6 @@ In order to <dfn>update anchors</dfn> for |frame|, the user agent MUST run the f
             1. Remove |anchor| from the |session|'s [=XRSession/set of tracked anchors=].
             1. If |session|'s [=XRSession/map of new anchors=] contains a mapping from |anchor| to |promise|, [=/reject=] the |promise| and remove the mapping.
             1. Continue to the next entry in |session|'s [=XRSession/set of tracked anchors=].
-        1. If the |device|'s tracking system reports that the anchor has [=changed=], [=update an anchor object=] |anchor|.
         1. Add |anchor| to |frame|'s {{XRFrame/trackedAnchors}} set.
         1. If |session|'s [=XRSession/map of new anchors=] contains a mapping from |anchor| to |promise|, [=/resolve=] the |promise| with |anchor| and remove the mapping.
 </div>
@@ -274,7 +260,6 @@ When an application is no longer interested in receiving updates to an anchor, i
 The {{XRAnchor/detach()}} method, when invoked on an {{XRAnchor}} |anchor|, MUST <dfn>detach an anchor</dfn> by running the following steps:
     1. If |anchor|'s [=XRAnchor/detached=] is <code>true</code>, abort these steps.
     1. Set |anchor|'s {{XRAnchor/anchorSpace}} to <code>null</code>.
-    1. Set |anchor|'s {{XRAnchor/lastUpdatedTime}} to <code>null</code>.
     1. Set |anchor|'s [=XRAnchor/detached=] to <code>true</code>.
     1. Let |session| be an |anchor|'s [=XRFrame/session=].
     1. Let |device| be a |session|'s [=XRSession/XR device=].
@@ -303,7 +288,6 @@ The underlying [=XR device=] is [=capable of supporting=] the [=anchors=] featur
     - It returns a result that can be treated as a [=native origin=] by the user agents.
 - Native anchors are continuously <dfn>tracked</dfn> by the underlying XR system and can be queried for their most up-to-date state. When the underlying system deems that the native anchor's location is never going to be known, it SHOULD report that the native anchor is no longer tracked.
 - Optionally, native anchors can be <dfn>attached</dfn> to native entities. A native anchor that is attached to a native entity attempts to maintain its position fixed relative to the entity to which it is attached (as opposed to the real world in case of free-floating anchors). When the device detects that the pose of the object to which the anchor is attached changes, the anchor will be updated accordingly. This does not imply that the object itself moved - it may be that the system's understanding of its location changed. If the underlying system is capable of tracking moving objects, the native anchors attached to moving objects should be updated as well.
-- Optionally, the underlying XR system can inform the user agents if its understanding of the specific native anchor has <dfn>changed</dfn>. Newly created native anchors should be treated as changed when their pose becomes known to the device for the first time. In case the underlying XR system does not expose this capability (while still satisfying other requirements), the user agents MUST always assume that the native anchor has changed during the [=update anchors=] algorithm.
 
 In case the underlying device does not support native anchors, the user agents MAY decide to implement the anchors API through <dfn>emulated native anchors</dfn>. This approach assumes that anchors, once created, never change their pose, and their pose is the pose passed in by the application to the anchor creation methods such as {{XRFrame}}'s {{XRFrame/createAnchor(pose, space)}} or {{XRHitTestResult}}'s {{XRHitTestResult/createAnchor(pose)}}.
 
