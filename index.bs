@@ -46,6 +46,7 @@ spec: WebXR Hit Test Module; urlPrefix: https://immersive-web.github.io/hit-test
     for: XRHitTestResult;
         type: dfn; text: frame; url: xrhittestresult-frame
         type: dfn; text: native origin; url: xrhittestresult-native-origin
+    type: dfn; text: hit-test; url: hit-test
 </pre>
 
 <style>
@@ -314,7 +315,7 @@ Privacy & Security Considerations {#privacy-security}
 
 <section class="non-normative">
 
-The anchors API does not directly expose access to the information about the user environment. In case the session was created with [=hit-test=] support enabled and the device supports tracking moving objects, it may be possible for the application to infer the layout of the user's environment by observing changes to anchor poses of objects that are for example carried. Anchor feature has to be declared when creating an XR session, which will allow the user agents to notify the users about potential privacy implications of allowing the anchors API to be used by the website.
+The anchors API does not directly expose access to the information about the user environment. In case the session was created with [=hit-test=] support enabled and the device supports tracking moving objects, it may be possible for the application to infer the layout of the user's environment by observing changes to anchor poses of objects that are, for example, carried around. This offers similar level of information about user's environment as hit-testing API. Anchor feature has to be declared when creating an XR session, which will allow the user agents to notify the users about potential privacy implications of allowing the anchors API to be used by the website.
 
 </section>
 
