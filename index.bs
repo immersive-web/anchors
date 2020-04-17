@@ -171,7 +171,7 @@ The {{XRSession}} is extended to contain an associated <dfn for=XRSession>set of
 The {{XRSession}} is extended to contain an associated <dfn for=XRSession>map of new anchors</dfn> that is keyed with {{XRAnchor}} object and maps to <code>{{Promise}}&lt;{{XRAnchor}}&gt;</code> object.
 
 <script type="idl">
-partial interface XRFrame {
+partial interface XRSession {
   Promise<XRAnchor> createAnchor(XRRigidTransform pose, XRSpace space);
 };
 
