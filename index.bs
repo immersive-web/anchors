@@ -29,6 +29,7 @@ spec: WebXR Device API - Level 1; urlPrefix: https://www.w3.org/TR/webxr/#
         type: dfn; text: session; url: dom-xrframe-session
         type: dfn; text: time; url: xrframe-time
     for: XRSession;
+        type: dfn; text: list of frame updates; url: xrsession-list-of-frame-updates
         type: dfn; text: mode; url: xrsession-mode
         type: dfn; text: XR device; url: xrsession-xr-device
     for: XRSpace;
@@ -192,11 +193,11 @@ In order to <dfn>create an anchor from frame</dfn>, the application can call {{X
 The {{XRFrame/createAnchor(pose, space)}} method, when invoked on an {{XRFrame}} |frame| with |pose| and |space|, MUST run the following steps:
     1. Let |promise| be [=a new Promise=].
     1. If |frame|'s [=XRFrame/active=] boolean is <code>false</code>, [=/reject=] |promise| with {{InvalidStateError}} and abort these steps.
-    1. Add [=update anchors=] algorithm to session’s list of frame updates if it is not already present there.
     1. Let |session| be |frame|'s [=XRFrame/session=].
+    1. Add [=update anchors=] algorithm to |session|’s [=XRSession/list of frame updates=] if it is not already present there.
     1. Let |device| be |session|'s [=XRSession/XR device=].
-    1. Let |native origin| be |space|'s [=XRSpace/native origin=].
-    1. Let |anchor native origin| be a new native origin returned from the |device|'s call to create a new anchor using |pose|, interpreted as if expressed relative to |native origin|.
+    1. Let |effective origin| be |space|'s [=XRSpace/effective origin=].
+    1. Let |anchor native origin| be a new native origin returned from the |device|'s call to create a new anchor using |pose|, interpreted as if expressed relative to |effective origin|.
     1. [=Create new anchor object=] |anchor| using |anchor native origin| and |session|.
     1. Add |anchor| to |session|'s [=XRSession/set of tracked anchors=].
     1. Add a mapping from |anchor| to |promise| to |session|'s [=XRSession/map of new anchors=].
@@ -209,8 +210,8 @@ The {{XRHitTestResult/createAnchor(pose)}} method, when invoked on an {{XRHitTes
     1. Let |promise| be [=a new Promise=].
     1. Let |frame| be |hitTestResult|'s [=XRHitTestResult/frame=].
     1. If |frame|'s [=XRFrame/active=] boolean is <code>false</code>, [=/reject=] |promise| with {{InvalidStateError}} and abort these steps.
-    1. Add [=update anchors=] algorithm to session’s list of frame updates if it is not already present there.
     1. Let |session| be |frame|'s [=XRFrame/session=].
+    1. Add [=update anchors=] algorithm to |session|’s [=XRSession/list of frame updates=] if it is not already present there.
     1. Let |device| be |session|'s [=XRSession/XR device=].
     1. Let |nativeEntity| be the |hitTestResult|'s [=XRHitTestResult/native entity=].
     1. Let |anchor native origin| be a new native origin returned from the |device|'s call to create a new anchor using |pose|, interpreted as if expressed relative to |hitTestResult|'s [=XRHitTestResult/native origin=] and [=attached=] to |nativeEntity|.
