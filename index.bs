@@ -141,13 +141,13 @@ XRAnchor {#xr-anchor}
 interface XRAnchor {
   readonly attribute XRSpace anchorSpace;
 
-  void detach();
+  void delete();
 };
 </script>
 
-An {{XRAnchor}} contains {{XRAnchor/anchorSpace}} that can be used to locate the anchor relative to other {{XRSpace|XRSpaces}}. If this attribute is accessed when [=XRAnchor/detached=] is set to <code>true</code>, the user agent MUST throw an {{InvalidStateError}}.
+An {{XRAnchor}} contains {{XRAnchor/anchorSpace}} that can be used to locate the anchor relative to other {{XRSpace|XRSpaces}}. If this attribute is accessed when [=XRAnchor/deleted=] is set to <code>true</code>, the user agent MUST throw an {{InvalidStateError}}.
 
-Each {{XRAnchor}} has an associated <dfn for=XRAnchor>detached</dfn> boolean value that is initially set to <code>false</code>.
+Each {{XRAnchor}} has an associated <dfn for=XRAnchor>deleted</dfn> boolean value that is initially set to <code>false</code>.
 
 Each {{XRAnchor}} has an associated <dfn for=XRAnchor>native origin</dfn>.
 
@@ -158,7 +158,7 @@ In order to <dfn>create new anchor object</dfn> from |native origin| and |sessio
     1. Let |anchor| be a new {{XRAnchor}}.
     1. Set |anchor|'s [=XRAnchor/native origin=] to |native origin|.
     1. Set |anchor|'s [=XRAnchor/session=] to |session|.
-    1. Set |anchor|'s [=XRAnchor/detached=] to <code>false</code>.
+    1. Set |anchor|'s [=XRAnchor/deleted=] to <code>false</code>.
     1. Set |anchor|'s {{XRAnchor/anchorSpace}} to a new {{XRSpace}} object created with [=XRSpace/session=] set to |anchor|'s [=XRAnchor/session=] and [=XRSpace/native origin=] set to [=XRAnchor/native origin=].
     1. Return |anchor|.
 </div>
@@ -255,13 +255,13 @@ In order to <dfn>update anchors</dfn> for |frame|, the user agent MUST run the f
 Anchor removal {#anchor-removal}
 ==============
 
-When an application is no longer interested in receiving updates to an anchor, it can [=detach an anchor=] by calling {{XRAnchor/detach()}}.
+When an application is no longer interested in receiving updates to an anchor, it can [=delete an anchor=] by calling {{XRAnchor/delete()}}.
 
 <div class="algorithm" data-algorithm="detach-anchor">
-The {{XRAnchor/detach()}} method, when invoked on an {{XRAnchor}} |anchor|, MUST <dfn>detach an anchor</dfn> by running the following steps:
-    1. If |anchor|'s [=XRAnchor/detached=] is <code>true</code>, abort these steps.
+The {{XRAnchor/delete()}} method, when invoked on an {{XRAnchor}} |anchor|, MUST <dfn>delete an anchor</dfn> by running the following steps:
+    1. If |anchor|'s [=XRAnchor/deleted=] is <code>true</code>, abort these steps.
     1. Set |anchor|'s {{XRAnchor/anchorSpace}} to <code>null</code>.
-    1. Set |anchor|'s [=XRAnchor/detached=] to <code>true</code>.
+    1. Set |anchor|'s [=XRAnchor/deleted=] to <code>true</code>.
     1. Let |session| be an |anchor|'s [=XRFrame/session=].
     1. Let |device| be a |session|'s [=XRSession/XR device=].
     1. Let |native origin| be an |anchor|'s [=XRAnchor/native origin=].
