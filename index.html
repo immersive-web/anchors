@@ -1221,7 +1221,7 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version 5721fde7f6b8111f662b83b678f9e181a9838206" name="generator">
+  <meta content="Bikeshed version 5359f34a, updated Wed Apr 22 15:42:50 2020 -0700" name="generator">
   <link href="https://immersive-web.github.io/anchors/" rel="canonical">
 <style>
   .non-normative::before {
@@ -1275,102 +1275,6 @@ Possible extra rowspan handling
     float: none;
   }
 </style>
-<style>/* style-md-lists */
-
-/* This is a weird hack for me not yet following the commonmark spec
-   regarding paragraph and lists. */
-[data-md] > :first-child {
-    margin-top: 0;
-}
-[data-md] > :last-child {
-    margin-bottom: 0;
-}</style>
-<style>/* style-selflinks */
-
-.heading, .issue, .note, .example, li, dt {
-    position: relative;
-}
-a.self-link {
-    position: absolute;
-    top: 0;
-    left: calc(-1 * (3.5rem - 26px));
-    width: calc(3.5rem - 26px);
-    height: 2em;
-    text-align: center;
-    border: none;
-    transition: opacity .2s;
-    opacity: .5;
-}
-a.self-link:hover {
-    opacity: 1;
-}
-.heading > a.self-link {
-    font-size: 83%;
-}
-li > a.self-link {
-    left: calc(-1 * (3.5rem - 26px) - 2em);
-}
-dfn > a.self-link {
-    top: auto;
-    left: auto;
-    opacity: 0;
-    width: 1.5em;
-    height: 1.5em;
-    background: gray;
-    color: white;
-    font-style: normal;
-    transition: opacity .2s, background-color .2s, color .2s;
-}
-dfn:hover > a.self-link {
-    opacity: 1;
-}
-dfn > a.self-link:hover {
-    color: black;
-}
-
-a.self-link::before            { content: "¶"; }
-.heading > a.self-link::before { content: "§"; }
-dfn > a.self-link::before      { content: "#"; }</style>
-<style>/* style-counters */
-
-body {
-    counter-reset: example figure issue;
-}
-.issue {
-    counter-increment: issue;
-}
-.issue:not(.no-marker)::before {
-    content: "Issue " counter(issue);
-}
-
-.example {
-    counter-increment: example;
-}
-.example:not(.no-marker)::before {
-    content: "Example " counter(example);
-}
-.invalid.example:not(.no-marker)::before,
-.illegal.example:not(.no-marker)::before {
-    content: "Invalid Example" counter(example);
-}
-
-figcaption {
-    counter-increment: figure;
-}
-figcaption:not(.no-marker)::before {
-    content: "Figure " counter(figure) " ";
-}</style>
-<style>/* style-var-click-highlighting */
-
-    var { cursor: pointer; }
-    var.selected0 { background-color: #F4D200; box-shadow: 0 0 0 2px #F4D200; }
-    var.selected1 { background-color: #FF87A2; box-shadow: 0 0 0 2px #FF87A2; }
-    var.selected2 { background-color: #96E885; box-shadow: 0 0 0 2px #96E885; }
-    var.selected3 { background-color: #3EEED2; box-shadow: 0 0 0 2px #3EEED2; }
-    var.selected4 { background-color: #EACFB6; box-shadow: 0 0 0 2px #EACFB6; }
-    var.selected5 { background-color: #82DDFF; box-shadow: 0 0 0 2px #82DDFF; }
-    var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
-    </style>
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -1433,6 +1337,35 @@ pre .property::before, pre .property::after {
 [data-link-type=biblio] {
     white-space: pre;
 }</style>
+<style>/* style-counters */
+
+body {
+    counter-reset: example figure issue;
+}
+.issue {
+    counter-increment: issue;
+}
+.issue:not(.no-marker)::before {
+    content: "Issue " counter(issue);
+}
+
+.example {
+    counter-increment: example;
+}
+.example:not(.no-marker)::before {
+    content: "Example " counter(example);
+}
+.invalid.example:not(.no-marker)::before,
+.illegal.example:not(.no-marker)::before {
+    content: "Invalid Example" counter(example);
+}
+
+figcaption {
+    counter-increment: figure;
+}
+figcaption:not(.no-marker)::before {
+    content: "Figure " counter(figure) " ";
+}</style>
 <style>/* style-dfn-panel */
 
 .dfn-panel {
@@ -1470,6 +1403,62 @@ pre .property::before, pre .property::after {
 
 .dfn-paneled { cursor: pointer; }
 </style>
+<style>/* style-md-lists */
+
+/* This is a weird hack for me not yet following the commonmark spec
+   regarding paragraph and lists. */
+[data-md] > :first-child {
+    margin-top: 0;
+}
+[data-md] > :last-child {
+    margin-bottom: 0;
+}</style>
+<style>/* style-selflinks */
+
+.heading, .issue, .note, .example, li, dt {
+    position: relative;
+}
+a.self-link {
+    position: absolute;
+    top: 0;
+    left: calc(-1 * (3.5rem - 26px));
+    width: calc(3.5rem - 26px);
+    height: 2em;
+    text-align: center;
+    border: none;
+    transition: opacity .2s;
+    opacity: .5;
+}
+a.self-link:hover {
+    opacity: 1;
+}
+.heading > a.self-link {
+    font-size: 83%;
+}
+li > a.self-link {
+    left: calc(-1 * (3.5rem - 26px) - 2em);
+}
+dfn > a.self-link {
+    top: auto;
+    left: auto;
+    opacity: 0;
+    width: 1.5em;
+    height: 1.5em;
+    background: gray;
+    color: white;
+    font-style: normal;
+    transition: opacity .2s, background-color .2s, color .2s;
+}
+dfn:hover > a.self-link {
+    opacity: 1;
+}
+dfn > a.self-link:hover {
+    color: black;
+}
+
+a.self-link::before            { content: "¶"; }
+.heading > a.self-link::before { content: "§"; }
+dfn > a.self-link::before      { content: "#"; }</style>
 <style>/* style-syntax-highlighting */
 pre.idl.highlight { color: #708090; }
 .highlight:not(.idl) { background: hsl(24, 20%, 95%); }
@@ -1528,11 +1517,22 @@ c-[vg] { color: #0077aa } /* Name.Variable.Global */
 c-[vi] { color: #0077aa } /* Name.Variable.Instance */
 c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 </style>
+<style>/* style-var-click-highlighting */
+
+    var { cursor: pointer; }
+    var.selected0 { background-color: #F4D200; box-shadow: 0 0 0 2px #F4D200; }
+    var.selected1 { background-color: #FF87A2; box-shadow: 0 0 0 2px #FF87A2; }
+    var.selected2 { background-color: #96E885; box-shadow: 0 0 0 2px #96E885; }
+    var.selected3 { background-color: #3EEED2; box-shadow: 0 0 0 2px #3EEED2; }
+    var.selected4 { background-color: #EACFB6; box-shadow: 0 0 0 2px #EACFB6; }
+    var.selected5 { background-color: #82DDFF; box-shadow: 0 0 0 2px #82DDFF; }
+    var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
+    </style>
  <body class="h-entry">
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">WebXR Anchors Module</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2020-03-03">3 March 2020</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2020-04-22">22 April 2020</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1553,7 +1553,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <div data-fill-with="warning"></div>
    <p class="copyright" data-fill-with="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="https://licensebuttons.net/p/zero/1.0/80x15.png"></a> To the extent possible under law, the editors have waived all copyright
 and related or neighboring rights to this work.
-In addition, as of 3 March 2020,
+In addition, as of 22 April 2020,
 the editors have made this specification available under the <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
 Parts of this work may be from another specification document.  If so, those parts are instead covered by the license of that specification document. </p>
@@ -1627,11 +1627,11 @@ Parts of this work may be from another specification document.  If so, those par
 <c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="xranchor"><code><c- g>XRAnchor</c-></code></dfn> {
   <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace"><c- n>XRSpace</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="XRAnchor" data-dfn-type="attribute" data-export data-readonly data-type="XRSpace" id="dom-xranchor-anchorspace"><code><c- g>anchorSpace</c-></code></dfn>;
 
-  <c- b>void</c-> <dfn class="dfn-paneled idl-code" data-dfn-for="XRAnchor" data-dfn-type="method" data-export data-lt="detach()" id="dom-xranchor-detach"><code><c- g>detach</c-></code></dfn>();
+  <c- b>void</c-> <dfn class="dfn-paneled idl-code" data-dfn-for="XRAnchor" data-dfn-type="method" data-export data-lt="delete()" id="dom-xranchor-delete"><code><c- g>delete</c-></code></dfn>();
 };
 </pre>
-   <p>An <code class="idl"><a data-link-type="idl" href="#xranchor" id="ref-for-xranchor">XRAnchor</a></code> contains <code class="idl"><a data-link-type="idl" href="#dom-xranchor-anchorspace" id="ref-for-dom-xranchor-anchorspace">anchorSpace</a></code> that can be used to locate the anchor relative to other <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace①">XRSpaces</a></code>. If this attribute is accessed when <a data-link-type="dfn" href="#xranchor-detached" id="ref-for-xranchor-detached">detached</a> is set to <code>true</code>, the user agent MUST throw an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror">InvalidStateError</a></code>.</p>
-   <p>Each <code class="idl"><a data-link-type="idl" href="#xranchor" id="ref-for-xranchor①">XRAnchor</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="XRAnchor" data-dfn-type="dfn" data-noexport id="xranchor-detached">detached</dfn> boolean value that is initially set to <code>false</code>.</p>
+   <p>An <code class="idl"><a data-link-type="idl" href="#xranchor" id="ref-for-xranchor">XRAnchor</a></code> contains <code class="idl"><a data-link-type="idl" href="#dom-xranchor-anchorspace" id="ref-for-dom-xranchor-anchorspace">anchorSpace</a></code> that can be used to locate the anchor relative to other <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace①">XRSpaces</a></code>. If this attribute is accessed when <a data-link-type="dfn" href="#xranchor-deleted" id="ref-for-xranchor-deleted">deleted</a> is set to <code>true</code>, the user agent MUST throw an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror">InvalidStateError</a></code>.</p>
+   <p>Each <code class="idl"><a data-link-type="idl" href="#xranchor" id="ref-for-xranchor①">XRAnchor</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="XRAnchor" data-dfn-type="dfn" data-noexport id="xranchor-deleted">deleted</dfn> boolean value that is initially set to <code>false</code>.</p>
    <p>Each <code class="idl"><a data-link-type="idl" href="#xranchor" id="ref-for-xranchor②">XRAnchor</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="XRAnchor" data-dfn-type="dfn" data-noexport id="xranchor-native-origin">native origin</dfn>.</p>
    <p>Each <code class="idl"><a data-link-type="idl" href="#xranchor" id="ref-for-xranchor③">XRAnchor</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="XRAnchor" data-dfn-type="dfn" data-noexport id="xranchor-session">session</dfn>.</p>
    <div class="algorithm" data-algorithm="create-anchor-object">
@@ -1644,7 +1644,7 @@ Parts of this work may be from another specification document.  If so, those par
      <li data-md>
       <p>Set <var>anchor</var>’s <a data-link-type="dfn" href="#xranchor-session" id="ref-for-xranchor-session">session</a> to <var>session</var>.</p>
      <li data-md>
-      <p>Set <var>anchor</var>’s <a data-link-type="dfn" href="#xranchor-detached" id="ref-for-xranchor-detached①">detached</a> to <code>false</code>.</p>
+      <p>Set <var>anchor</var>’s <a data-link-type="dfn" href="#xranchor-deleted" id="ref-for-xranchor-deleted①">deleted</a> to <code>false</code>.</p>
      <li data-md>
       <p>Set <var>anchor</var>’s <code class="idl"><a data-link-type="idl" href="#dom-xranchor-anchorspace" id="ref-for-dom-xranchor-anchorspace①">anchorSpace</a></code> to a new <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace②">XRSpace</a></code> object created with <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrspace-session" id="ref-for-xrspace-session">session</a> set to <var>anchor</var>’s <a data-link-type="dfn" href="#xranchor-session" id="ref-for-xranchor-session①">session</a> and <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin">native origin</a> set to <a data-link-type="dfn" href="#xranchor-native-origin" id="ref-for-xranchor-native-origin①">native origin</a>.</p>
      <li data-md>
@@ -1766,16 +1766,16 @@ Parts of this work may be from another specification document.  If so, those par
     </ol>
    </div>
    <h2 class="heading settled" data-level="6" id="anchor-removal"><span class="secno">6. </span><span class="content">Anchor removal</span><a class="self-link" href="#anchor-removal"></a></h2>
-   <p>When an application is no longer interested in receiving updates to an anchor, it can <a data-link-type="dfn" href="#detach-an-anchor" id="ref-for-detach-an-anchor">detach an anchor</a> by calling <code class="idl"><a data-link-type="idl" href="#dom-xranchor-detach" id="ref-for-dom-xranchor-detach">detach()</a></code>.</p>
+   <p>When an application is no longer interested in receiving updates to an anchor, it can <a data-link-type="dfn" href="#delete-an-anchor" id="ref-for-delete-an-anchor">delete an anchor</a> by calling <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="ref-for-dom-xranchor-delete">delete()</a></code>.</p>
    <div class="algorithm" data-algorithm="detach-anchor">
-     The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-detach" id="ref-for-dom-xranchor-detach①">detach()</a></code> method, when invoked on an <code class="idl"><a data-link-type="idl" href="#xranchor" id="ref-for-xranchor①⓪">XRAnchor</a></code> <var>anchor</var>, MUST <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="detach-an-anchor">detach an anchor</dfn> by running the following steps: 
+     The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="ref-for-dom-xranchor-delete①">delete()</a></code> method, when invoked on an <code class="idl"><a data-link-type="idl" href="#xranchor" id="ref-for-xranchor①⓪">XRAnchor</a></code> <var>anchor</var>, MUST <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="delete-an-anchor">delete an anchor</dfn> by running the following steps: 
     <ol>
      <li data-md>
-      <p>If <var>anchor</var>’s <a data-link-type="dfn" href="#xranchor-detached" id="ref-for-xranchor-detached②">detached</a> is <code>true</code>, abort these steps.</p>
+      <p>If <var>anchor</var>’s <a data-link-type="dfn" href="#xranchor-deleted" id="ref-for-xranchor-deleted②">deleted</a> is <code>true</code>, abort these steps.</p>
      <li data-md>
       <p>Set <var>anchor</var>’s <code class="idl"><a data-link-type="idl" href="#dom-xranchor-anchorspace" id="ref-for-dom-xranchor-anchorspace②">anchorSpace</a></code> to <code>null</code>.</p>
      <li data-md>
-      <p>Set <var>anchor</var>’s <a data-link-type="dfn" href="#xranchor-detached" id="ref-for-xranchor-detached③">detached</a> to <code>true</code>.</p>
+      <p>Set <var>anchor</var>’s <a data-link-type="dfn" href="#xranchor-deleted" id="ref-for-xranchor-deleted③">deleted</a> to <code>true</code>.</p>
      <li data-md>
       <p>Let <var>session</var> be an <var>anchor</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session③">session</a>.</p>
      <li data-md>
@@ -1979,9 +1979,9 @@ Parts of this work may be from another specification document.  If so, those par
    <li><a href="#dom-xrhittestresult-createanchor">createAnchor(pose)</a><span>, in §4</span>
    <li><a href="#dom-xrframe-createanchor">createAnchor(pose, space)</a><span>, in §4</span>
    <li><a href="#create-new-anchor-object">create new anchor object</a><span>, in §3.1</span>
-   <li><a href="#dom-xranchor-detach">detach()</a><span>, in §3.1</span>
-   <li><a href="#detach-an-anchor">detach an anchor</a><span>, in §6</span>
-   <li><a href="#xranchor-detached">detached</a><span>, in §3.1</span>
+   <li><a href="#dom-xranchor-delete">delete()</a><span>, in §3.1</span>
+   <li><a href="#delete-an-anchor">delete an anchor</a><span>, in §6</span>
+   <li><a href="#xranchor-deleted">deleted</a><span>, in §3.1</span>
    <li><a href="#emulated-native-anchors">emulated native anchors</a><span>, in §7.1</span>
    <li><a href="#xrsession-map-of-new-anchors">map of new anchors</a><span>, in §4</span>
    <li><a href="#xrhittestresult-native-entity">native entity</a><span>, in §4</span>
@@ -2223,27 +2223,27 @@ Parts of this work may be from another specification document.  If so, those par
    <dd>Brandon Jones; Nell Waliczek; Manish Goregaokar. <a href="https://www.w3.org/TR/webxr-ar-module-1/">WebXR Augmented Reality Module - Level 1</a>. 10 October 2019. WD. URL: <a href="https://www.w3.org/TR/webxr-ar-module-1/">https://www.w3.org/TR/webxr-ar-module-1/</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
-<pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SecureContext" id="ref-for-SecureContext①"><c- g>SecureContext</c-></a>, <a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed①"><c- g>Exposed</c-></a>=<c- n>Window</c->]
+<pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SecureContext"><c- g>SecureContext</c-></a>, <a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed"><c- g>Exposed</c-></a>=<c- n>Window</c->]
 <c- b>interface</c-> <a href="#xranchor"><code><c- g>XRAnchor</c-></code></a> {
-  <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace④"><c- n>XRSpace</c-></a> <a data-readonly data-type="XRSpace" href="#dom-xranchor-anchorspace"><code><c- g>anchorSpace</c-></code></a>;
+  <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace"><c- n>XRSpace</c-></a> <a data-readonly data-type="XRSpace" href="#dom-xranchor-anchorspace"><code><c- g>anchorSpace</c-></code></a>;
 
-  <c- b>void</c-> <a href="#dom-xranchor-detach"><code><c- g>detach</c-></code></a>();
+  <c- b>void</c-> <a href="#dom-xranchor-delete"><code><c- g>delete</c-></code></a>();
 };
 
-<c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe⑦"><c- g>XRFrame</c-></a> {
-  <c- b>Promise</c->&lt;<a class="n" data-link-type="idl-name" href="#xranchor" id="ref-for-xranchor⑦①"><c- n>XRAnchor</c-></a>> <a href="#dom-xrframe-createanchor"><code><c- g>createAnchor</c-></code></a>(<a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrrigidtransform" id="ref-for-xrrigidtransform②"><c- n>XRRigidTransform</c-></a> <a href="#dom-xrframe-createanchor-pose-space-pose"><code><c- g>pose</c-></code></a>, <a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace③①"><c- n>XRSpace</c-></a> <a href="#dom-xrframe-createanchor-pose-space-space"><code><c- g>space</c-></code></a>);
+<c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe"><c- g>XRFrame</c-></a> {
+  <c- b>Promise</c->&lt;<a class="n" data-link-type="idl-name" href="#xranchor"><c- n>XRAnchor</c-></a>> <a href="#dom-xrframe-createanchor"><code><c- g>createAnchor</c-></code></a>(<a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrrigidtransform"><c- n>XRRigidTransform</c-></a> <a href="#dom-xrframe-createanchor-pose-space-pose"><code><c- g>pose</c-></code></a>, <a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace"><c- n>XRSpace</c-></a> <a href="#dom-xrframe-createanchor-pose-space-space"><code><c- g>space</c-></code></a>);
 };
 
-<c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/hit-test/#xrhittestresult" id="ref-for-xrhittestresult⑤"><c- g>XRHitTestResult</c-></a> {
-  <c- b>Promise</c->&lt;<a class="n" data-link-type="idl-name" href="#xranchor" id="ref-for-xranchor⑧①"><c- n>XRAnchor</c-></a>> <a href="#dom-xrhittestresult-createanchor"><code><c- g>createAnchor</c-></code></a>(<a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrrigidtransform" id="ref-for-xrrigidtransform①①"><c- n>XRRigidTransform</c-></a> <a href="#dom-xrhittestresult-createanchor-pose-pose"><code><c- g>pose</c-></code></a>);
+<c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/hit-test/#xrhittestresult"><c- g>XRHitTestResult</c-></a> {
+  <c- b>Promise</c->&lt;<a class="n" data-link-type="idl-name" href="#xranchor"><c- n>XRAnchor</c-></a>> <a href="#dom-xrhittestresult-createanchor"><code><c- g>createAnchor</c-></code></a>(<a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrrigidtransform"><c- n>XRRigidTransform</c-></a> <a href="#dom-xrhittestresult-createanchor-pose-pose"><code><c- g>pose</c-></code></a>);
 };
 
 <c- b>interface</c-> <a href="#xranchorset"><code><c- g>XRAnchorSet</c-></code></a> {
-  <c- b>readonly</c-> <c- b>setlike</c->&lt;<a class="n" data-link-type="idl-name" href="#xranchor" id="ref-for-xranchor⑨①"><c- n>XRAnchor</c-></a>>;
+  <c- b>readonly</c-> <c- b>setlike</c->&lt;<a class="n" data-link-type="idl-name" href="#xranchor"><c- n>XRAnchor</c-></a>>;
 };
 
-<c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe③①"><c- g>XRFrame</c-></a> {
-  [<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject" id="ref-for-SameObject①"><c- g>SameObject</c-></a>] <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="#xranchorset" id="ref-for-xranchorset②"><c- n>XRAnchorSet</c-></a> <a data-readonly data-type="XRAnchorSet" href="#dom-xrframe-trackedanchors"><code><c- g>trackedAnchors</c-></code></a>;
+<c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe"><c- g>XRFrame</c-></a> {
+  [<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject"><c- g>SameObject</c-></a>] <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="#xranchorset"><c- n>XRAnchorSet</c-></a> <a data-readonly data-type="XRAnchorSet" href="#dom-xrframe-trackedanchors"><code><c- g>trackedAnchors</c-></code></a>;
 };
 
 </pre>
@@ -2274,17 +2274,17 @@ Parts of this work may be from another specification document.  If so, those par
     <li><a href="#ref-for-dom-xranchor-anchorspace②">6. Anchor removal</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="dom-xranchor-detach">
-   <b><a href="#dom-xranchor-detach">#dom-xranchor-detach</a></b><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="dom-xranchor-delete">
+   <b><a href="#dom-xranchor-delete">#dom-xranchor-delete</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-xranchor-detach">6. Anchor removal</a> <a href="#ref-for-dom-xranchor-detach①">(2)</a>
+    <li><a href="#ref-for-dom-xranchor-delete">6. Anchor removal</a> <a href="#ref-for-dom-xranchor-delete①">(2)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="xranchor-detached">
-   <b><a href="#xranchor-detached">#xranchor-detached</a></b><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="xranchor-deleted">
+   <b><a href="#xranchor-deleted">#xranchor-deleted</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-xranchor-detached">3.1. XRAnchor</a> <a href="#ref-for-xranchor-detached①">(2)</a>
-    <li><a href="#ref-for-xranchor-detached②">6. Anchor removal</a> <a href="#ref-for-xranchor-detached③">(2)</a>
+    <li><a href="#ref-for-xranchor-deleted">3.1. XRAnchor</a> <a href="#ref-for-xranchor-deleted①">(2)</a>
+    <li><a href="#ref-for-xranchor-deleted②">6. Anchor removal</a> <a href="#ref-for-xranchor-deleted③">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="xranchor-native-origin">
@@ -2374,10 +2374,10 @@ Parts of this work may be from another specification document.  If so, those par
     <li><a href="#ref-for-update-anchors②">5. Anchor updates</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="detach-an-anchor">
-   <b><a href="#detach-an-anchor">#detach-an-anchor</a></b><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="delete-an-anchor">
+   <b><a href="#delete-an-anchor">#delete-an-anchor</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-detach-an-anchor">6. Anchor removal</a>
+    <li><a href="#ref-for-delete-an-anchor">6. Anchor removal</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="tracked">
@@ -2399,6 +2399,62 @@ Parts of this work may be from another specification document.  If so, those par
     <li><a href="#ref-for-emulated-native-anchors">7.1. Native anchor</a>
    </ul>
   </aside>
+<script>/* script-dfn-panel */
+
+document.body.addEventListener("click", function(e) {
+    var queryAll = function(sel) { return [].slice.call(document.querySelectorAll(sel)); }
+    // Find the dfn element or panel, if any, that was clicked on.
+    var el = e.target;
+    var target;
+    var hitALink = false;
+    while(el.parentElement) {
+        if(el.tagName == "A") {
+            // Clicking on a link in a <dfn> shouldn't summon the panel
+            hitALink = true;
+        }
+        if(el.classList.contains("dfn-paneled")) {
+            target = "dfn";
+            break;
+        }
+        if(el.classList.contains("dfn-panel")) {
+            target = "dfn-panel";
+            break;
+        }
+        el = el.parentElement;
+    }
+    if(target != "dfn-panel") {
+        // Turn off any currently "on" or "activated" panels.
+        queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(function(el){
+            el.classList.remove("on");
+            el.classList.remove("activated");
+        });
+    }
+    if(target == "dfn" && !hitALink) {
+        // open the panel
+        var dfnPanel = document.querySelector(".dfn-panel[data-for='" + el.id + "']");
+        if(dfnPanel) {
+            dfnPanel.classList.add("on");
+            var rect = el.getBoundingClientRect();
+            dfnPanel.style.left = window.scrollX + rect.right + 5 + "px";
+            dfnPanel.style.top = window.scrollY + rect.top + "px";
+            var panelRect = dfnPanel.getBoundingClientRect();
+            var panelWidth = panelRect.right - panelRect.left;
+            if(panelRect.right > document.body.scrollWidth && (rect.left - (panelWidth + 5)) > 0) {
+                // Reposition, because the panel is overflowing
+                dfnPanel.style.left = window.scrollX + rect.left - (panelWidth + 5) + "px";
+            }
+        } else {
+            console.log("Couldn't find .dfn-panel[data-for='" + el.id + "']");
+        }
+    } else if(target == "dfn-panel") {
+        // Switch it to "activated" state, which pins it.
+        el.classList.add("activated");
+        el.style.left = null;
+        el.style.top = null;
+    }
+
+});
+</script>
 <script>/* script-var-click-highlighting */
 
     document.addEventListener("click", e=>{
@@ -2483,59 +2539,3 @@ Parts of this work may be from another specification document.  If so, those par
         }
     }
     </script>
-<script>/* script-dfn-panel */
-
-document.body.addEventListener("click", function(e) {
-    var queryAll = function(sel) { return [].slice.call(document.querySelectorAll(sel)); }
-    // Find the dfn element or panel, if any, that was clicked on.
-    var el = e.target;
-    var target;
-    var hitALink = false;
-    while(el.parentElement) {
-        if(el.tagName == "A") {
-            // Clicking on a link in a <dfn> shouldn't summon the panel
-            hitALink = true;
-        }
-        if(el.classList.contains("dfn-paneled")) {
-            target = "dfn";
-            break;
-        }
-        if(el.classList.contains("dfn-panel")) {
-            target = "dfn-panel";
-            break;
-        }
-        el = el.parentElement;
-    }
-    if(target != "dfn-panel") {
-        // Turn off any currently "on" or "activated" panels.
-        queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(function(el){
-            el.classList.remove("on");
-            el.classList.remove("activated");
-        });
-    }
-    if(target == "dfn" && !hitALink) {
-        // open the panel
-        var dfnPanel = document.querySelector(".dfn-panel[data-for='" + el.id + "']");
-        if(dfnPanel) {
-            dfnPanel.classList.add("on");
-            var rect = el.getBoundingClientRect();
-            dfnPanel.style.left = window.scrollX + rect.right + 5 + "px";
-            dfnPanel.style.top = window.scrollY + rect.top + "px";
-            var panelRect = dfnPanel.getBoundingClientRect();
-            var panelWidth = panelRect.right - panelRect.left;
-            if(panelRect.right > document.body.scrollWidth && (rect.left - (panelWidth + 5)) > 0) {
-                // Reposition, because the panel is overflowing
-                dfnPanel.style.left = window.scrollX + rect.left - (panelWidth + 5) + "px";
-            }
-        } else {
-            console.log("Couldn't find .dfn-panel[data-for='" + el.id + "']");
-        }
-    } else if(target == "dfn-panel") {
-        // Switch it to "activated" state, which pins it.
-        el.classList.add("activated");
-        el.style.left = null;
-        el.style.top = null;
-    }
-
-});
-</script>
