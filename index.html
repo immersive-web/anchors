@@ -1532,7 +1532,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">WebXR Anchors Module</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2020-04-22">22 April 2020</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2020-04-23">23 April 2020</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1553,7 +1553,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <div data-fill-with="warning"></div>
    <p class="copyright" data-fill-with="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="https://licensebuttons.net/p/zero/1.0/80x15.png"></a> To the extent possible under law, the editors have waived all copyright
 and related or neighboring rights to this work.
-In addition, as of 22 April 2020,
+In addition, as of 23 April 2020,
 the editors have made this specification available under the <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
 Parts of this work may be from another specification document.  If so, those parts are instead covered by the license of that specification document. </p>
@@ -1679,15 +1679,15 @@ Parts of this work may be from another specification document.  If so, those par
      <li data-md>
       <p>If <var>frame</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrframe-active" id="ref-for-xrframe-active">active</a> boolean is <code>false</code>, <a data-link-type="dfn" href="https://heycam.github.io/webidl/#reject" id="ref-for-reject">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror①">InvalidStateError</a></code> and abort these steps.</p>
      <li data-md>
-      <p>Add <a data-link-type="dfn" href="#update-anchors" id="ref-for-update-anchors">update anchors</a> algorithm to session’s list of frame updates if it is not already present there.</p>
-     <li data-md>
       <p>Let <var>session</var> be <var>frame</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session">session</a>.</p>
+     <li data-md>
+      <p>Add <a data-link-type="dfn" href="#update-anchors" id="ref-for-update-anchors">update anchors</a> algorithm to <var>session</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrsession-list-of-frame-updates" id="ref-for-xrsession-list-of-frame-updates">list of frame updates</a> if it is not already present there.</p>
      <li data-md>
       <p>Let <var>device</var> be <var>session</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device">XR device</a>.</p>
      <li data-md>
-      <p>Let <var>native origin</var> be <var>space</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin①">native origin</a>.</p>
+      <p>Let <var>effective origin</var> be <var>space</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrspace-effective-origin" id="ref-for-xrspace-effective-origin">effective origin</a>.</p>
      <li data-md>
-      <p>Let <var>anchor native origin</var> be a new native origin returned from the <var>device</var>’s call to create a new anchor using <var>pose</var>, interpreted as if expressed relative to <var>native origin</var>.</p>
+      <p>Let <var>anchor native origin</var> be a new native origin returned from the <var>device</var>’s call to create a new anchor using <var>pose</var>, interpreted as if expressed relative to <var>effective origin</var>.</p>
      <li data-md>
       <p><a data-link-type="dfn" href="#create-new-anchor-object" id="ref-for-create-new-anchor-object">Create new anchor object</a> <var>anchor</var> using <var>anchor native origin</var> and <var>session</var>.</p>
      <li data-md>
@@ -1707,9 +1707,9 @@ Parts of this work may be from another specification document.  If so, those par
      <li data-md>
       <p>If <var>frame</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrframe-active" id="ref-for-xrframe-active①">active</a> boolean is <code>false</code>, <a data-link-type="dfn" href="https://heycam.github.io/webidl/#reject" id="ref-for-reject①">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror②">InvalidStateError</a></code> and abort these steps.</p>
      <li data-md>
-      <p>Add <a data-link-type="dfn" href="#update-anchors" id="ref-for-update-anchors①">update anchors</a> algorithm to session’s list of frame updates if it is not already present there.</p>
-     <li data-md>
       <p>Let <var>session</var> be <var>frame</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session①">session</a>.</p>
+     <li data-md>
+      <p>Add <a data-link-type="dfn" href="#update-anchors" id="ref-for-update-anchors①">update anchors</a> algorithm to <var>session</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrsession-list-of-frame-updates" id="ref-for-xrsession-list-of-frame-updates①">list of frame updates</a> if it is not already present there.</p>
      <li data-md>
       <p>Let <var>device</var> be <var>session</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device①">XR device</a>.</p>
      <li data-md>
@@ -2090,6 +2090,12 @@ Parts of this work may be from another specification document.  If so, those par
     <li><a href="#ref-for-capable-of-supporting②">7.1. Native anchor</a>
    </ul>
   </aside>
+  <aside class="dfn-panel" data-for="term-for-xrspace-effective-origin">
+   <a href="https://www.w3.org/TR/webxr/#xrspace-effective-origin">https://www.w3.org/TR/webxr/#xrspace-effective-origin</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-xrspace-effective-origin">4. Anchor creation</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="term-for-feature-descriptor">
    <a href="https://www.w3.org/TR/webxr/#feature-descriptor">https://www.w3.org/TR/webxr/#feature-descriptor</a><b>Referenced in:</b>
    <ul>
@@ -2102,6 +2108,12 @@ Parts of this work may be from another specification document.  If so, those par
     <li><a href="#ref-for-inline-xr-device">2.1. Feature descriptor</a>
    </ul>
   </aside>
+  <aside class="dfn-panel" data-for="term-for-xrsession-list-of-frame-updates">
+   <a href="https://www.w3.org/TR/webxr/#xrsession-list-of-frame-updates">https://www.w3.org/TR/webxr/#xrsession-list-of-frame-updates</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-xrsession-list-of-frame-updates">4. Anchor creation</a> <a href="#ref-for-xrsession-list-of-frame-updates①">(2)</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="term-for-xrsession-mode">
    <a href="https://www.w3.org/TR/webxr/#xrsession-mode">https://www.w3.org/TR/webxr/#xrsession-mode</a><b>Referenced in:</b>
    <ul>
@@ -2112,7 +2124,6 @@ Parts of this work may be from another specification document.  If so, those par
    <a href="https://www.w3.org/TR/webxr/#xrspace-native-origin">https://www.w3.org/TR/webxr/#xrspace-native-origin</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrspace-native-origin">3.1. XRAnchor</a>
-    <li><a href="#ref-for-xrspace-native-origin①">4. Anchor creation</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-xrspace-session">
@@ -2189,8 +2200,10 @@ Parts of this work may be from another specification document.  If so, those par
     <ul>
      <li><span class="dfn-paneled" id="term-for-xrframe-active" style="color:initial">active</span>
      <li><span class="dfn-paneled" id="term-for-capable-of-supporting" style="color:initial">capable of supporting</span>
+     <li><span class="dfn-paneled" id="term-for-xrspace-effective-origin" style="color:initial">effective origin</span>
      <li><span class="dfn-paneled" id="term-for-feature-descriptor" style="color:initial">feature descriptor</span>
      <li><span class="dfn-paneled" id="term-for-inline-xr-device" style="color:initial">inline xr device</span>
+     <li><span class="dfn-paneled" id="term-for-xrsession-list-of-frame-updates" style="color:initial">list of frame updates</span>
      <li><span class="dfn-paneled" id="term-for-xrsession-mode" style="color:initial">mode</span>
      <li><span class="dfn-paneled" id="term-for-xrspace-native-origin" style="color:initial">native origin</span>
      <li><span class="dfn-paneled" id="term-for-xrspace-session" style="color:initial">session <small>(for XRSpace)</small></span>
