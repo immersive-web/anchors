@@ -203,7 +203,7 @@ The {{XRFrame/createAnchor(pose, space)}} method, when invoked on an {{XRFrame}}
     1. Add a mapping from |anchor| to |promise| to |session|'s [=XRSession/map of new anchors=].
 </div>
 
-Note: It is the responsibilty of user agents to ensure that the initial anchor position aligns as closely as possible with the pose passed in to the {{XRFrame/createAnchor(pose, space)}} call at the time represented by the frame on which the method is called. Specifically, this means that for spaces that are dynamically changing, user agents should attempt to capture the state of such spaces at the said time. This text is non-normative, but expresses the intent of the specification author(s) and contributors and thus it is highly recommended that it is followed by the implementations to ensure consistent behavior across different vendors.
+Note: It is the responsibility of user agents to ensure that the physical origin tracked by the anchor returned by each {{XRFrame/createAnchor(pose, space)}} call aligns as closely as possible with the physical location of |pose| within |space| at the time represented by the frame on which the method is called. Specifically, this means that for spaces that are dynamically changing, user agents should attempt to capture the native origin of such spaces at the app's specified time. This text is non-normative, but expresses the intent of the specification author(s) and contributors and thus it is highly recommended that it is followed by the implementations to ensure consistent behavior across different vendors.
 
 In order to <dfn>create an anchor from hit test result</dfn>, the application can call {{XRHitTestResult}}'s {{XRHitTestResult/createAnchor(pose)}} method.
 
