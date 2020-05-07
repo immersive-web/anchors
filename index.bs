@@ -197,11 +197,13 @@ The {{XRFrame/createAnchor(pose, space)}} method, when invoked on an {{XRFrame}}
     1. Add [=update anchors=] algorithm to |session|’s [=XRSession/list of frame updates=] if it is not already present there.
     1. Let |device| be |session|'s [=XRSession/XR device=].
     1. Let |effective origin| be |space|'s [=XRSpace/effective origin=].
-    1. Let |anchor native origin| be a new native origin returned from the |device|'s call to create a new anchor using |pose|, interpreted as if expressed relative to |effective origin|.
+    1. Let |anchor native origin| be a new native origin returned from the |device|'s call to create a new anchor using |pose|, interpreted as if expressed relative to |effective origin| at the |frame|'s [=XRFrame/time=].
     1. [=Create new anchor object=] |anchor| using |anchor native origin| and |session|.
     1. Add |anchor| to |session|'s [=XRSession/set of tracked anchors=].
     1. Add a mapping from |anchor| to |promise| to |session|'s [=XRSession/map of new anchors=].
 </div>
+
+Note: It is the responsibility of user agents to ensure that the physical origin tracked by the anchor returned by each {{XRFrame/createAnchor(pose, space)}} call aligns as closely as possible with the physical location of |pose| within |space| at the time represented by the frame on which the method is called. Specifically, this means that for spaces that are dynamically changing, user agents should attempt to capture the native origin of such spaces at the app's specified time. This text is non-normative, but expresses the intent of the specification author(s) and contributors and thus it is highly recommended that it is followed by the implementations to ensure consistent behavior across different vendors.
 
 In order to <dfn>create an anchor from hit test result</dfn>, the application can call {{XRHitTestResult}}'s {{XRHitTestResult/createAnchor(pose)}} method.
 
@@ -214,11 +216,13 @@ The {{XRHitTestResult/createAnchor(pose)}} method, when invoked on an {{XRHitTes
     1. Add [=update anchors=] algorithm to |session|’s [=XRSession/list of frame updates=] if it is not already present there.
     1. Let |device| be |session|'s [=XRSession/XR device=].
     1. Let |nativeEntity| be the |hitTestResult|'s [=XRHitTestResult/native entity=].
-    1. Let |anchor native origin| be a new native origin returned from the |device|'s call to create a new anchor using |pose|, interpreted as if expressed relative to |hitTestResult|'s [=XRHitTestResult/native origin=] and [=attached=] to |nativeEntity|.
+    1. Let |anchor native origin| be a new native origin returned from the |device|'s call to create a new anchor using |pose|, interpreted as if expressed relative to |hitTestResult|'s [=XRHitTestResult/native origin=] and [=attached=] to |nativeEntity|, at the |frame|'s [=XRFrame/time=].
     1. [=Create new anchor object=] |anchor| using |anchor native origin| and |session|.
     1. Add |anchor| to |session|'s [=XRSession/set of tracked anchors=].
     1. Add a mapping from |anchor| to |promise| to |session|'s [=XRSession/map of new anchors=].
 </div>
+
+Note: The same remark that is present on {{XRFrame/createAnchor(pose, space)}} method applies here as well.
 
 Issue: Session's "list of frame updates" might need to have a way of specifying ordering - some algorithms may depend on others.
 
