@@ -1221,7 +1221,7 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version 5359f34a, updated Wed Apr 22 15:42:50 2020 -0700" name="generator">
+  <meta content="Bikeshed version e3f9ab1a, updated Fri Apr 24 17:43:54 2020 -0700" name="generator">
   <link href="https://immersive-web.github.io/anchors/" rel="canonical">
 <style>
   .non-normative::before {
@@ -1532,7 +1532,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">WebXR Anchors Module</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2020-04-23">23 April 2020</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2020-05-07">7 May 2020</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1553,7 +1553,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <div data-fill-with="warning"></div>
    <p class="copyright" data-fill-with="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="https://licensebuttons.net/p/zero/1.0/80x15.png"></a> To the extent possible under law, the editors have waived all copyright
 and related or neighboring rights to this work.
-In addition, as of 23 April 2020,
+In addition, as of 7 May 2020,
 the editors have made this specification available under the <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
 Parts of this work may be from another specification document.  If so, those parts are instead covered by the license of that specification document. </p>
@@ -1687,7 +1687,7 @@ Parts of this work may be from another specification document.  If so, those par
      <li data-md>
       <p>Let <var>effective origin</var> be <var>space</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrspace-effective-origin" id="ref-for-xrspace-effective-origin">effective origin</a>.</p>
      <li data-md>
-      <p>Let <var>anchor native origin</var> be a new native origin returned from the <var>device</var>’s call to create a new anchor using <var>pose</var>, interpreted as if expressed relative to <var>effective origin</var>.</p>
+      <p>Let <var>anchor native origin</var> be a new native origin returned from the <var>device</var>’s call to create a new anchor using <var>pose</var>, interpreted as if expressed relative to <var>effective origin</var> at the <var>frame</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrframe-time" id="ref-for-xrframe-time">time</a>.</p>
      <li data-md>
       <p><a data-link-type="dfn" href="#create-new-anchor-object" id="ref-for-create-new-anchor-object">Create new anchor object</a> <var>anchor</var> using <var>anchor native origin</var> and <var>session</var>.</p>
      <li data-md>
@@ -1696,6 +1696,7 @@ Parts of this work may be from another specification document.  If so, those par
       <p>Add a mapping from <var>anchor</var> to <var>promise</var> to <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-new-anchors" id="ref-for-xrsession-map-of-new-anchors">map of new anchors</a>.</p>
     </ol>
    </div>
+   <p class="note" role="note"><span>Note:</span> It is the responsibility of user agents to ensure that the physical origin tracked by the anchor returned by each <code class="idl"><a data-link-type="idl" href="#dom-xrframe-createanchor" id="ref-for-dom-xrframe-createanchor②">createAnchor(pose, space)</a></code> call aligns as closely as possible with the physical location of <var>pose</var> within <var>space</var> at the time represented by the frame on which the method is called. Specifically, this means that for spaces that are dynamically changing, user agents should attempt to capture the native origin of such spaces at the app’s specified time. This text is non-normative, but expresses the intent of the specification author(s) and contributors and thus it is highly recommended that it is followed by the implementations to ensure consistent behavior across different vendors.</p>
    <p>In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="create-an-anchor-from-hit-test-result">create an anchor from hit test result</dfn>, the application can call <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/hit-test/#xrhittestresult" id="ref-for-xrhittestresult②">XRHitTestResult</a></code>'s <code class="idl"><a data-link-type="idl" href="#dom-xrhittestresult-createanchor" id="ref-for-dom-xrhittestresult-createanchor">createAnchor(pose)</a></code> method.</p>
    <div class="algorithm" data-algorithm="create-anchor-from-hit-test-result">
      The <code class="idl"><a data-link-type="idl" href="#dom-xrhittestresult-createanchor" id="ref-for-dom-xrhittestresult-createanchor①">createAnchor(pose)</a></code> method, when invoked on an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/hit-test/#xrhittestresult" id="ref-for-xrhittestresult③">XRHitTestResult</a></code> <var>hitTestResult</var> with <var>pose</var>, MUST run the following steps: 
@@ -1715,7 +1716,7 @@ Parts of this work may be from another specification document.  If so, those par
      <li data-md>
       <p>Let <var>nativeEntity</var> be the <var>hitTestResult</var>’s <a data-link-type="dfn" href="#xrhittestresult-native-entity" id="ref-for-xrhittestresult-native-entity①">native entity</a>.</p>
      <li data-md>
-      <p>Let <var>anchor native origin</var> be a new native origin returned from the <var>device</var>’s call to create a new anchor using <var>pose</var>, interpreted as if expressed relative to <var>hitTestResult</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/hit-test/#xrhittestresult-native-origin" id="ref-for-xrhittestresult-native-origin">native origin</a> and <a data-link-type="dfn" href="#attached" id="ref-for-attached">attached</a> to <var>nativeEntity</var>.</p>
+      <p>Let <var>anchor native origin</var> be a new native origin returned from the <var>device</var>’s call to create a new anchor using <var>pose</var>, interpreted as if expressed relative to <var>hitTestResult</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/hit-test/#xrhittestresult-native-origin" id="ref-for-xrhittestresult-native-origin">native origin</a> and <a data-link-type="dfn" href="#attached" id="ref-for-attached">attached</a> to <var>nativeEntity</var>, at the <var>frame</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrframe-time" id="ref-for-xrframe-time①">time</a>.</p>
      <li data-md>
       <p><a data-link-type="dfn" href="#create-new-anchor-object" id="ref-for-create-new-anchor-object①">Create new anchor object</a> <var>anchor</var> using <var>anchor native origin</var> and <var>session</var>.</p>
      <li data-md>
@@ -1724,6 +1725,7 @@ Parts of this work may be from another specification document.  If so, those par
       <p>Add a mapping from <var>anchor</var> to <var>promise</var> to <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-new-anchors" id="ref-for-xrsession-map-of-new-anchors①">map of new anchors</a>.</p>
     </ol>
    </div>
+   <p class="note" role="note"><span>Note:</span> The same remark that is present on <code class="idl"><a data-link-type="idl" href="#dom-xrframe-createanchor" id="ref-for-dom-xrframe-createanchor③">createAnchor(pose, space)</a></code> method applies here as well.</p>
    <p class="issue" id="issue-02fc6c42"><a class="self-link" href="#issue-02fc6c42"></a> Session’s "list of frame updates" might need to have a way of specifying ordering - some algorithms may depend on others.</p>
    <h2 class="heading settled" data-level="5" id="anchor-updates"><span class="secno">5. </span><span class="content">Anchor updates</span><a class="self-link" href="#anchor-updates"></a></h2>
 <pre class="idl highlight def"><c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="xranchorset"><code><c- g>XRAnchorSet</c-></code></dfn> {
@@ -1812,7 +1814,7 @@ Parts of this work may be from another specification document.  If so, those par
     <li data-md>
      <p>Optionally, native anchors can be <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="attached">attached</dfn> to native entities. A native anchor that is attached to a native entity attempts to maintain its position fixed relative to the entity to which it is attached (as opposed to the real world in case of free-floating anchors). When the device detects that the pose of the object to which the anchor is attached changes, the anchor will be updated accordingly. This does not imply that the object itself moved - it may be that the system’s understanding of its location changed. If the underlying system is capable of tracking moving objects, the native anchors attached to moving objects should be updated as well.</p>
    </ul>
-   <p>In case the underlying device does not support native anchors, the user agents MAY decide to implement the anchors API through <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="emulated-native-anchors">emulated native anchors</dfn>. This approach assumes that anchors, once created, never change their pose, and their pose is the pose passed in by the application to the anchor creation methods such as <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe⑥">XRFrame</a></code>'s <code class="idl"><a data-link-type="idl" href="#dom-xrframe-createanchor" id="ref-for-dom-xrframe-createanchor②">createAnchor(pose, space)</a></code> or <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/hit-test/#xrhittestresult" id="ref-for-xrhittestresult④">XRHitTestResult</a></code>'s <code class="idl"><a data-link-type="idl" href="#dom-xrhittestresult-createanchor" id="ref-for-dom-xrhittestresult-createanchor②">createAnchor(pose)</a></code>.</p>
+   <p>In case the underlying device does not support native anchors, the user agents MAY decide to implement the anchors API through <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="emulated-native-anchors">emulated native anchors</dfn>. This approach assumes that anchors, once created, never change their pose, and their pose is the pose passed in by the application to the anchor creation methods such as <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe⑥">XRFrame</a></code>'s <code class="idl"><a data-link-type="idl" href="#dom-xrframe-createanchor" id="ref-for-dom-xrframe-createanchor④">createAnchor(pose, space)</a></code> or <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/hit-test/#xrhittestresult" id="ref-for-xrhittestresult④">XRHitTestResult</a></code>'s <code class="idl"><a data-link-type="idl" href="#dom-xrhittestresult-createanchor" id="ref-for-dom-xrhittestresult-createanchor②">createAnchor(pose)</a></code>.</p>
    <p class="note" role="note"><span>Note:</span> The <a data-link-type="dfn" href="#emulated-native-anchors" id="ref-for-emulated-native-anchors">emulated native anchors</a> approach is equivalent to the applications emulating the anchors feature themselves and can help reduce the number of different cases that the applications need to handle. It might also allow the applications to re-use the same code for <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr-ar-module/#dom-xrsessionmode-immersive-ar" id="ref-for-dom-xrsessionmode-immersive-ar①">"immersive-ar"</a></code> and <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrsessionmode-immersive-vr" id="ref-for-dom-xrsessionmode-immersive-vr">"immersive-vr"</a></code> sessions.</p>
    <h2 class="heading settled" data-level="8" id="privacy-security"><span class="secno">8. </span><span class="content">Privacy &amp; Security Considerations</span><a class="self-link" href="#privacy-security"></a></h2>
    <section class="non-normative">
@@ -2132,6 +2134,12 @@ Parts of this work may be from another specification document.  If so, those par
     <li><a href="#ref-for-xrspace-session">3.1. XRAnchor</a>
    </ul>
   </aside>
+  <aside class="dfn-panel" data-for="term-for-xrframe-time">
+   <a href="https://www.w3.org/TR/webxr/#xrframe-time">https://www.w3.org/TR/webxr/#xrframe-time</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-xrframe-time">4. Anchor creation</a> <a href="#ref-for-xrframe-time①">(2)</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="term-for-xrsession-xr-device">
    <a href="https://www.w3.org/TR/webxr/#xrsession-xr-device">https://www.w3.org/TR/webxr/#xrsession-xr-device</a><b>Referenced in:</b>
    <ul>
@@ -2207,6 +2215,7 @@ Parts of this work may be from another specification document.  If so, those par
      <li><span class="dfn-paneled" id="term-for-xrsession-mode" style="color:initial">mode</span>
      <li><span class="dfn-paneled" id="term-for-xrspace-native-origin" style="color:initial">native origin</span>
      <li><span class="dfn-paneled" id="term-for-xrspace-session" style="color:initial">session <small>(for XRSpace)</small></span>
+     <li><span class="dfn-paneled" id="term-for-xrframe-time" style="color:initial">time</span>
      <li><span class="dfn-paneled" id="term-for-xrsession-xr-device" style="color:initial">xr device <small>(for XRSession)</small></span>
     </ul>
    <li>
@@ -2339,8 +2348,8 @@ Parts of this work may be from another specification document.  If so, those par
   <aside class="dfn-panel" data-for="dom-xrframe-createanchor">
    <b><a href="#dom-xrframe-createanchor">#dom-xrframe-createanchor</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-xrframe-createanchor">4. Anchor creation</a> <a href="#ref-for-dom-xrframe-createanchor①">(2)</a>
-    <li><a href="#ref-for-dom-xrframe-createanchor②">7.1. Native anchor</a>
+    <li><a href="#ref-for-dom-xrframe-createanchor">4. Anchor creation</a> <a href="#ref-for-dom-xrframe-createanchor①">(2)</a> <a href="#ref-for-dom-xrframe-createanchor②">(3)</a> <a href="#ref-for-dom-xrframe-createanchor③">(4)</a>
+    <li><a href="#ref-for-dom-xrframe-createanchor④">7.1. Native anchor</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-xrhittestresult-createanchor">
