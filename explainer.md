@@ -113,7 +113,7 @@ frame.createAnchor(anchorPose, referenceSpace).then((anchor) => {
 
 ```javascript
 for(const anchor of allAnchors) {
-  anchor.detach();
+  anchor.delete();
 }
 
 allAnchors.clear();
