@@ -1175,7 +1175,7 @@ Possible extra rowspan handling
 		   1. When table < content column, centers table in column.
 		   2. When content < table < available, left-aligns.
 		   3. When table > available, fills available + scroll bar.
-		*/ 
+		*/
 		display: grid;
 		grid-template-columns: minmax(0, 50em);
 	}
@@ -1221,7 +1221,7 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version 78f8c09c, updated Tue May 19 10:51:23 2020 -0700" name="generator">
+  <meta content="Bikeshed version aaf8a79f, updated Fri May 29 15:14:13 2020 -0700" name="generator">
   <link href="https://immersive-web.github.io/anchors/" rel="canonical">
 <style>
   .non-normative::before {
@@ -1532,7 +1532,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref" id="title">WebXR Anchors Module</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2020-05-27">27 May 2020</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2020-05-29">29 May 2020</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1553,7 +1553,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <div data-fill-with="warning"></div>
    <p class="copyright" data-fill-with="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="https://licensebuttons.net/p/zero/1.0/80x15.png"></a> To the extent possible under law, the editors have waived all copyright
 and related or neighboring rights to this work.
-In addition, as of 27 May 2020,
+In addition, as of 29 May 2020,
 the editors have made this specification available under the <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
 Parts of this work may be from another specification document.  If so, those parts are instead covered by the license of that specification document. </p>
@@ -1694,6 +1694,8 @@ Parts of this work may be from another specification document.  If so, those par
       <p>Add <var>anchor</var> to <var>session</var>’s <a data-link-type="dfn" href="#xrsession-set-of-tracked-anchors" id="ref-for-xrsession-set-of-tracked-anchors">set of tracked anchors</a>.</p>
      <li data-md>
       <p>Add a mapping from <var>anchor</var> to <var>promise</var> to <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-new-anchors" id="ref-for-xrsession-map-of-new-anchors">map of new anchors</a>.</p>
+     <li data-md>
+      <p>Return <var>promise</var>.</p>
     </ol>
    </div>
    <p class="note" role="note"><span>Note:</span> It is the responsibility of user agents to ensure that the physical origin tracked by the anchor returned by each <code class="idl"><a data-link-type="idl" href="#dom-xrframe-createanchor" id="ref-for-dom-xrframe-createanchor②">createAnchor(pose, space)</a></code> call aligns as closely as possible with the physical location of <var>pose</var> within <var>space</var> at the time represented by the frame on which the method is called. Specifically, this means that for spaces that are dynamically changing, user agents should attempt to capture the native origin of such spaces at the app’s specified time. This text is non-normative, but expresses the intent of the specification author(s) and contributors and thus it is highly recommended that it is followed by the implementations to ensure consistent behavior across different vendors.</p>
@@ -1723,6 +1725,8 @@ Parts of this work may be from another specification document.  If so, those par
       <p>Add <var>anchor</var> to <var>session</var>’s <a data-link-type="dfn" href="#xrsession-set-of-tracked-anchors" id="ref-for-xrsession-set-of-tracked-anchors①">set of tracked anchors</a>.</p>
      <li data-md>
       <p>Add a mapping from <var>anchor</var> to <var>promise</var> to <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-new-anchors" id="ref-for-xrsession-map-of-new-anchors①">map of new anchors</a>.</p>
+     <li data-md>
+      <p>Return <var>promise</var>.</p>
     </ol>
    </div>
    <p class="note" role="note"><span>Note:</span> The same remark that is present on <code class="idl"><a data-link-type="idl" href="#dom-xrframe-createanchor" id="ref-for-dom-xrframe-createanchor③">createAnchor(pose, space)</a></code> method applies here as well.</p>
