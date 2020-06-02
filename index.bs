@@ -1,4 +1,4 @@
-<pre class="metadata">
+{<pre class="metadata">
 Shortname: webxr-anchors
 Title: WebXR Anchors Module
 Group: immersivewebcg
@@ -42,6 +42,8 @@ spec: WebXR Device API - Level 1; urlPrefix: https://www.w3.org/TR/webxr/#
     type: dfn; text: identity transform; url: identity-transform
     type: dfn; text: inline XR device; url: inline-xr-device
     type: dfn; text: XR device; url: xr-device
+    type:dfn; text: native origin
+    type:dfn; text: multiply transforms
 spec: WebXR Hit Test Module; urlPrefix: https://immersive-web.github.io/hit-test/#
     type: interface; text: XRHitTestResult; url: xrhittestresult
     for: XRHitTestResult;
@@ -150,17 +152,30 @@ An {{XRAnchor}} contains {{XRAnchor/anchorSpace}} that can be used to locate the
 
 Each {{XRAnchor}} has an associated <dfn for=XRAnchor>deleted</dfn> boolean value that is initially set to <code>false</code>.
 
-Each {{XRAnchor}} has an associated <dfn for=XRAnchor>native origin</dfn>.
+An {{XRAnchor}} may have an associated <dfn for=XRAnchor>tracked entity</dfn>, which is a [=native entity=] that it is [=attached=] to.
+
+An {{XRAnchor}} may have an associated <dfn for=XRAnchor>static origin</dfn>, which is a position and orientation in world space. An {{XRAnchor}} returned to the user MUST either have a [=XRAnchor/tracked entity=] or an [=XRAnchor/static origin=].
+
+Each {{XRAnchor}} has an associated <dfn for=XRAnchor>offset pose</dfn>, which is an {{XRRigidTransform}}.
 
 Each {{XRAnchor}} has an associated <dfn for=XRAnchor>session</dfn>.
 
+Each {{XRSpace}} obtained from {{XRAnchor/anchorSpace}} has an <dfn for=XRSpace>associated anchor</dfn> that is the {{XRAnchor}} that created it. The [=XRSpace/native origin=] of an {{XRSpace}} with an [=associated anchor=] is the [=XRAnchor/native origin=] of the [=associated anchor=].
+
+Each {{XRAnchor}} has a <dfn for=XRAnchor>native origin</dfn> defined as follows:
+
+ - If the {{XRAnchor}} has a [=XRAnchor/tracked entity=] defined, it is the [=native entity/entity origin=] of the [=XRAnchor/tracked entity=], offset by [=offset pose=]. In other words it is the [=multiply transforms|multiplication=] of [=offset pose=] and the [=native entity/entity origin=] of the [=native entity=].
+
+ - If the {{XRAnchor}} has a [=XRAnchor/static origin=] defined, it is the [=multiply transforms|multiplication=] of [=offset pose=] and the [=static origin=].
+
 <div class="algorithm" data-algorithm="create-anchor-object">
-In order to <dfn>create new anchor object</dfn> from |native origin| and |session|, the user agent MUST run the following steps:
+In order to <dfn>create new anchor object</dfn> from |session|, the user agent MUST run the following steps:
     1. Let |anchor| be a new {{XRAnchor}}.
-    1. Set |anchor|'s [=XRAnchor/native origin=] to |native origin|.
     1. Set |anchor|'s [=XRAnchor/session=] to |session|.
     1. Set |anchor|'s [=XRAnchor/deleted=] to <code>false</code>.
-    1. Set |anchor|'s {{XRAnchor/anchorSpace}} to a new {{XRSpace}} object created with [=XRSpace/session=] set to |anchor|'s [=XRAnchor/session=] and [=XRSpace/native origin=] set to [=XRAnchor/native origin=].
+    1. Set |anchor|'s [=XRAnchor/static origin=] to <code>null</code>.
+    1. Set |anchor|'s [=XRAnchor/tracked entity=] to <code>null</code>.
+    1. Set |anchor|'s {{XRAnchor/anchorSpace}} to a new {{XRSpace}} object created with [=XRSpace/session=] set to |anchor|'s [=XRAnchor/session=] and [=XRSpace/associated anchor=] set to |anchor|.
     1. Return |anchor|.
 </div>
 
@@ -183,6 +198,8 @@ partial interface XRHitTestResult {
 
 The {{XRHitTestResult}} is extended to contain an associated <dfn for=XRHitTestResult>native entity</dfn>. If the underlying system does not provide information about native entity that resulted in computing the result, it will be assumed that [=XRHitTestResult/native entity=] is set to <code>null</code>.
 
+The [=XRHitTestResult/native entity=] will have an associated <dfn for="native entity">entity origin</dfn> which is its position and orientation. During the [=XRHitTestResult/frame=] of the {{XRHitTestResult}}, the [=native entity/entity origin=] is initialized to the [=XRHitTestResult/native origin=] of the {{XRHitTestResult}}, and it will track the [=native entity=] as it moves in space thereafter.
+
 The application can create an anchor using one of the 2 ways:
 - By [=create an anchor from frame|creating an anchor from frame=] - created anchor will not be attached to any particular real world object.
 - By [=create an anchor from hit test result|creating an anchor from hit test result=] - created anchor will be attached to a real world object if the underlying [=/XR device=] supports it.
@@ -195,16 +212,18 @@ The {{XRFrame/createAnchor(pose, space)}} method, when invoked on an {{XRFrame}}
     1. If |frame|'s [=XRFrame/active=] boolean is <code>false</code>, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
     1. Let |session| be |frame|'s [=XRFrame/session=].
     1. Add [=update anchors=] algorithm to |session|’s [=XRSession/list of frame updates=] if it is not already present there.
-    1. Let |device| be |session|'s [=XRSession/XR device=].
     1. Let |effective origin| be |space|'s [=XRSpace/effective origin=].
-    1. Let |anchor native origin| be a new native origin returned from the |device|'s call to create a new anchor using |pose|, interpreted as if expressed relative to |effective origin| at the |frame|'s [=XRFrame/time=].
-    1. [=Create new anchor object=] |anchor| using |anchor native origin| and |session|.
+    1. [=Create new anchor object=] |anchor| using |session|.
+    1. Set |anchor|'s [=static origin=] to the current value of |effective origin|.
+    1. Set |anchor|'s [=offset pose=] to |pose|.
     1. Add |anchor| to |session|'s [=XRSession/set of tracked anchors=].
     1. Add a mapping from |anchor| to |promise| to |session|'s [=XRSession/map of new anchors=].
     1. Return |promise|.
-</div>
 
 Note: It is the responsibility of user agents to ensure that the physical origin tracked by the anchor returned by each {{XRFrame/createAnchor(pose, space)}} call aligns as closely as possible with the physical location of |pose| within |space| at the time represented by the frame on which the method is called. Specifically, this means that for spaces that are dynamically changing, user agents should attempt to capture the native origin of such spaces at the app's specified time. This text is non-normative, but expresses the intent of the specification author(s) and contributors and thus it is highly recommended that it is followed by the implementations to ensure consistent behavior across different vendors.
+
+</div>
+
 
 In order to <dfn>create an anchor from hit test result</dfn>, the application can call {{XRHitTestResult}}'s {{XRHitTestResult/createAnchor()}} method.
 
@@ -215,11 +234,10 @@ The {{XRHitTestResult/createAnchor()}} method, when invoked on an {{XRHitTestRes
     1. If |frame|'s [=XRFrame/active=] boolean is <code>false</code>, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
     1. Let |session| be |frame|'s [=XRFrame/session=].
     1. Add [=update anchors=] algorithm to |session|’s [=XRSession/list of frame updates=] if it is not already present there.
-    1. Let |device| be |session|'s [=XRSession/XR device=].
     1. Let |nativeEntity| be the |hitTestResult|'s [=XRHitTestResult/native entity=].
-    1. Let |anchor native origin| be a new native origin returned from the |device|'s call to create a new anchor located at |hitTestResult|'s [=XRHitTestResult/native origin=] and [=attached=] to |nativeEntity|, at the |frame|'s [=XRFrame/time=].
-    1. [=Create new anchor object=] |anchor| using |anchor native origin| and |session|.
-    1. Add |anchor| to |session|'s [=XRSession/set of tracked anchors=].
+    1. [=Create new anchor object=] |anchor| using |session|.
+    1. Set |anchor|'s [=tracked entity=] to |nativeEntity|.
+    1. Set |anchor|'s [=offset pose=] to |pose|.
     1. Add a mapping from |anchor| to |promise| to |session|'s [=XRSession/map of new anchors=].
     1. Return |promise|.
 </div>
@@ -293,7 +311,6 @@ The underlying [=XR device=] is [=capable of supporting=] the [=anchors=] featur
     - The native anchors API attempts to maintain the pose of the anchor as if it were fixed relative to the real world.
     - It accepts pose of the newly created anchor at some specific time <code>t</code>.
     - It optionally accepts a native entity information in order to express the intent of [=attached|attaching=] newly created anchor to the given entity. If the underlying XR system does not support attaching anchors to a native entity (i.e. does not accept a native entity), the newly created anchor will be free-floating.
-    - It returns a result that can be treated as a [=native origin=] by the user agents.
 - Native anchors are continuously <dfn>tracked</dfn> by the underlying XR system and can be queried for their most up-to-date state. When the underlying system deems that the native anchor's location is never going to be known, it SHOULD report that the native anchor is no longer tracked.
 - Optionally, native anchors can be <dfn>attached</dfn> to native entities. A native anchor that is attached to a native entity attempts to maintain its position fixed relative to the entity to which it is attached (as opposed to the real world in case of free-floating anchors). When the device detects that the pose of the object to which the anchor is attached changes, the anchor will be updated accordingly. This does not imply that the object itself moved - it may be that the system's understanding of its location changed. If the underlying system is capable of tracking moving objects, the native anchors attached to moving objects should be updated as well.
 
