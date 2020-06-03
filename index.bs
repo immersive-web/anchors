@@ -177,7 +177,7 @@ partial interface XRFrame {
 };
 
 partial interface XRHitTestResult {
-  Promise<XRAnchor> createAnchor(XRRigidTransform pose);
+  Promise<XRAnchor> createAnchor();
 };
 </script>
 
@@ -192,7 +192,7 @@ In order to <dfn>create an anchor from frame</dfn>, the application can call {{X
 <div class="algorithm" data-algorithm="create-anchor-from-frame">
 The {{XRFrame/createAnchor(pose, space)}} method, when invoked on an {{XRFrame}} |frame| with |pose| and |space|, MUST run the following steps:
     1. Let |promise| be [=a new Promise=].
-    1. If |frame|'s [=XRFrame/active=] boolean is <code>false</code>, [=/reject=] |promise| with {{InvalidStateError}} and abort these steps.
+    1. If |frame|'s [=XRFrame/active=] boolean is <code>false</code>, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
     1. Let |session| be |frame|'s [=XRFrame/session=].
     1. Add [=update anchors=] algorithm to |session|’s [=XRSession/list of frame updates=] if it is not already present there.
     1. Let |device| be |session|'s [=XRSession/XR device=].
@@ -206,18 +206,18 @@ The {{XRFrame/createAnchor(pose, space)}} method, when invoked on an {{XRFrame}}
 
 Note: It is the responsibility of user agents to ensure that the physical origin tracked by the anchor returned by each {{XRFrame/createAnchor(pose, space)}} call aligns as closely as possible with the physical location of |pose| within |space| at the time represented by the frame on which the method is called. Specifically, this means that for spaces that are dynamically changing, user agents should attempt to capture the native origin of such spaces at the app's specified time. This text is non-normative, but expresses the intent of the specification author(s) and contributors and thus it is highly recommended that it is followed by the implementations to ensure consistent behavior across different vendors.
 
-In order to <dfn>create an anchor from hit test result</dfn>, the application can call {{XRHitTestResult}}'s {{XRHitTestResult/createAnchor(pose)}} method.
+In order to <dfn>create an anchor from hit test result</dfn>, the application can call {{XRHitTestResult}}'s {{XRHitTestResult/createAnchor()}} method.
 
 <div class="algorithm" data-algorithm="create-anchor-from-hit-test-result">
-The {{XRHitTestResult/createAnchor(pose)}} method, when invoked on an {{XRHitTestResult}} |hitTestResult| with |pose|, MUST run the following steps:
+The {{XRHitTestResult/createAnchor()}} method, when invoked on an {{XRHitTestResult}} |hitTestResult|, MUST run the following steps:
     1. Let |promise| be [=a new Promise=].
     1. Let |frame| be |hitTestResult|'s [=XRHitTestResult/frame=].
-    1. If |frame|'s [=XRFrame/active=] boolean is <code>false</code>, [=/reject=] |promise| with {{InvalidStateError}} and abort these steps.
+    1. If |frame|'s [=XRFrame/active=] boolean is <code>false</code>, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
     1. Let |session| be |frame|'s [=XRFrame/session=].
     1. Add [=update anchors=] algorithm to |session|’s [=XRSession/list of frame updates=] if it is not already present there.
     1. Let |device| be |session|'s [=XRSession/XR device=].
     1. Let |nativeEntity| be the |hitTestResult|'s [=XRHitTestResult/native entity=].
-    1. Let |anchor native origin| be a new native origin returned from the |device|'s call to create a new anchor using |pose|, interpreted as if expressed relative to |hitTestResult|'s [=XRHitTestResult/native origin=] and [=attached=] to |nativeEntity|, at the |frame|'s [=XRFrame/time=].
+    1. Let |anchor native origin| be a new native origin returned from the |device|'s call to create a new anchor located at |hitTestResult|'s [=XRHitTestResult/native origin=] and [=attached=] to |nativeEntity|, at the |frame|'s [=XRFrame/time=].
     1. [=Create new anchor object=] |anchor| using |anchor native origin| and |session|.
     1. Add |anchor| to |session|'s [=XRSession/set of tracked anchors=].
     1. Add a mapping from |anchor| to |promise| to |session|'s [=XRSession/map of new anchors=].
