@@ -156,7 +156,6 @@ An {{XRAnchor}} may have an associated <dfn for=XRAnchor>tracked entity</dfn>, w
 
 An {{XRAnchor}} may have an associated <dfn for=XRAnchor>static origin</dfn>, which is a position and orientation in world space. An {{XRAnchor}} returned to the user MUST either have a [=XRAnchor/tracked entity=] or an [=XRAnchor/static origin=].
 
-Each {{XRAnchor}} has an associated <dfn for=XRAnchor>offset pose</dfn>, which is an {{XRRigidTransform}}.
 
 Each {{XRAnchor}} has an associated <dfn for=XRAnchor>session</dfn>.
 
@@ -164,9 +163,9 @@ Each {{XRSpace}} obtained from {{XRAnchor/anchorSpace}} has an <dfn for=XRSpace>
 
 Each {{XRAnchor}} has a <dfn for=XRAnchor>native origin</dfn> defined as follows:
 
- - If the {{XRAnchor}} has a [=XRAnchor/tracked entity=] defined, it is the [=native entity/entity origin=] of the [=XRAnchor/tracked entity=], offset by [=offset pose=]. In other words it is the [=multiply transforms|multiplication=] of [=offset pose=] and the [=native entity/entity origin=] of the [=native entity=].
+ - If the {{XRAnchor}} has a [=XRAnchor/tracked entity=] defined, it is the [=native entity/entity origin=] of the [=XRAnchor/tracked entity=].
 
- - If the {{XRAnchor}} has a [=XRAnchor/static origin=] defined, it is the [=multiply transforms|multiplication=] of [=offset pose=] and the [=static origin=].
+ - If the {{XRAnchor}} has a [=XRAnchor/static origin=] defined, it is the [=static origin=].
 
 <div class="algorithm" data-algorithm="create-anchor-object">
 In order to <dfn>create new anchor object</dfn> from |session|, the user agent MUST run the following steps:
@@ -213,8 +212,9 @@ The {{XRFrame/createAnchor(pose, space)}} method, when invoked on an {{XRFrame}}
     1. Let |session| be |frame|'s [=XRFrame/session=].
     1. Add [=update anchors=] algorithm to |session|’s [=XRSession/list of frame updates=] if it is not already present there.
     1. Let |effective origin| be |space|'s [=XRSpace/effective origin=].
+    1. Let |offset origin| be the [=multiply transforms|multiplication=] of |pose| and the current value of |effective origin|.
     1. [=Create new anchor object=] |anchor| using |session|.
-    1. Set |anchor|'s [=static origin=] to the current value of |effective origin|.
+    1. Set |anchor|'s [=static origin=] to |effective origin|.
     1. Set |anchor|'s [=offset pose=] to |pose|.
     1. Add |anchor| to |session|'s [=XRSession/set of tracked anchors=].
     1. Add a mapping from |anchor| to |promise| to |session|'s [=XRSession/map of new anchors=].
