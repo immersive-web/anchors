@@ -78,6 +78,8 @@ The underlying system will attempt to keep the created anchor fixed relative to 
 
 `XRHitTestResult.createAnchor()` - attached anchor creation.
 
+The underlying system will make sure that the anchor's relationship to the physical object that caused this hit test result to be computed is maintained as the tracking system's understanding of the world evolves.
+
 `XRFrame.createAnchor()` and `XRHitTestResult.createAnchor()` return a `Promise<XRAnchor>` - the actual XRAnchor will be provided to the application when the promise resolves. Once the promise resolves, the returned anchor might not be a fully materialized object yet - the attributes will only be valid once the anchor appears in `XRFrame`'s set of tracked anchors.
 
 `XRAnchor.anchorSpace` can be used to obtain an anchor space that can subsequently be passed in to `XRFrame.getPose()`.
