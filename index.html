@@ -6,7 +6,7 @@
   <meta content="CG-DRAFT" name="w3c-status">
   <link href="https://www.w3.org/StyleSheets/TR/2016/cg-draft" rel="stylesheet">
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
-  <meta content="Bikeshed version 4e8dd937, updated Fri Nov 13 16:49:31 2020 -0800" name="generator">
+  <meta content="Bikeshed version b94c7e755, updated Fri Feb 19 16:28:59 2021 -0800" name="generator">
   <link href="https://immersive-web.github.io/anchors/" rel="canonical">
 <style>
   .non-normative::before {
@@ -631,7 +631,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebXR Anchors Module</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2021-02-10">10 February 2021</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2021-04-01">1 April 2021</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -728,7 +728,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 <c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="xranchor"><code><c- g>XRAnchor</c-></code></dfn> {
   <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace"><c- n>XRSpace</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="XRAnchor" data-dfn-type="attribute" data-export data-readonly data-type="XRSpace" id="dom-xranchor-anchorspace"><code><c- g>anchorSpace</c-></code></dfn>;
 
-  <a data-link-type="idl-name"><c- n>void</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="XRAnchor" data-dfn-type="method" data-export data-lt="delete()" id="dom-xranchor-delete"><code><c- g>delete</c-></code></dfn>();
+  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-undefined" id="ref-for-idl-undefined"><c- b>undefined</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="XRAnchor" data-dfn-type="method" data-export data-lt="delete()" id="dom-xranchor-delete"><code><c- g>delete</c-></code></dfn>();
 };
 </pre>
    <p>An <code class="idl"><a data-link-type="idl" href="#xranchor" id="ref-for-xranchor">XRAnchor</a></code> contains <code class="idl"><a data-link-type="idl" href="#dom-xranchor-anchorspace" id="ref-for-dom-xranchor-anchorspace">anchorSpace</a></code> that can be used to locate the anchor relative to other <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace①">XRSpaces</a></code>. If this attribute is accessed when <a data-link-type="dfn" href="#xranchor-deleted" id="ref-for-xranchor-deleted">deleted</a> is set to <code>true</code>, the user agent MUST throw an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror">InvalidStateError</a></code>.</p>
@@ -1047,6 +1047,12 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <li><a href="#ref-for-resolve">5. Anchor updates</a>
    </ul>
   </aside>
+  <aside class="dfn-panel" data-for="term-for-idl-undefined">
+   <a href="https://heycam.github.io/webidl/#idl-undefined">https://heycam.github.io/webidl/#idl-undefined</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-idl-undefined">3.1. XRAnchor</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="term-for-dom-xrsessionmode-immersive-vr">
    <a href="https://immersive-web.github.io/webxr/#dom-xrsessionmode-immersive-vr">https://immersive-web.github.io/webxr/#dom-xrsessionmode-immersive-vr</a><b>Referenced in:</b>
    <ul>
@@ -1194,6 +1200,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <li><span class="dfn-paneled" id="term-for-a-new-promise">a new promise</span>
      <li><span class="dfn-paneled" id="term-for-reject">reject</span>
      <li><span class="dfn-paneled" id="term-for-resolve">resolve</span>
+     <li><span class="dfn-paneled" id="term-for-idl-undefined">undefined</span>
     </ul>
    <li>
     <a data-link-type="biblio">[webxr]</a> defines the following terms:
@@ -1250,7 +1257,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 <c- b>interface</c-> <a href="#xranchor"><code><c- g>XRAnchor</c-></code></a> {
   <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace"><c- n>XRSpace</c-></a> <a data-readonly data-type="XRSpace" href="#dom-xranchor-anchorspace"><code><c- g>anchorSpace</c-></code></a>;
 
-  <a data-link-type="idl-name"><c- n>void</c-></a> <a href="#dom-xranchor-delete"><code><c- g>delete</c-></code></a>();
+  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-undefined"><c- b>undefined</c-></a> <a href="#dom-xranchor-delete"><code><c- g>delete</c-></code></a>();
 };
 
 <c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe"><c- g>XRFrame</c-></a> {
