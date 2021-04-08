@@ -113,7 +113,7 @@ frame.createAnchor(anchorPose, referenceSpace).then((anchor) => {
 ### Removing anchors
 
 ```javascript
-for(const anchor of allAnchors) {
+for (const anchor of allAnchors) {
   anchor.delete();
 }
 
@@ -131,16 +131,16 @@ function onXRFrame(timestamp, frame) {
 
   const trackedAnchors = frame.trackedAnchors;
 
-  for(const anchor of previousFrameAnchors) {
-    if(!trackedAnchors.has(anchor)) {
+  for (const anchor of previousFrameAnchors) {
+    if (!trackedAnchors.has(anchor)) {
       // Handle anchor tracking loss - `anchor` was present
       // in the present frame but is no longer tracked.
     }
   }
 
-  for(const anchor of trackedAnchors) {
+  for (const anchor of trackedAnchors) {
     // Query most recent pose of the anchor relative to some reference space:
-    const pose = xrFrame.getPose(anchor.anchorSpace, referenceSpace);
+    const pose = frame.getPose(anchor.anchorSpace, referenceSpace);
   }
 
   previousFrameAnchors = trackedAnchors;
