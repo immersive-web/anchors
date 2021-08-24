@@ -3,10 +3,8 @@
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
   <title>WebXR Anchors Module</title>
-  <meta content="CG-DRAFT" name="w3c-status">
-  <link href="https://www.w3.org/StyleSheets/TR/2016/cg-draft" rel="stylesheet">
-  <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
-  <meta content="Bikeshed version c5fd42b86, updated Mon Apr 5 16:27:33 2021 -0700" name="generator">
+  <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
+  <meta content="Bikeshed version 4f053d00e, updated Tue Aug 10 14:13:32 2021 -0700" name="generator">
   <link href="https://immersive-web.github.io/anchors/" rel="canonical">
 <style>
   .non-normative::before {
@@ -166,9 +164,9 @@ pre .property::before, pre .property::after {
     --ins-bg: transparent;
 
     --a-normal-text: #034575;
-    --a-normal-underline: #707070;
+    --a-normal-underline: #bbb;
     --a-visited-text: var(--a-normal-text);
-    --a-visited-underline: #bbb;
+    --a-visited-underline: #707070;
     --a-hover-bg: rgba(75%, 75%, 75%, .25);
     --a-active-text: #c00;
     --a-active-underline: #c00;
@@ -631,7 +629,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebXR Anchors Module</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2021-04-08">8 April 2021</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-08-24">24 August 2021</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -648,15 +646,32 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </dl>
    </div>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2021 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="https://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
+   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2021 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="https://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
    <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
    <p>Describes a method to create anchors tracked by underlying system.</p>
   </div>
-  <h2 class="no-num no-toc no-ref heading settled" id="sotd"><span class="content">Status of this document</span></h2>
+  <h2 class="no-num no-toc no-ref heading settled" id="status"><span class="content">Status of this document</span></h2>
   <div data-fill-with="status">
+   <p> <em>This section describes the status of this document at the time of its publication. Other
+    documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this
+    technical report can be found in the <a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical
+    reports index</a> at http://www.w3.org/TR/.</em> </p>
+   <p> This document was published by the <a href="https://www.w3.org/immersive-web/">Immersive Web Working Group</a> as an Editors' Draft. This document is intended to become a W3C Recommendation.
+
+    Feedback and comments on this specification are welcome. Please use <a href="https://github.com/immersive-web/anchors/issues">Github issues</a>.
+    Discussions may also be found in the <a href="http://lists.w3.org/Archives/Public/public-immersive-web/">public-immersive-web@w3.org archives</a>. </p>
+   <p> Publication as an Editors' Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may
+    be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite
+    this document as other than work in progress. </p>
+   <p> This document was produced by a group operating under the <a href="http://www.w3.org/Consortium/Patent-Policy-20170801/"> <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="https://www.w3.org/groups/wg/immersive-web/ipr" rel="disclosure">public list of any
+    patent disclosures</a> made in connection with the deliverables of the group; that page also
+    includes instructions for disclosing a patent. An individual who has actual knowledge of a
+    patent which the individual believes contains <a href="http://www.w3.org/Consortium/Patent-Policy-20170801/#def-essential">Essential
+    Claim(s)</a> must disclose the information in accordance with <a href="http://www.w3.org/Consortium/Patent-Policy-20170801/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. </p>
+   <p> This document is governed by the <a href="https://www.w3.org/2020/Process-20200915/" id="w3c_process_revision">15 September 2020 W3C Process Document</a>. </p>
    <p></p>
   </div>
   <div data-fill-with="at-risk"></div>
@@ -688,12 +703,6 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      </ol>
     <li><a href="#privacy-security"><span class="secno">8</span> <span class="content">Privacy &amp; Security Considerations</span></a>
     <li><a href="#ack"><span class="secno">9</span> <span class="content">Acknowledgements</span></a>
-    <li>
-     <a href="#w3c-conformance"><span class="secno"></span> <span class="content">Conformance</span></a>
-     <ol class="toc">
-      <li><a href="#w3c-conventions"><span class="secno"></span> <span class="content">Document conventions</span></a>
-      <li><a href="#w3c-conformant-algorithms"><span class="secno"></span> <span class="content">Conformant Algorithms</span></a>
-     </ol>
     <li>
      <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
      <ol class="toc">
@@ -929,74 +938,34 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <p class="issue" id="issue-8bf9de01"><a class="self-link" href="#issue-8bf9de01"></a> I’m not aware of devices that support tracking general objects that move - should they be considered by the spec at all? Are there any examples of such devices?</p>
    <h2 class="heading settled" data-level="9" id="ack"><span class="secno">9. </span><span class="content">Acknowledgements</span><a class="self-link" href="#ack"></a></h2>
    <p>The following individuals have contributed to the design of the WebXR Anchors specification:</p>
-  </main>
-  <div data-fill-with="conformance">
-   <h2 class="no-ref no-num heading settled" id="w3c-conformance"><span class="content">Conformance</span><a class="self-link" href="#w3c-conformance"></a></h2>
-   <h3 class="no-ref no-num heading settled" id="w3c-conventions"><span class="content">Document conventions</span><a class="self-link" href="#w3c-conventions"></a></h3>
-   <p>Conformance requirements are expressed
-    with a combination of descriptive assertions
-    and RFC 2119 terminology.
-    The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL”
-    in the normative parts of this document
-    are to be interpreted as described in RFC 2119.
-    However, for readability,
-    these words do not appear in all uppercase letters in this specification. </p>
-   <p>All of the text of this specification is normative
-    except sections explicitly marked as non-normative, examples, and notes. <a data-link-type="biblio" href="#biblio-rfc2119">[RFC2119]</a> </p>
-   <p>Examples in this specification are introduced with the words “for example”
-    or are set apart from the normative text
-    with <code>class="example"</code>,
-    like this: </p>
-   <div class="example" id="w3c-example">
-    <a class="self-link" href="#w3c-example"></a> 
-    <p>This is an example of an informative example. </p>
-   </div>
-   <p>Informative notes begin with the word “Note”
-    and are set apart from the normative text
-    with <code>class="note"</code>,
-    like this: </p>
-   <p class="note" role="note">Note, this is an informative note. </p>
-   <h3 class="no-ref no-num heading settled" id="w3c-conformant-algorithms"><span class="content">Conformant Algorithms</span><a class="self-link" href="#w3c-conformant-algorithms"></a></h3>
-   <p>Requirements phrased in the imperative as part of algorithms
-    (such as "strip any leading space characters"
-    or "return false and abort these steps")
-    are to be interpreted with the meaning of the key word
-    ("must", "should", "may", etc)
-    used in introducing the algorithm. </p>
-   <p>Conformance requirements phrased as algorithms or specific steps
-    can be implemented in any manner,
-    so long as the end result is equivalent.
-    In particular, the algorithms defined in this specification
-    are intended to be easy to understand
-    and are not intended to be performant.
-    Implementers are encouraged to optimize. </p>
-  </div>
+   <p id="back-to-top" role="navigation"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p>
 <script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
+  </main>
   <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
   <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
   <ul class="index">
-   <li><a href="#anchors">anchors</a><span>, in §2.1</span>
-   <li><a href="#dom-xranchor-anchorspace">anchorSpace</a><span>, in §3.1</span>
-   <li><a href="#attached">attached</a><span>, in §7.1</span>
-   <li><a href="#create-an-anchor-from-frame">create an anchor from frame</a><span>, in §4</span>
-   <li><a href="#create-an-anchor-from-hit-test-result">create an anchor from hit test result</a><span>, in §4</span>
-   <li><a href="#dom-xrhittestresult-createanchor">createAnchor()</a><span>, in §4</span>
-   <li><a href="#dom-xrframe-createanchor">createAnchor(pose, space)</a><span>, in §4</span>
-   <li><a href="#create-new-anchor-object">create new anchor object</a><span>, in §3.1</span>
-   <li><a href="#dom-xranchor-delete">delete()</a><span>, in §3.1</span>
-   <li><a href="#delete-an-anchor">delete an anchor</a><span>, in §6</span>
-   <li><a href="#xranchor-deleted">deleted</a><span>, in §3.1</span>
-   <li><a href="#emulated-native-anchors">emulated native anchors</a><span>, in §7.1</span>
-   <li><a href="#xrsession-map-of-new-anchors">map of new anchors</a><span>, in §4</span>
-   <li><a href="#xrhittestresult-native-entity">native entity</a><span>, in §4</span>
-   <li><a href="#xranchor-native-origin">native origin</a><span>, in §3.1</span>
-   <li><a href="#xranchor-session">session</a><span>, in §3.1</span>
-   <li><a href="#xrsession-set-of-tracked-anchors">set of tracked anchors</a><span>, in §4</span>
-   <li><a href="#tracked">tracked</a><span>, in §7.1</span>
-   <li><a href="#dom-xrframe-trackedanchors">trackedAnchors</a><span>, in §5</span>
-   <li><a href="#update-anchors">update anchors</a><span>, in §5</span>
-   <li><a href="#xranchor">XRAnchor</a><span>, in §3.1</span>
-   <li><a href="#xranchorset">XRAnchorSet</a><span>, in §5</span>
+   <li><a href="#anchors">anchors</a><span>, in § 2.1</span>
+   <li><a href="#dom-xranchor-anchorspace">anchorSpace</a><span>, in § 3.1</span>
+   <li><a href="#attached">attached</a><span>, in § 7.1</span>
+   <li><a href="#create-an-anchor-from-frame">create an anchor from frame</a><span>, in § 4</span>
+   <li><a href="#create-an-anchor-from-hit-test-result">create an anchor from hit test result</a><span>, in § 4</span>
+   <li><a href="#dom-xrhittestresult-createanchor">createAnchor()</a><span>, in § 4</span>
+   <li><a href="#dom-xrframe-createanchor">createAnchor(pose, space)</a><span>, in § 4</span>
+   <li><a href="#create-new-anchor-object">create new anchor object</a><span>, in § 3.1</span>
+   <li><a href="#dom-xranchor-delete">delete()</a><span>, in § 3.1</span>
+   <li><a href="#delete-an-anchor">delete an anchor</a><span>, in § 6</span>
+   <li><a href="#xranchor-deleted">deleted</a><span>, in § 3.1</span>
+   <li><a href="#emulated-native-anchors">emulated native anchors</a><span>, in § 7.1</span>
+   <li><a href="#xrsession-map-of-new-anchors">map of new anchors</a><span>, in § 4</span>
+   <li><a href="#xrhittestresult-native-entity">native entity</a><span>, in § 4</span>
+   <li><a href="#xranchor-native-origin">native origin</a><span>, in § 3.1</span>
+   <li><a href="#xranchor-session">session</a><span>, in § 3.1</span>
+   <li><a href="#xrsession-set-of-tracked-anchors">set of tracked anchors</a><span>, in § 4</span>
+   <li><a href="#tracked">tracked</a><span>, in § 7.1</span>
+   <li><a href="#dom-xrframe-trackedanchors">trackedAnchors</a><span>, in § 5</span>
+   <li><a href="#update-anchors">update anchors</a><span>, in § 5</span>
+   <li><a href="#xranchor">XRAnchor</a><span>, in § 3.1</span>
+   <li><a href="#xranchorset">XRAnchorSet</a><span>, in § 5</span>
   </ul>
   <aside class="dfn-panel" data-for="term-for-Exposed">
    <a href="https://heycam.github.io/webidl/#Exposed">https://heycam.github.io/webidl/#Exposed</a><b>Referenced in:</b>
@@ -1245,14 +1214,12 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
   <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
   <dl>
-   <dt id="biblio-rfc2119">[RFC2119]
-   <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
    <dt id="biblio-webidl">[WebIDL]
-   <dd>Boris Zbarsky. <a href="https://heycam.github.io/webidl/">Web IDL</a>. 15 December 2016. ED. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
+   <dd>Boris Zbarsky. <a href="https://heycam.github.io/webidl/"><cite>Web IDL</cite></a>. 15 December 2016. ED. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
    <dt id="biblio-webxr">[WEBXR]
-   <dd>Brandon Jones; Manish Goregaokar; Nell Waliczek. <a href="https://www.w3.org/TR/webxr/">WebXR Device API</a>. 24 July 2020. WD. URL: <a href="https://www.w3.org/TR/webxr/">https://www.w3.org/TR/webxr/</a>
+   <dd>Brandon Jones; Manish Goregaokar; Nell Waliczek. <a href="https://www.w3.org/TR/webxr/"><cite>WebXR Device API</cite></a>. 24 July 2020. WD. URL: <a href="https://www.w3.org/TR/webxr/">https://www.w3.org/TR/webxr/</a>
    <dt id="biblio-webxr-ar-module-1">[WEBXR-AR-MODULE-1]
-   <dd>Brandon Jones; Nell Waliczek; Manish Goregaokar. <a href="https://www.w3.org/TR/webxr-ar-module-1/">WebXR Augmented Reality Module - Level 1</a>. 10 October 2019. WD. URL: <a href="https://www.w3.org/TR/webxr-ar-module-1/">https://www.w3.org/TR/webxr-ar-module-1/</a>
+   <dd>Brandon Jones; Nell Waliczek; Manish Goregaokar. <a href="https://www.w3.org/TR/webxr-ar-module-1/"><cite>WebXR Augmented Reality Module - Level 1</cite></a>. 10 October 2019. WD. URL: <a href="https://www.w3.org/TR/webxr-ar-module-1/">https://www.w3.org/TR/webxr-ar-module-1/</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
 <pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SecureContext"><c- g>SecureContext</c-></a>, <a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed"><c- g>Exposed</c-></a>=<c- n>Window</c->]
