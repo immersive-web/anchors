@@ -210,6 +210,9 @@ The {{XRSession}} is extended to contain an associated <dfn for=XRSession>map of
 <script type="idl">
 partial interface XRFrame {
   Promise<XRAnchor> createAnchor(XRRigidTransform pose, XRSpace space);
+};
+
+partial interface XRSession {
   Promise<XRAnchor> restorePersistentAnchor(DOMString uuid);
 };
 
@@ -244,13 +247,12 @@ The {{XRFrame/createAnchor(pose, space)}} method, when invoked on an {{XRFrame}}
 Note: It is the responsibility of user agents to ensure that the physical origin tracked by the anchor returned by each {{XRFrame/createAnchor(pose, space)}} call aligns as closely as possible with the physical location of <var ignore=''>pose</var> within <var ignore=''>space</var> at the time represented by the frame on which the method is called. Specifically, this means that for spaces that are dynamically changing, user agents should attempt to capture the native origin of such spaces at the app's specified time. This text is non-normative, but expresses the intent of the specification author(s) and contributors and thus it is highly recommended that it is followed by the implementations to ensure consistent behavior across different vendors.
 
 <div class="algorithm" data-algorithm="restore-persistent-anchor-from-frame">
-The {{XRFrame/restorePersistentAnchor(uuid)}} method, when invoked on an {{XRFrame}} |frame| with |uuid|, MUST run the following steps:
+The {{XRSession/restorePersistentAnchor(uuid)}} method, when invoked on an {{XRSession}} |session| with |uuid|, MUST run the following steps:
     1. Let |promise| be [=a new Promise=] in the [=relevant realm=] of this {{XRSystem}}.
-    1. If |frame|'s [=XRFrame/active=] boolean is <code>false</code>, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
-    1. Let |session| be |frame|'s [=XRFrame/session=].
-    1. If |session|'s [=XRSession/map of persistent anchors=] does not contain a mapping from |uuid| with {{InvalidStateError}}, return |promise|, and abort these steps.
+    1. If |session|'s [=XRSession/map of persistent anchors=] does not contain a mapping, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
+    1. If |session|’s [=ended=] value is `true`, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
     1. Let |anchor| be the value of mapping from |uuid| on |session|'s [=XRSession/map of persistent anchors=].
-    1. If |session|'s [=XRSession/map of new anchors=] contains a mapping from |anchor| to |promise|, [=/reject=] the |promise| and abort these steps.
+    1. If |session|'s [=XRSession/map of new anchors=] contains a mapping from |anchor| to |promise|, [=/reject=] the |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
     1. Add |anchor| to |session|'s [=XRSession/set of tracked anchors=].
     1. Add a mapping from |anchor| to |promise| to |session|'s [=XRSession/map of new anchors=].
     1. Return |promise|.
