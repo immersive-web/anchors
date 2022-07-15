@@ -143,7 +143,6 @@ interface XRAnchor {
   readonly attribute XRSpace anchorSpace;
 
   [NewObject] Promise<DOMString> requestPersistentHandle();
-  Promise<undefined> deletePersistence();
 
   undefined delete();
 };
@@ -186,18 +185,6 @@ The {{XRAnchor/requestPersistentHandle()}} method, when invoked on an {{XRAnchor
 
 Note: when the {{XRSystem}} creates the unique ID, it MUST be unique and only known to the current origin.
 
-<div class="algorithm" data-algorithm="delete-peristence-from-anchor">
-The {{XRAnchor/deletePersistence()}} method, when invoked on an {{XRAnchor}} |anchor|, MUST run the following steps:
-    1. Let |promise| be [=a new Promise=] in the [=relevant realm=] of this {{XRSystem}}.
-    1. If |anchor|'s [=XRAnchor/deleted=] is <code>true</code>, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
-    1. Let |session| be |anchor|'s [=XRAnchor/session=].
-    1. If |session|'s [=XRSession/map of persistent anchors=] does not contain a mapping to |anchor|, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
-    1. Remove the mapping from |session|'s [=XRSession/map of persistent anchors=].
-    1. Return |promise|.
-</div>
-
-TODO: clarify this.
-
 Anchor creation {#anchor-creation}
 ===============
 
@@ -214,6 +201,7 @@ partial interface XRFrame {
 
 partial interface XRSession {
   Promise<XRAnchor> restorePersistentAnchor(DOMString uuid);
+  Promise<undefined> deletePersistentAnchor(DOMString uuid);
 };
 
 partial interface XRHitTestResult {
@@ -255,6 +243,15 @@ The {{XRSession/restorePersistentAnchor(uuid)}} method, when invoked on an {{XRS
     1. If |session|'s [=XRSession/map of new anchors=] contains a mapping from |anchor| to |promise|, [=/reject=] the |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
     1. Add |anchor| to |session|'s [=XRSession/set of tracked anchors=].
     1. Add a mapping from |anchor| to |promise| to |session|'s [=XRSession/map of new anchors=].
+    1. Return |promise|.
+</div>
+
+<div class="algorithm" data-algorithm="delete-peristence-from-anchor">
+The {{XRSession/deletePersistentAnchor()}} method, when invoked on an {{XRSession}} |session| with |uuid|, MUST run the following steps:
+    1. Let |promise| be [=a new Promise=] in the [=relevant realm=] of this {{XRSystem}}.
+    1. Let |anchor| be the value of mapping from |uuid| on |session|'s [=XRSession/map of persistent anchors=].
+    1. If |session|'s [=XRSession/map of persistent anchors=] does not contain a mapping to |anchor|, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
+    1. Remove the mapping from |session|'s [=XRSession/map of persistent anchors=].
     1. Return |promise|.
 </div>
 
