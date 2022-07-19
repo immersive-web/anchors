@@ -252,6 +252,7 @@ The {{XRSession/deletePersistentAnchor()}} method, when invoked on an {{XRSessio
     1. Let |anchor| be the value of mapping from |uuid| on |session|'s [=XRSession/map of persistent anchors=].
     1. If |session|'s [=XRSession/map of persistent anchors=] does not contain a mapping to |anchor|, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
     1. Remove the mapping from |session|'s [=XRSession/map of persistent anchors=].
+    1. Invoke {{XRAnchor/delete()} on |anchor|.
     1. Return |promise|.
 </div>
 
