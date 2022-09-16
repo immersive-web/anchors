@@ -92,7 +92,7 @@ spec: WebXR Hit Test Module; urlPrefix: https://immersive-web.github.io/hit-test
     margin: .5em calc(-0.5em - 1px);
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='290'><text transform='rotate(-45)' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='70' y='210' opacity='.1'>Unstable</text></svg>");
     background-repeat: repeat;
-    background-color: #FFF4F4;
+    background-color: #282828;
   }
   .unstable h3:first-of-type {
     margin-top: 0.5rem;
@@ -166,7 +166,7 @@ In order to <dfn>create new anchor object</dfn> from |native origin| and |sessio
     1. Return |anchor|.
 </div>
 
-<div class="algorithm" data-algorithm="restore-anchor-from-frame">
+<div class="algorithm unstable" data-algorithm="restore-anchor-from-frame">
 The {{XRAnchor/requestPersistentHandle()}} method, when invoked on an {{XRAnchor}} |anchor|, MUST run the following steps:
     1. Let |promise| be [=a new Promise=] in the [=relevant realm=] of this {{XRSystem}}.
     1. If |anchor|'s [=XRAnchor/deleted=] is <code>true</code>, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
@@ -190,7 +190,11 @@ Anchor creation {#anchor-creation}
 
 The {{XRSession}} is extended to contain an associated <dfn for=XRSession>set of tracked anchors</dfn>.
 
+<div class="unstable">
+
 The {{XRSession}} is extended to contain an associated <dfn for=XRSession>map of persistent anchors</dfn> that is keyed with a UUID string and maps to an {{XRAnchor}}.
+
+</div>
 
 The {{XRSession}} is extended to contain an associated <dfn for=XRSession>map of new anchors</dfn> that is keyed with {{XRAnchor}} object and maps to <code>{{Promise}}&lt;{{XRAnchor}}&gt;</code> object.
 
@@ -234,7 +238,7 @@ The {{XRFrame/createAnchor(pose, space)}} method, when invoked on an {{XRFrame}}
 
 Note: It is the responsibility of user agents to ensure that the physical origin tracked by the anchor returned by each {{XRFrame/createAnchor(pose, space)}} call aligns as closely as possible with the physical location of <var ignore=''>pose</var> within <var ignore=''>space</var> at the time represented by the frame on which the method is called. Specifically, this means that for spaces that are dynamically changing, user agents should attempt to capture the native origin of such spaces at the app's specified time. This text is non-normative, but expresses the intent of the specification author(s) and contributors and thus it is highly recommended that it is followed by the implementations to ensure consistent behavior across different vendors.
 
-<div class="algorithm" data-algorithm="restore-persistent-anchor-from-frame">
+<div class="algorithm unstable" data-algorithm="restore-persistent-anchor-from-frame">
 The {{XRSession/restorePersistentAnchor(uuid)}} method, when invoked on an {{XRSession}} |session| with |uuid|, MUST run the following steps:
     1. Let |promise| be [=a new Promise=] in the [=relevant realm=] of this {{XRSystem}}.
     1. If |session|'s [=XRSession/map of persistent anchors=] does not contain a mapping, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
@@ -246,7 +250,7 @@ The {{XRSession/restorePersistentAnchor(uuid)}} method, when invoked on an {{XRS
     1. Return |promise|.
 </div>
 
-<div class="algorithm" data-algorithm="delete-peristence-from-anchor">
+<div class="algorithm unstable" data-algorithm="delete-peristence-from-anchor">
 The {{XRSession/deletePersistentAnchor()}} method, when invoked on an {{XRSession}} |session| with |uuid|, MUST run the following steps:
     1. Let |promise| be [=a new Promise=] in the [=relevant realm=] of this {{XRSystem}}.
     1. Let |anchor| be the value of mapping from |uuid| on |session|'s [=XRSession/map of persistent anchors=].
