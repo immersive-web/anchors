@@ -142,7 +142,7 @@ XRAnchor {#xr-anchor}
 interface XRAnchor {
   readonly attribute XRSpace anchorSpace;
 
-  [NewObject] Promise<DOMString> requestPersistentHandle();
+  Promise<DOMString> requestPersistentHandle();
 
   undefined delete();
 };
@@ -241,7 +241,7 @@ Note: It is the responsibility of user agents to ensure that the physical origin
 <div class="algorithm unstable" data-algorithm="restore-persistent-anchor-from-frame">
 The {{XRSession/restorePersistentAnchor(uuid)}} method, when invoked on an {{XRSession}} |session| with |uuid|, MUST run the following steps:
     1. Let |promise| be [=a new Promise=] in the [=relevant realm=] of this {{XRSystem}}.
-    1. If |session|'s [=XRSession/map of persistent anchors=] does not contain a mapping, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
+    1. If |session|'s [=XRSession/map of persistent anchors=] does not contain a mapping from |uuid| to an {{XRAnchor}}, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
     1. If |session|’s [=ended=] value is `true`, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
     1. Let |anchor| be the value of mapping from |uuid| on |session|'s [=XRSession/map of persistent anchors=].
     1. If |session|'s [=XRSession/map of new anchors=] contains a mapping from |anchor| to |promise|, [=/reject=] the |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
@@ -253,8 +253,8 @@ The {{XRSession/restorePersistentAnchor(uuid)}} method, when invoked on an {{XRS
 <div class="algorithm unstable" data-algorithm="delete-peristence-from-anchor">
 The {{XRSession/deletePersistentAnchor()}} method, when invoked on an {{XRSession}} |session| with |uuid|, MUST run the following steps:
     1. Let |promise| be [=a new Promise=] in the [=relevant realm=] of this {{XRSystem}}.
-    1. Let |anchor| be the value of mapping from |uuid| on |session|'s [=XRSession/map of persistent anchors=].
     1. If |session|'s [=XRSession/map of persistent anchors=] does not contain a mapping to |anchor|, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
+    1. Let |anchor| be the value of mapping from |uuid| on |session|'s [=XRSession/map of persistent anchors=].
     1. Remove the mapping from |session|'s [=XRSession/map of persistent anchors=].
     1. Invoke {{XRAnchor/delete()} on |anchor|.
     1. Return |promise|.
