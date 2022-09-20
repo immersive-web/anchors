@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version 44af0bf3e, updated Fri Jul 29 17:05:16 2022 -0700" name="generator">
   <link href="https://immersive-web.github.io/anchors/" rel="canonical">
-  <meta content="a8f3e88d78305258d05b2c3703b0faa4bcf81a2c" name="document-revision">
+  <meta content="d8ac12b1471e5aaf90a31f22982d309ff9f556f0" name="document-revision">
 <style>
   .non-normative::before {
     content: "This section is non-normative.";
@@ -49,9 +49,15 @@
     border-radius: .5em;
     padding: .5em;
     margin: .5em calc(-0.5em - 1px);
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='290'><text transform='rotate(-45)' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='70' y='210' opacity='.1'>Unstable</text></svg>");
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='290'><text transform='rotate(-45)' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='70' y='210' opacity='.1' fill='white'>Unstable</text></svg>");
     background-repeat: repeat;
     background-color: #282828;
+  }
+  @media (prefers-color-scheme: light) {
+    .unstable {
+      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='290'><text transform='rotate(-45)' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='70' y='210' opacity='.1'>Unstable</text></svg>");
+      background-color: #FFF4F4;
+    }
   }
   .unstable h3:first-of-type {
     margin-top: 0.5rem;
@@ -698,7 +704,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebXR Anchors Module</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2022-09-16">16 September 2022</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2022-09-20">20 September 2022</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
