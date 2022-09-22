@@ -199,6 +199,8 @@ The {{XRSession}} is extended to contain an associated <dfn for=XRSession>set of
 <div class="unstable">
 
 The {{XRSession}} is extended to contain an associated <dfn for=XRSession>map of persistent anchors</dfn> that is keyed with a UUID string and maps to an {{XRAnchor}}.
+The size of this map is determined by the user agent. The user agent MAY delete entries from this map for any reason. For instance, if the maximum number of system anchors
+is reached for all maps for all origins, the user agent MAY free up an entry to make space for the newly requested anchor.
 
 </div>
 
@@ -251,6 +253,7 @@ The {{XRSession/restorePersistentAnchor(uuid)}} method, when invoked on an {{XRS
     1. If |session|’s [=ended=] value is `true`, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
     1. Let |anchor| be the value of mapping from |uuid| on |session|'s [=XRSession/map of persistent anchors=].
     1. If |session|'s [=XRSession/map of new anchors=] contains a mapping from |anchor| to |promise|, [=/reject=] the |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
+    1. If |session|'s [=XRSession/map of new anchors=] has reached a user agent maximum size, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
     1. Add |anchor| to |session|'s [=XRSession/set of tracked anchors=].
     1. Add a mapping from |anchor| to |promise| to |session|'s [=XRSession/map of new anchors=].
     1. Return |promise|.
