@@ -6,9 +6,9 @@
   <meta content="ED" name="w3c-status">
   <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" rel="stylesheet">
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
-  <meta content="Bikeshed version 44af0bf3e, updated Fri Jul 29 17:05:16 2022 -0700" name="generator">
+  <meta content="Bikeshed version d9f9c3533, updated Fri Mar 10 11:31:29 2023 -0800" name="generator">
   <link href="https://immersive-web.github.io/anchors/" rel="canonical">
-  <meta content="d8ac12b1471e5aaf90a31f22982d309ff9f556f0" name="document-revision">
+  <meta content="023fb530783b4203bc796df128f55748cbf18d04" name="document-revision">
 <style>
   .non-normative::before {
     content: "This section is non-normative.";
@@ -68,7 +68,6 @@
   }
 </style>
 <style>/* style-autolinks */
-
 .css.css, .property.property, .descriptor.descriptor {
     color: var(--a-normal-text);
     font-size: inherit;
@@ -128,7 +127,8 @@ pre .property::before, pre .property::after {
 
 [data-link-type=biblio] {
     white-space: pre;
-}</style>
+}
+</style>
 <style>/* style-colors */
 
 /* Any --*-text not paired with a --*-bg is assumed to have a transparent bg */
@@ -237,9 +237,9 @@ pre .property::before, pre .property::after {
     --outdated-shadow: red;
 
     --editedrec-bg: darkorange;
-}</style>
+}
+</style>
 <style>/* style-counters */
-
 body {
     counter-reset: example figure issue;
 }
@@ -266,9 +266,9 @@ figcaption {
 }
 figcaption:not(.no-marker)::before {
     content: "Figure " counter(figure) " ";
-}</style>
+}
+</style>
 <style>/* style-dfn-panel */
-
 :root {
     --dfnpanel-bg: #ddd;
     --dfnpanel-text: var(--text);
@@ -276,10 +276,10 @@ figcaption:not(.no-marker)::before {
 .dfn-panel {
     position: absolute;
     z-index: 35;
-    height: auto;
-    width: -webkit-fit-content;
-    width: fit-content;
+    width: 20em;
+    min-width: min-content;
     max-width: 300px;
+    height: auto;
     max-height: 500px;
     overflow: auto;
     padding: 0.5em 0.75em;
@@ -287,6 +287,7 @@ figcaption:not(.no-marker)::before {
     background: var(--dfnpanel-bg);
     color: var(--dfnpanel-text);
     border: outset 0.2em;
+    white-space: normal; /* in case it's moved into a pre */
 }
 .dfn-panel:not(.on) { display: none; }
 .dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
@@ -309,7 +310,6 @@ figcaption:not(.no-marker)::before {
 .dfn-paneled { cursor: pointer; }
 </style>
 <style>/* style-issues */
-
 a[href].issue-return {
     float: right;
     float: inline-end;
@@ -319,7 +319,6 @@ a[href].issue-return {
 }
 </style>
 <style>/* style-md-lists */
-
 /* This is a weird hack for me not yet following the commonmark spec
    regarding paragraph and lists. */
 [data-md] > :first-child {
@@ -327,63 +326,221 @@ a[href].issue-return {
 }
 [data-md] > :last-child {
     margin-bottom: 0;
-}</style>
+}
+</style>
 <style>/* style-mdn-anno */
-
-            @media (max-width: 767px) { .mdn-anno { opacity: .1 } }
-            .mdn-anno { font: 1em sans-serif; padding: 0.3em; position: absolute; z-index: 8; right: 0.3em; background: #EEE; color: black; box-shadow: 0 0 3px #999; overflow: hidden; border-collapse: initial; border-spacing: initial; min-width: 9em; max-width: min-content; white-space: nowrap; word-wrap: normal; hyphens: none}
-            .mdn-anno:not(.wrapped) { opacity: 1}
-            .mdn-anno:hover { z-index: 9 }
-            .mdn-anno.wrapped { min-width: 0 }
-            .mdn-anno.wrapped > :not(button) { display: none; }
-            .mdn-anno > .mdn-anno-btn { cursor: pointer; border: none; color: #000; background: transparent; margin: -8px; float: right; padding: 10px 8px 8px 8px; outline: none; }
-            .mdn-anno > .mdn-anno-btn > .less-than-two-engines-flag { color: red; padding-right: 2px; }
-            .mdn-anno > .mdn-anno-btn > .all-engines-flag { color: green; padding-right: 2px; }
-            .mdn-anno > .mdn-anno-btn > span { color: #fff; background-color: #000; font-weight: normal; font-family: zillaslab, Palatino, "Palatino Linotype", serif; padding: 2px 3px 0px 3px; line-height: 1.3em; vertical-align: top; }
-            .mdn-anno > .feature { margin-top: 20px; }
-            .mdn-anno > .feature:not(:first-of-type) { border-top: 1px solid #999; margin-top: 6px; padding-top: 2px; }
-            .mdn-anno > .feature > .less-than-two-engines-text { color: red }
-            .mdn-anno > .feature > .all-engines-text { color: green }
-            .mdn-anno > .feature > p { font-size: .75em; margin-top: 6px; margin-bottom: 0; }
-            .mdn-anno > .feature > p + p { margin-top: 3px; }
-            .mdn-anno > .feature > .support { display: block; font-size: 0.6em; margin: 0; padding: 0; margin-top: 2px }
-            .mdn-anno > .feature > .support + div { padding-top: 0.5em; }
-            .mdn-anno > .feature > .support > hr { display: block; border: none; border-top: 1px dotted #999; padding: 3px 0px 0px 0px; margin: 2px 3px 0px 3px; }
-            .mdn-anno > .feature > .support > hr::before { content: ""; }
-            .mdn-anno > .feature > .support > span { padding: 0.2em 0; display: block; display: table; }
-            .mdn-anno > .feature > .support > span.no { color: #CCCCCC; filter: grayscale(100%); }
-            .mdn-anno > .feature > .support > span.no::before { opacity: 0.5; }
-            .mdn-anno > .feature > .support > span:first-of-type { padding-top: 0.5em; }
-            .mdn-anno > .feature > .support > span > span { padding: 0 0.5em; display: table-cell; }
-            .mdn-anno > .feature > .support > span > span:first-child { width: 100%; }
-            .mdn-anno > .feature > .support > span > span:last-child { width: 100%; white-space: pre; padding: 0; }
-            .mdn-anno > .feature > .support > span::before { content: ' '; display: table-cell; min-width: 1.5em; height: 1.5em; background: no-repeat center center; background-size: contain; text-align: right; font-size: 0.75em; font-weight: bold; }
-            .mdn-anno > .feature > .support > .chrome_android::before { background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg); }
-            .mdn-anno > .feature > .support > .firefox_android::before { background-image: url(https://resources.whatwg.org/browser-logos/firefox.png); }
-            .mdn-anno > .feature > .support > .chrome::before { background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg); }
-            .mdn-anno > .feature > .support > .edge_blink::before { background-image: url(https://resources.whatwg.org/browser-logos/edge.svg); }
-            .mdn-anno > .feature > .support > .edge::before { background-image: url(https://resources.whatwg.org/browser-logos/edge_legacy.svg); }
-            .mdn-anno > .feature > .support > .firefox::before { background-image: url(https://resources.whatwg.org/browser-logos/firefox.png); }
-            .mdn-anno > .feature > .support > .ie::before { background-image: url(https://resources.whatwg.org/browser-logos/ie.png); }
-            .mdn-anno > .feature > .support > .safari_ios::before { background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg); }
-            .mdn-anno > .feature > .support > .nodejs::before { background-image: url(https://nodejs.org/static/images/favicons/favicon.ico); }
-            .mdn-anno > .feature > .support > .opera_android::before { background-image: url(https://resources.whatwg.org/browser-logos/opera.svg); }
-            .mdn-anno > .feature > .support > .opera::before { background-image: url(https://resources.whatwg.org/browser-logos/opera.svg); }
-            .mdn-anno > .feature > .support > .safari::before { background-image: url(https://resources.whatwg.org/browser-logos/safari.png); }
-            .mdn-anno > .feature > .support > .samsunginternet_android::before { background-image: url(https://resources.whatwg.org/browser-logos/samsung.svg); }
-            .mdn-anno > .feature > .support > .webview_android::before { background-image: url(https://resources.whatwg.org/browser-logos/android-webview.png); }
-            .name-slug-mismatch { color: red }
-            .caniuse-status:hover { z-index: 9; }
-
-            /* dt, li, .issue, .note, and .example are "position: relative", so to put annotation at right margin, must move to right of containing block */
-            .h-entry:not(.status-LS) dt > .mdn-anno, .h-entry:not(.status-LS) li > .mdn-anno, .h-entry:not(.status-LS) .issue > .mdn-anno, .h-entry:not(.status-LS) .note > .mdn-anno, .h-entry:not(.status-LS) .example > .mdn-anno { right: -6.7em; }
-            .h-entry p + .mdn-anno { margin-top: 0; }
-            h2 + .mdn-anno.after { margin: -48px 0 0 0; }
-            h3 + .mdn-anno.after { margin: -46px 0 0 0; }
-            h4 + .mdn-anno.after { margin: -42px 0 0 0; }
-            h5 + .mdn-anno.after { margin: -40px 0 0 0; }
-            h6 + .mdn-anno.after { margin: -40px 0 0 0; }
-            </style>
+:root {
+	--mdn-bg: #EEE;
+	--mdn-shadow: #999;
+	--mdn-nosupport-text: #ccc;
+}
+.mdn-anno {
+	background: var(--mdn-bg, #EEE);
+	border-radius: .25em;
+	box-shadow: 0 0 3px var(--mdn-shadow, #999);
+	color: var(--text, black);
+	font: 1em sans-serif;
+	hyphens: none;
+	max-width: min-content;
+	overflow: hidden;
+	padding: 0.2em;
+	position: absolute;
+	right: 0.3em;
+	top: auto;
+	white-space: nowrap;
+	word-wrap: normal;
+	z-index: 8;
+}
+.mdn-anno.unpositioned {
+	display: none;
+}
+.mdn-anno.overlapping-main {
+	opacity: .2;
+	transition: opacity .1s;
+}
+.mdn-anno[open] {
+	opacity: 1;
+	z-index: 9;
+	min-width: 9em;
+}
+.mdn-anno:hover {
+	opacity: 1;
+	outline: var(--text, black) 1px solid;
+}
+.mdn-anno > summary {
+	font-weight: normal;
+	text-align: right;
+	cursor: pointer;
+	display: block;
+}
+.mdn-anno > summary > .less-than-two-engines-flag {
+	color: red;
+	padding-right: 2px;
+}
+.mdn-anno > summary > .all-engines-flag {
+	color: green;
+	padding-right: 2px;
+}
+.mdn-anno > summary > span {
+	color: #fff;
+	background-color: #000;
+	font-weight: normal;
+	font-family: zillaslab, Palatino, "Palatino Linotype", serif;
+	padding: 2px 3px 0px 3px;
+	line-height: 1.3em;
+	vertical-align: top;
+}
+.mdn-anno > .feature {
+	margin-top: 20px;
+}
+.mdn-anno > .feature:not(:first-of-type) {
+	border-top: 1px solid #999;
+	margin-top: 6px;
+	padding-top: 2px;
+}
+.mdn-anno > .feature > .less-than-two-engines-text {
+	color: red;
+}
+.mdn-anno > .feature > .all-engines-text {
+	color: green;
+}
+.mdn-anno > .feature > p {
+	font-size: .75em;
+	margin-top: 6px;
+	margin-bottom: 0;
+}
+.mdn-anno > .feature > p + p {
+	margin-top: 3px;
+}
+.mdn-anno > .feature > .support {
+	display: block;
+	font-size: 0.6em;
+	margin: 0;
+	padding: 0;
+	margin-top: 2px;
+}
+.mdn-anno > .feature > .support + div {
+	padding-top: 0.5em;
+}
+.mdn-anno > .feature > .support > hr {
+	display: block;
+	border: none;
+	border-top: 1px dotted #999;
+	padding: 3px 0px 0px 0px;
+	margin: 2px 3px 0px 3px;
+}
+.mdn-anno > .feature > .support > hr::before {
+	content: "";
+}
+.mdn-anno > .feature > .support > span {
+	padding: 0.2em 0;
+	display: block;
+	display: table;
+}
+.mdn-anno > .feature > .support > span.no {
+	color: var(--mdn-nosupport-text);
+	filter: grayscale(100%);
+}
+.mdn-anno > .feature > .support > span.no::before {
+	opacity: 0.5;
+}
+.mdn-anno > .feature > .support > span:first-of-type {
+	padding-top: 0.5em;
+}
+.mdn-anno > .feature > .support > span > span {
+	padding: 0 0.5em;
+	display: table-cell;
+}
+.mdn-anno > .feature > .support > span > span:first-child {
+	width: 100%;
+}
+.mdn-anno > .feature > .support > span > span:last-child {
+	width: 100%;
+	white-space: pre;
+	padding: 0;
+}
+.mdn-anno > .feature > .support > span::before {
+	content: ' ';
+	display: table-cell;
+	min-width: 1.5em;
+	height: 1.5em;
+	background: no-repeat center center;
+	background-size: contain;
+	text-align: right;
+	font-size: 0.75em;
+	font-weight: bold;
+}
+.mdn-anno > .feature > .support > .chrome_android::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg);
+}
+.mdn-anno > .feature > .support > .firefox_android::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/firefox.png);
+}
+.mdn-anno > .feature > .support > .chrome::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg);
+}
+.mdn-anno > .feature > .support > .edge_blink::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/edge.svg);
+}
+.mdn-anno > .feature > .support > .edge::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/edge_legacy.svg);
+}
+.mdn-anno > .feature > .support > .firefox::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/firefox.png);
+}
+.mdn-anno > .feature > .support > .ie::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/ie.png);
+}
+.mdn-anno > .feature > .support > .safari_ios::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg);
+}
+.mdn-anno > .feature > .support > .nodejs::before {
+	background-image: url(https://nodejs.org/static/images/favicons/favicon.ico);
+}
+.mdn-anno > .feature > .support > .opera_android::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/opera.svg);
+}
+.mdn-anno > .feature > .support > .opera::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/opera.svg);
+}
+.mdn-anno > .feature > .support > .safari::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/safari.png);
+}
+.mdn-anno > .feature > .support > .samsunginternet_android::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/samsung.svg);
+}
+.mdn-anno > .feature > .support > .webview_android::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/android-webview.png);
+}
+.name-slug-mismatch {
+	color: red;
+}
+.caniuse-status:hover {
+	z-index: 9;
+}
+/* dt, li, .issue, .note, and .example are "position: relative", so to put annotation at right margin, must move to right of containing block */;
+.h-entry:not(.status-LS) dt > .mdn-anno, .h-entry:not(.status-LS) li > .mdn-anno, .h-entry:not(.status-LS) .issue > .mdn-anno, .h-entry:not(.status-LS) .note > .mdn-anno, .h-entry:not(.status-LS) .example > .mdn-anno {
+	right: -6.7em;
+}
+.h-entry p + .mdn-anno {
+	margin-top: 0;
+}
+ h2 + .mdn-anno.after {
+	margin: -48px 0 0 0;
+}
+ h3 + .mdn-anno.after {
+	margin: -46px 0 0 0;
+}
+ h4 + .mdn-anno.after {
+	margin: -42px 0 0 0;
+}
+ h5 + .mdn-anno.after {
+	margin: -40px 0 0 0;
+}
+ h6 + .mdn-anno.after {
+	margin: -40px 0 0 0;
+}
+</style>
 <style>/* style-selflinks */
 
 :root {
@@ -410,6 +567,14 @@ a.self-link:hover {
 }
 .heading > a.self-link {
     font-size: 83%;
+}
+.example > a.self-link,
+.note > a.self-link,
+.issue > a.self-link {
+    /* These blocks are overflow:auto, so positioning outside
+       doesn't work. */
+    left: auto;
+    right: 0;
 }
 li > a.self-link {
     left: calc(-1 * (3.5rem - 26px) - 2em);
@@ -623,6 +788,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        which is quite common in practice... */
     img { background: white; }
 }
+
 @media (prefers-color-scheme: dark) {
     :root {
         --selflink-text: black;
@@ -636,6 +802,13 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
         --dfnpanel-bg: #222;
         --dfnpanel-text: var(--text);
     }
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--mdn-bg: #222;
+		--mdn-shadow: #444;
+		--mdn-nosupport-text: #666;
+	}
 }
 @media (prefers-color-scheme: dark) {
     .highlight:not(.idl) { background: rgba(255, 255, 255, .05); }
@@ -704,7 +877,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebXR Anchors Module</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2022-09-20">20 September 2022</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2023-03-10">10 March 2023</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -724,7 +897,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </div>
    </details>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2022 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="https://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
+   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2023 <a href="https://www.w3.org/">World Wide Web Consortium</a>. <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup> <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
@@ -813,54 +986,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <h3 class="heading settled" data-level="2.1" id="anchor-feature-descriptor"><span class="secno">2.1. </span><span class="content">Feature descriptor</span><a class="self-link" href="#anchor-feature-descriptor"></a></h3>
    <p>In order for the applications to signal their interest in using anchors during a session, the session must be requested with appropriate <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#feature-descriptor" id="ref-for-feature-descriptor">feature descriptor</a>. The string <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="anchors">anchors</dfn> is introduced by this module as a new valid feature descriptor for anchors feature.</p>
    <p>A device is <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#capable-of-supporting" id="ref-for-capable-of-supporting">capable of supporting</a> the anchors feature if the device’s tracking system exposes a <a href="#native-anchor">native anchors</a> capability. The <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#inline-xr-device" id="ref-for-inline-xr-device">inline XR device</a> MUST NOT be treated as <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#capable-of-supporting" id="ref-for-capable-of-supporting①">capable of supporting</a> the anchors feature. The user agents SHOULD attempt to support anchors feature for sessions with <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrsession-mode" id="ref-for-xrsession-mode">mode</a> equal to <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr-ar-module/#dom-xrsessionmode-immersive-ar" id="ref-for-dom-xrsessionmode-immersive-ar">"immersive-ar"</a></code>.</p>
-   <p class="note" role="note"><span>Note:</span> Even though anchors feature support is not required, anchors are one of the basic features needed by the AR-enabled applications to provide good user experience. Therefore, it is *highly* recommended that the user agents support them for <code>"immersive-ar"</code> sessions.</p>
+   <p class="note" role="note"><span class="marker">Note:</span> Even though anchors feature support is not required, anchors are one of the basic features needed by the AR-enabled applications to provide good user experience. Therefore, it is *highly* recommended that the user agents support them for <code>"immersive-ar"</code> sessions.</p>
    <h2 class="heading settled" data-level="3" id="anchors-section"><span class="secno">3. </span><span class="content">Anchors</span><a class="self-link" href="#anchors-section"></a></h2>
    <h3 class="heading settled" data-level="3.1" id="xr-anchor"><span class="secno">3.1. </span><span class="content">XRAnchor</span><a class="self-link" href="#xr-anchor"></a></h3>
-   <div class="mdn-anno wrapped after">
-    <button class="mdn-anno-btn"><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></button>
-    <div class="feature">
-     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRAnchor" title="The XRAnchor interface creates anchors which keep track of the pose that is fixed relative to the real world. With anchors, you can specify poses in the world that need to be updated to correctly reflect the evolving understanding of the world, such that the poses remain aligned with the same place in the physical world. That helps to build an illusion that the placed objects are really present in the user&apos;s environment.">XRAnchor</a></p>
-     <p class="less-than-two-engines-text">In only one current engine.</p>
-     <div class="support">
-      <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
-      <hr>
-      <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
-      <hr>
-      <span class="edge no"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>IE</span><span>None</span></span>
-      <hr>
-      <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
-     </div>
-    </div>
-   </div>
-   <div class="mdn-anno wrapped">
-    <button class="mdn-anno-btn"><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></button>
-    <div class="feature">
-     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRAnchor/anchorSpace" title="The read-only anchorSpace property of the XRAnchor interface returns an XRSpace object to locate the anchor relative to other XRSpace objects. It can be passed to XRFrame.getPose() subsequently.">XRAnchor/anchorSpace</a></p>
-     <p class="less-than-two-engines-text">In only one current engine.</p>
-     <div class="support">
-      <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
-      <hr>
-      <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
-      <hr>
-      <span class="edge no"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>IE</span><span>None</span></span>
-      <hr>
-      <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
-     </div>
-    </div>
-    <div class="feature">
-     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRAnchor/delete" title="The delete() method of the XRAnchor interface removes an anchor. This can be useful when an application is no longer interested in receiving updates to an anchor.">XRAnchor/delete</a></p>
-     <p class="less-than-two-engines-text">In only one current engine.</p>
-     <div class="support">
-      <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
-      <hr>
-      <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
-      <hr>
-      <span class="edge no"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>IE</span><span>None</span></span>
-      <hr>
-      <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
-     </div>
-    </div>
-   </div>
 <pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SecureContext" id="ref-for-SecureContext"><c- g>SecureContext</c-></a>, <a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed" id="ref-for-Exposed"><c- g>Exposed</c-></a>=<c- n>Window</c->]
 <c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="xranchor"><code><c- g>XRAnchor</c-></code></dfn> {
   <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace"><c- n>XRSpace</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="XRAnchor" data-dfn-type="attribute" data-export data-readonly data-type="XRSpace" id="dom-xranchor-anchorspace"><code><c- g>anchorSpace</c-></code></dfn>;
@@ -915,7 +1043,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <li data-md>
       <p>Let <var>uuid</var> be the empty string.</p>
      <li data-md>
-      <p>Generate a UUID <a data-link-type="biblio" href="#biblio-rfc4122">[RFC4122]</a> as a string and append it to <var>uuid</var>.</p>
+      <p>Generate a UUID <a data-link-type="biblio" href="#biblio-rfc4122" title="A Universally Unique IDentifier (UUID) URN Namespace">[RFC4122]</a> as a string and append it to <var>uuid</var>.</p>
      <li data-md>
       <p>Add <var>uuid</var> and <var>anchor</var> to <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors②">map of persistent anchors</a>.</p>
      <li data-md>
@@ -924,49 +1052,22 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Return <var>promise</var>.</p>
     </ol>
    </div>
-   <p class="note" role="note"><span>Note:</span> when the <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsystem" id="ref-for-xrsystem①">XRSystem</a></code> creates the unique ID, it MUST be unique and only known to the current origin.</p>
+   <p class="note" role="note"><span class="marker">Note:</span> when the <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsystem" id="ref-for-xrsystem①">XRSystem</a></code> creates the unique ID, it MUST be unique and only known to the current origin.</p>
    <h2 class="heading settled" data-level="4" id="anchor-creation"><span class="secno">4. </span><span class="content">Anchor creation</span><a class="self-link" href="#anchor-creation"></a></h2>
    <p>The <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession">XRSession</a></code> is extended to contain an associated <dfn class="dfn-paneled" data-dfn-for="XRSession" data-dfn-type="dfn" data-noexport id="xrsession-set-of-tracked-anchors">set of tracked anchors</dfn>.</p>
    <div class="unstable">
     <p>The <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession①">XRSession</a></code> is extended to contain an associated <dfn class="dfn-paneled" data-dfn-for="XRSession" data-dfn-type="dfn" data-noexport id="xrsession-map-of-persistent-anchors">map of persistent anchors</dfn> that is keyed with a UUID string and maps to an <code class="idl"><a data-link-type="idl" href="#xranchor" id="ref-for-xranchor⑥">XRAnchor</a></code>.</p>
    </div>
    <p>The <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession②">XRSession</a></code> is extended to contain an associated <dfn class="dfn-paneled" data-dfn-for="XRSession" data-dfn-type="dfn" data-noexport id="xrsession-map-of-new-anchors">map of new anchors</dfn> that is keyed with <code class="idl"><a data-link-type="idl" href="#xranchor" id="ref-for-xranchor⑦">XRAnchor</a></code> object and maps to <code><code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#idl-promise" id="ref-for-idl-promise①">Promise</a></code>&lt;<code class="idl"><a data-link-type="idl" href="#xranchor" id="ref-for-xranchor⑧">XRAnchor</a></code>></code> object.</p>
-   <div class="mdn-anno wrapped">
-    <button class="mdn-anno-btn"><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></button>
-    <div class="feature">
-     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRFrame/createAnchor" title="The createAnchor() method of the XRFrame interface creates a free-floating XRAnchor which will be fixed relative to the real world.">XRFrame/createAnchor</a></p>
-     <p class="less-than-two-engines-text">In only one current engine.</p>
-     <div class="support">
-      <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
-      <hr>
-      <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
-      <hr>
-      <span class="edge no"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>IE</span><span>None</span></span>
-      <hr>
-      <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
-     </div>
-    </div>
-    <div class="feature">
-     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRHitTestResult/createAnchor" title="The createAnchor() method of the XRHitTestResult interface creates an XRAnchor from a hit test result that is attached to a real world object.">XRHitTestResult/createAnchor</a></p>
-     <p class="less-than-two-engines-text">In only one current engine.</p>
-     <div class="support">
-      <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
-      <hr>
-      <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
-      <hr>
-      <span class="edge no"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>IE</span><span>None</span></span>
-      <hr>
-      <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
-     </div>
-    </div>
-   </div>
 <pre class="idl highlight def"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe"><c- g>XRFrame</c-></a> {
   <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise" id="ref-for-idl-promise②"><c- b>Promise</c-></a>&lt;<a data-link-type="idl-name" href="#xranchor" id="ref-for-xranchor⑨"><c- n>XRAnchor</c-></a>> <dfn class="dfn-paneled idl-code" data-dfn-for="XRFrame" data-dfn-type="method" data-export data-lt="createAnchor(pose, space)" id="dom-xrframe-createanchor"><code><c- g>createAnchor</c-></code></dfn>(<a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrrigidtransform" id="ref-for-xrrigidtransform"><c- n>XRRigidTransform</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/createAnchor(pose, space)" data-dfn-type="argument" data-export id="dom-xrframe-createanchor-pose-space-pose"><code><c- g>pose</c-></code><a class="self-link" href="#dom-xrframe-createanchor-pose-space-pose"></a></dfn>, <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace③"><c- n>XRSpace</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/createAnchor(pose, space)" data-dfn-type="argument" data-export id="dom-xrframe-createanchor-pose-space-space"><code><c- g>space</c-></code><a class="self-link" href="#dom-xrframe-createanchor-pose-space-space"></a></dfn>);
 };
 
 <c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession③"><c- g>XRSession</c-></a> {
-  <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise" id="ref-for-idl-promise③"><c- b>Promise</c-></a>&lt;<a data-link-type="idl-name" href="#xranchor" id="ref-for-xranchor①⓪"><c- n>XRAnchor</c-></a>> <dfn class="dfn-paneled idl-code" data-dfn-for="XRSession" data-dfn-type="method" data-export data-lt="restorePersistentAnchor(uuid)" id="dom-xrsession-restorepersistentanchor"><code><c- g>restorePersistentAnchor</c-></code></dfn>(<a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString" id="ref-for-idl-DOMString①"><c- b>DOMString</c-></a> <dfn class="idl-code" data-dfn-for="XRSession/restorePersistentAnchor(uuid)" data-dfn-type="argument" data-export id="dom-xrsession-restorepersistentanchor-uuid-uuid"><code><c- g>uuid</c-></code><a class="self-link" href="#dom-xrsession-restorepersistentanchor-uuid-uuid"></a></dfn>);
-  <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise" id="ref-for-idl-promise④"><c- b>Promise</c-></a>&lt;<a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-undefined" id="ref-for-idl-undefined①"><c- b>undefined</c-></a>> <dfn class="dfn-paneled idl-code" data-dfn-for="XRSession" data-dfn-type="method" data-export data-lt="deletePersistentAnchor(uuid)" id="dom-xrsession-deletepersistentanchor"><code><c- g>deletePersistentAnchor</c-></code></dfn>(<a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString" id="ref-for-idl-DOMString②"><c- b>DOMString</c-></a> <dfn class="idl-code" data-dfn-for="XRSession/deletePersistentAnchor(uuid)" data-dfn-type="argument" data-export id="dom-xrsession-deletepersistentanchor-uuid-uuid"><code><c- g>uuid</c-></code><a class="self-link" href="#dom-xrsession-deletepersistentanchor-uuid-uuid"></a></dfn>);
+  <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-frozen-array" id="ref-for-idl-frozen-array"><c- b>FrozenArray</c-></a>&lt;<a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString" id="ref-for-idl-DOMString①"><c- b>DOMString</c-></a>> <dfn class="dfn-paneled idl-code" data-dfn-for="XRSession" data-dfn-type="attribute" data-export data-readonly data-type="FrozenArray<DOMString>" id="dom-xrsession-persistentanchors"><code><c- g>persistentAnchors</c-></code></dfn>;
+
+  <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise" id="ref-for-idl-promise③"><c- b>Promise</c-></a>&lt;<a data-link-type="idl-name" href="#xranchor" id="ref-for-xranchor①⓪"><c- n>XRAnchor</c-></a>> <dfn class="dfn-paneled idl-code" data-dfn-for="XRSession" data-dfn-type="method" data-export data-lt="restorePersistentAnchor(uuid)" id="dom-xrsession-restorepersistentanchor"><code><c- g>restorePersistentAnchor</c-></code></dfn>(<a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString" id="ref-for-idl-DOMString②"><c- b>DOMString</c-></a> <dfn class="idl-code" data-dfn-for="XRSession/restorePersistentAnchor(uuid)" data-dfn-type="argument" data-export id="dom-xrsession-restorepersistentanchor-uuid-uuid"><code><c- g>uuid</c-></code><a class="self-link" href="#dom-xrsession-restorepersistentanchor-uuid-uuid"></a></dfn>);
+  <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise" id="ref-for-idl-promise④"><c- b>Promise</c-></a>&lt;<a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-undefined" id="ref-for-idl-undefined①"><c- b>undefined</c-></a>> <dfn class="dfn-paneled idl-code" data-dfn-for="XRSession" data-dfn-type="method" data-export data-lt="deletePersistentAnchor(uuid)" id="dom-xrsession-deletepersistentanchor"><code><c- g>deletePersistentAnchor</c-></code></dfn>(<a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString" id="ref-for-idl-DOMString③"><c- b>DOMString</c-></a> <dfn class="idl-code" data-dfn-for="XRSession/deletePersistentAnchor(uuid)" data-dfn-type="argument" data-export id="dom-xrsession-deletepersistentanchor-uuid-uuid"><code><c- g>uuid</c-></code><a class="self-link" href="#dom-xrsession-deletepersistentanchor-uuid-uuid"></a></dfn>);
 };
 
 <c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/hit-test/#xrhittestresult" id="ref-for-xrhittestresult"><c- g>XRHitTestResult</c-></a> {
@@ -1009,18 +1110,19 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Return <var>promise</var>.</p>
     </ol>
    </div>
-   <p class="note" role="note"><span>Note:</span> It is the responsibility of user agents to ensure that the physical origin tracked by the anchor returned by each <code class="idl"><a data-link-type="idl" href="#dom-xrframe-createanchor" id="ref-for-dom-xrframe-createanchor②">createAnchor(pose, space)</a></code> call aligns as closely as possible with the physical location of <var>pose</var> within <var>space</var> at the time represented by the frame on which the method is called. Specifically, this means that for spaces that are dynamically changing, user agents should attempt to capture the native origin of such spaces at the app’s specified time. This text is non-normative, but expresses the intent of the specification author(s) and contributors and thus it is highly recommended that it is followed by the implementations to ensure consistent behavior across different vendors.</p>
+   <p class="note" role="note"><span class="marker">Note:</span> It is the responsibility of user agents to ensure that the physical origin tracked by the anchor returned by each <code class="idl"><a data-link-type="idl" href="#dom-xrframe-createanchor" id="ref-for-dom-xrframe-createanchor②">createAnchor(pose, space)</a></code> call aligns as closely as possible with the physical location of <var>pose</var> within <var>space</var> at the time represented by the frame on which the method is called. Specifically, this means that for spaces that are dynamically changing, user agents should attempt to capture the native origin of such spaces at the app’s specified time. This text is non-normative, but expresses the intent of the specification author(s) and contributors and thus it is highly recommended that it is followed by the implementations to ensure consistent behavior across different vendors.</p>
+   <div class="algorithm unstable"> <code class="idl"><a data-link-type="idl" href="#dom-xrsession-persistentanchors" id="ref-for-dom-xrsession-persistentanchors">persistentAnchors</a></code> returns a list of the known persistent anchors. This list MUST reflect the keys of the <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors③">map of persistent anchors</a>. </div>
    <div class="algorithm unstable" data-algorithm="restore-persistent-anchor-from-frame">
      The <code class="idl"><a data-link-type="idl" href="#dom-xrsession-restorepersistentanchor" id="ref-for-dom-xrsession-restorepersistentanchor">restorePersistentAnchor(uuid)</a></code> method, when invoked on an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession④">XRSession</a></code> <var>session</var> with <var>uuid</var>, MUST run the following steps: 
     <ol>
      <li data-md>
       <p>Let <var>promise</var> be <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#a-new-promise" id="ref-for-a-new-promise②">a new Promise</a> in the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm" id="ref-for-concept-relevant-realm①">relevant realm</a> of this <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsystem" id="ref-for-xrsystem②">XRSystem</a></code>.</p>
      <li data-md>
-      <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors③">map of persistent anchors</a> does not contain a mapping from <var>uuid</var> to an <code class="idl"><a data-link-type="idl" href="#xranchor" id="ref-for-xranchor①②">XRAnchor</a></code>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject②">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror③">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
+      <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors④">map of persistent anchors</a> does not contain a mapping from <var>uuid</var> to an <code class="idl"><a data-link-type="idl" href="#xranchor" id="ref-for-xranchor①②">XRAnchor</a></code>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject②">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror③">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
      <li data-md>
       <p>If <var>session</var>’s <a data-link-type="dfn" href="https://w3c.github.io/mediacapture-main/#track-ended" id="ref-for-track-ended">ended</a> value is `true`, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject③">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror④">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
      <li data-md>
-      <p>Let <var>anchor</var> be the value of mapping from <var>uuid</var> on <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors④">map of persistent anchors</a>.</p>
+      <p>Let <var>anchor</var> be the value of mapping from <var>uuid</var> on <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors⑤">map of persistent anchors</a>.</p>
      <li data-md>
       <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-new-anchors" id="ref-for-xrsession-map-of-new-anchors①">map of new anchors</a> contains a mapping from <var>anchor</var> to <var>promise</var>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject④">reject</a> the <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror⑤">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
      <li data-md>
@@ -1037,11 +1139,11 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <li data-md>
       <p>Let <var>promise</var> be <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#a-new-promise" id="ref-for-a-new-promise③">a new Promise</a> in the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm" id="ref-for-concept-relevant-realm②">relevant realm</a> of this <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsystem" id="ref-for-xrsystem③">XRSystem</a></code>.</p>
      <li data-md>
-      <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors⑤">map of persistent anchors</a> does not contain a mapping to <var>anchor</var>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject⑤">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror⑥">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
+      <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors⑥">map of persistent anchors</a> does not contain a mapping to <var>anchor</var>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject⑤">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror⑥">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
      <li data-md>
-      <p>Let <var>anchor</var> be the value of mapping from <var>uuid</var> on <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors⑥">map of persistent anchors</a>.</p>
+      <p>Let <var>anchor</var> be the value of mapping from <var>uuid</var> on <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors⑦">map of persistent anchors</a>.</p>
      <li data-md>
-      <p>Remove the mapping from <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors⑦">map of persistent anchors</a>.</p>
+      <p>Remove the mapping from <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors⑧">map of persistent anchors</a>.</p>
      <li data-md>
       <p>Invoke {{XRAnchor/delete()} on <var>anchor</var>.</p>
      <li data-md>
@@ -1078,38 +1180,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p>Return <var>promise</var>.</p>
     </ol>
    </div>
-   <p class="note" role="note"><span>Note:</span> The same remark that is present on <code class="idl"><a data-link-type="idl" href="#dom-xrframe-createanchor" id="ref-for-dom-xrframe-createanchor③">createAnchor(pose, space)</a></code> method applies here as well.</p>
+   <p class="note" role="note"><span class="marker">Note:</span> The same remark that is present on <code class="idl"><a data-link-type="idl" href="#dom-xrframe-createanchor" id="ref-for-dom-xrframe-createanchor③">createAnchor(pose, space)</a></code> method applies here as well.</p>
    <p class="issue" id="issue-02fc6c42"><a class="self-link" href="#issue-02fc6c42"></a> Session’s "list of frame updates" might need to have a way of specifying ordering - some algorithms may depend on others.</p>
    <h2 class="heading settled" data-level="5" id="anchor-updates"><span class="secno">5. </span><span class="content">Anchor updates</span><a class="self-link" href="#anchor-updates"></a></h2>
-   <div class="mdn-anno wrapped">
-    <button class="mdn-anno-btn"><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></button>
-    <div class="feature">
-     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRAnchorSet" title="The XRAnchorSet interface exposes a collection of anchors. It is returned by XRFrame.trackedAnchors and is a Set-like object.">XRAnchorSet</a></p>
-     <p class="less-than-two-engines-text">In only one current engine.</p>
-     <div class="support">
-      <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
-      <hr>
-      <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
-      <hr>
-      <span class="edge no"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>IE</span><span>None</span></span>
-      <hr>
-      <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
-     </div>
-    </div>
-    <div class="feature">
-     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRFrame/trackedAnchors" title="The read-only trackedAnchor property of the XRFrame interface returns an XRAnchorSet object containing all anchors still tracked in the frame.">XRFrame/trackedAnchors</a></p>
-     <p class="less-than-two-engines-text">In only one current engine.</p>
-     <div class="support">
-      <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
-      <hr>
-      <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
-      <hr>
-      <span class="edge no"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>IE</span><span>None</span></span>
-      <hr>
-      <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
-     </div>
-    </div>
-   </div>
 <pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed" id="ref-for-Exposed①"><c- g>Exposed</c-></a>=<c- n>Window</c->]
 <c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="xranchorset"><code><c- g>XRAnchorSet</c-></code></dfn> {
   <c- b>readonly</c-> <c- b>setlike</c->&lt;<a data-link-type="idl-name" href="#xranchor" id="ref-for-xranchor①③"><c- n>XRAnchor</c-></a>>;
@@ -1198,7 +1271,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <p>Optionally, native anchors can be <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="attached">attached</dfn> to native entities. A native anchor that is attached to a native entity attempts to maintain its position fixed relative to the entity to which it is attached (as opposed to the real world in case of free-floating anchors). When the device detects that the pose of the object to which the anchor is attached changes, the anchor will be updated accordingly. This does not imply that the object itself moved - it may be that the system’s understanding of its location changed. If the underlying system is capable of tracking moving objects, the native anchors attached to moving objects should be updated as well.</p>
    </ul>
    <p>In case the underlying device does not support native anchors, the user agents MAY decide to implement the anchors API through <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="emulated-native-anchors">emulated native anchors</dfn>. This approach assumes that anchors, once created, never change their pose, and their pose is the pose passed in by the application to the anchor creation methods such as <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe⑥">XRFrame</a></code>'s <code class="idl"><a data-link-type="idl" href="#dom-xrframe-createanchor" id="ref-for-dom-xrframe-createanchor④">createAnchor(pose, space)</a></code> or <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/hit-test/#xrhittestresult" id="ref-for-xrhittestresult④">XRHitTestResult</a></code>'s <code class="idl"><a data-link-type="idl" href="#dom-xrhittestresult-createanchor" id="ref-for-dom-xrhittestresult-createanchor②">createAnchor()</a></code>.</p>
-   <p class="note" role="note"><span>Note:</span> The <a data-link-type="dfn" href="#emulated-native-anchors" id="ref-for-emulated-native-anchors">emulated native anchors</a> approach is equivalent to the applications emulating the anchors feature themselves and can help reduce the number of different cases that the applications need to handle. It might also allow the applications to re-use the same code for <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr-ar-module/#dom-xrsessionmode-immersive-ar" id="ref-for-dom-xrsessionmode-immersive-ar①">"immersive-ar"</a></code> and <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrsessionmode-immersive-vr" id="ref-for-dom-xrsessionmode-immersive-vr">"immersive-vr"</a></code> sessions.</p>
+   <p class="note" role="note"><span class="marker">Note:</span> The <a data-link-type="dfn" href="#emulated-native-anchors" id="ref-for-emulated-native-anchors">emulated native anchors</a> approach is equivalent to the applications emulating the anchors feature themselves and can help reduce the number of different cases that the applications need to handle. It might also allow the applications to re-use the same code for <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr-ar-module/#dom-xrsessionmode-immersive-ar" id="ref-for-dom-xrsessionmode-immersive-ar①">"immersive-ar"</a></code> and <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrsessionmode-immersive-vr" id="ref-for-dom-xrsessionmode-immersive-vr">"immersive-vr"</a></code> sessions.</p>
    <h2 class="heading settled" data-level="8" id="privacy-security"><span class="secno">8. </span><span class="content">Privacy &amp; Security Considerations</span><a class="self-link" href="#privacy-security"></a></h2>
    <section class="non-normative">
     <p>The anchors API does not directly expose access to the information about the user environment. In case the session was created with <a data-link-type="dfn" href="https://immersive-web.github.io/hit-test/#hit-test" id="ref-for-hit-test">hit-test</a> support enabled and the device supports tracking moving objects, it may be possible for the application to infer the layout of the user’s environment by observing changes to anchor poses of objects that are, for example, carried around. This offers similar level of information about user’s environment as hit-testing API. Anchor feature has to be declared when creating an XR session, which will allow the user agents to notify the users about potential privacy implications of allowing the anchors API to be used by the website.</p>
@@ -1219,7 +1292,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     However, for readability,
     these words do not appear in all uppercase letters in this specification. </p>
    <p>All of the text of this specification is normative
-    except sections explicitly marked as non-normative, examples, and notes. <a data-link-type="biblio" href="#biblio-rfc2119">[RFC2119]</a> </p>
+    except sections explicitly marked as non-normative, examples, and notes. <a data-link-type="biblio" href="#biblio-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">[RFC2119]</a> </p>
    <p>Examples in this specification are introduced with the words “for example”
     or are set apart from the normative text
     with <code>class="example"</code>,
@@ -1269,6 +1342,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <li><a href="#xrsession-map-of-persistent-anchors">map of persistent anchors</a><span>, in § 4</span>
    <li><a href="#xrhittestresult-native-entity">native entity</a><span>, in § 4</span>
    <li><a href="#xranchor-native-origin">native origin</a><span>, in § 3.1</span>
+   <li><a href="#dom-xrsession-persistentanchors">persistentAnchors</a><span>, in § 4</span>
    <li><a href="#dom-xranchor-requestpersistenthandle">requestPersistentHandle()</a><span>, in § 3.1</span>
    <li><a href="#dom-xrsession-restorepersistentanchor">restorePersistentAnchor(uuid)</a><span>, in § 4</span>
    <li><a href="#xranchor-session">session</a><span>, in § 3.1</span>
@@ -1279,224 +1353,245 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <li><a href="#xranchor">XRAnchor</a><span>, in § 3.1</span>
    <li><a href="#xranchorset">XRAnchorSet</a><span>, in § 5</span>
   </ul>
-  <aside class="dfn-panel" data-for="term-for-concept-relevant-realm">
-   <a href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm">https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-8ee6ba3007ddbcc1bac5ed5548b8cb0e" class="dfn-panel" data-for="8ee6ba3007ddbcc1bac5ed5548b8cb0e" id="infopanel-for-8ee6ba3007ddbcc1bac5ed5548b8cb0e">
+   <span id="infopaneltitle-for-8ee6ba3007ddbcc1bac5ed5548b8cb0e" style="display:none">Info about the 'relevant realm' external reference.</span><a href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm">https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-concept-relevant-realm">3.1. XRAnchor</a>
     <li><a href="#ref-for-concept-relevant-realm①">4. Anchor creation</a> <a href="#ref-for-concept-relevant-realm②">(2)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-track-ended">
-   <a href="https://w3c.github.io/mediacapture-main/#track-ended">https://w3c.github.io/mediacapture-main/#track-ended</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-dfc38f270cd02572756621c3be8c1f1d" class="dfn-panel" data-for="dfc38f270cd02572756621c3be8c1f1d" id="infopanel-for-dfc38f270cd02572756621c3be8c1f1d">
+   <span id="infopaneltitle-for-dfc38f270cd02572756621c3be8c1f1d" style="display:none">Info about the 'ended' external reference.</span><a href="https://w3c.github.io/mediacapture-main/#track-ended">https://w3c.github.io/mediacapture-main/#track-ended</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-track-ended">4. Anchor creation</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-idl-DOMString">
-   <a href="https://webidl.spec.whatwg.org/#idl-DOMString">https://webidl.spec.whatwg.org/#idl-DOMString</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-d0f238a61de9310f1738a214749fab18" class="dfn-panel" data-for="d0f238a61de9310f1738a214749fab18" id="infopanel-for-d0f238a61de9310f1738a214749fab18">
+   <span id="infopaneltitle-for-d0f238a61de9310f1738a214749fab18" style="display:none">Info about the 'DOMString' external reference.</span><a href="https://webidl.spec.whatwg.org/#idl-DOMString">https://webidl.spec.whatwg.org/#idl-DOMString</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-idl-DOMString">3.1. XRAnchor</a>
-    <li><a href="#ref-for-idl-DOMString①">4. Anchor creation</a> <a href="#ref-for-idl-DOMString②">(2)</a>
+    <li><a href="#ref-for-idl-DOMString①">4. Anchor creation</a> <a href="#ref-for-idl-DOMString②">(2)</a> <a href="#ref-for-idl-DOMString③">(3)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-Exposed">
-   <a href="https://webidl.spec.whatwg.org/#Exposed">https://webidl.spec.whatwg.org/#Exposed</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-dde049eb112f043fc45407ec0d4cb457" class="dfn-panel" data-for="dde049eb112f043fc45407ec0d4cb457" id="infopanel-for-dde049eb112f043fc45407ec0d4cb457">
+   <span id="infopaneltitle-for-dde049eb112f043fc45407ec0d4cb457" style="display:none">Info about the 'Exposed' external reference.</span><a href="https://webidl.spec.whatwg.org/#Exposed">https://webidl.spec.whatwg.org/#Exposed</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-Exposed">3.1. XRAnchor</a>
     <li><a href="#ref-for-Exposed①">5. Anchor updates</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-invalidstateerror">
-   <a href="https://webidl.spec.whatwg.org/#invalidstateerror">https://webidl.spec.whatwg.org/#invalidstateerror</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-30e8367dc9a547b9096d98ba691987d9" class="dfn-panel" data-for="30e8367dc9a547b9096d98ba691987d9" id="infopanel-for-30e8367dc9a547b9096d98ba691987d9">
+   <span id="infopaneltitle-for-30e8367dc9a547b9096d98ba691987d9" style="display:none">Info about the 'FrozenArray' external reference.</span><a href="https://webidl.spec.whatwg.org/#idl-frozen-array">https://webidl.spec.whatwg.org/#idl-frozen-array</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-idl-frozen-array">4. Anchor creation</a>
+   </ul>
+  </aside>
+  <aside aria-labelledby="infopaneltitle-for-e2a06375a2fb70c61a8b4cd0abe9d4f1" class="dfn-panel" data-for="e2a06375a2fb70c61a8b4cd0abe9d4f1" id="infopanel-for-e2a06375a2fb70c61a8b4cd0abe9d4f1">
+   <span id="infopaneltitle-for-e2a06375a2fb70c61a8b4cd0abe9d4f1" style="display:none">Info about the 'InvalidStateError' external reference.</span><a href="https://webidl.spec.whatwg.org/#invalidstateerror">https://webidl.spec.whatwg.org/#invalidstateerror</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-invalidstateerror">3.1. XRAnchor</a> <a href="#ref-for-invalidstateerror①">(2)</a>
     <li><a href="#ref-for-invalidstateerror②">4. Anchor creation</a> <a href="#ref-for-invalidstateerror③">(2)</a> <a href="#ref-for-invalidstateerror④">(3)</a> <a href="#ref-for-invalidstateerror⑤">(4)</a> <a href="#ref-for-invalidstateerror⑥">(5)</a> <a href="#ref-for-invalidstateerror⑦">(6)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-idl-promise">
-   <a href="https://webidl.spec.whatwg.org/#idl-promise">https://webidl.spec.whatwg.org/#idl-promise</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-93669c631ec1ef8e696b4c083bdbe12c" class="dfn-panel" data-for="93669c631ec1ef8e696b4c083bdbe12c" id="infopanel-for-93669c631ec1ef8e696b4c083bdbe12c">
+   <span id="infopaneltitle-for-93669c631ec1ef8e696b4c083bdbe12c" style="display:none">Info about the 'Promise' external reference.</span><a href="https://webidl.spec.whatwg.org/#idl-promise">https://webidl.spec.whatwg.org/#idl-promise</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-idl-promise">3.1. XRAnchor</a>
     <li><a href="#ref-for-idl-promise①">4. Anchor creation</a> <a href="#ref-for-idl-promise②">(2)</a> <a href="#ref-for-idl-promise③">(3)</a> <a href="#ref-for-idl-promise④">(4)</a> <a href="#ref-for-idl-promise⑤">(5)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-SameObject">
-   <a href="https://webidl.spec.whatwg.org/#SameObject">https://webidl.spec.whatwg.org/#SameObject</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-f572762cd4679aeacd36722d99d2b741" class="dfn-panel" data-for="f572762cd4679aeacd36722d99d2b741" id="infopanel-for-f572762cd4679aeacd36722d99d2b741">
+   <span id="infopaneltitle-for-f572762cd4679aeacd36722d99d2b741" style="display:none">Info about the 'SameObject' external reference.</span><a href="https://webidl.spec.whatwg.org/#SameObject">https://webidl.spec.whatwg.org/#SameObject</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-SameObject">5. Anchor updates</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-SecureContext">
-   <a href="https://webidl.spec.whatwg.org/#SecureContext">https://webidl.spec.whatwg.org/#SecureContext</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-cdf224ec60dc3b08449a2fbdf3a90406" class="dfn-panel" data-for="cdf224ec60dc3b08449a2fbdf3a90406" id="infopanel-for-cdf224ec60dc3b08449a2fbdf3a90406">
+   <span id="infopaneltitle-for-cdf224ec60dc3b08449a2fbdf3a90406" style="display:none">Info about the 'SecureContext' external reference.</span><a href="https://webidl.spec.whatwg.org/#SecureContext">https://webidl.spec.whatwg.org/#SecureContext</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-SecureContext">3.1. XRAnchor</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-a-new-promise">
-   <a href="https://webidl.spec.whatwg.org/#a-new-promise">https://webidl.spec.whatwg.org/#a-new-promise</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-bbe33fc7ac016834e4aaddbfd1b084a1" class="dfn-panel" data-for="bbe33fc7ac016834e4aaddbfd1b084a1" id="infopanel-for-bbe33fc7ac016834e4aaddbfd1b084a1">
+   <span id="infopaneltitle-for-bbe33fc7ac016834e4aaddbfd1b084a1" style="display:none">Info about the 'a new promise' external reference.</span><a href="https://webidl.spec.whatwg.org/#a-new-promise">https://webidl.spec.whatwg.org/#a-new-promise</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-a-new-promise">3.1. XRAnchor</a>
     <li><a href="#ref-for-a-new-promise①">4. Anchor creation</a> <a href="#ref-for-a-new-promise②">(2)</a> <a href="#ref-for-a-new-promise③">(3)</a> <a href="#ref-for-a-new-promise④">(4)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-reject">
-   <a href="https://webidl.spec.whatwg.org/#reject">https://webidl.spec.whatwg.org/#reject</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-f7204c0306e7ffcb24c31adf6e629e1d" class="dfn-panel" data-for="f7204c0306e7ffcb24c31adf6e629e1d" id="infopanel-for-f7204c0306e7ffcb24c31adf6e629e1d">
+   <span id="infopaneltitle-for-f7204c0306e7ffcb24c31adf6e629e1d" style="display:none">Info about the 'reject' external reference.</span><a href="https://webidl.spec.whatwg.org/#reject">https://webidl.spec.whatwg.org/#reject</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-reject">3.1. XRAnchor</a>
     <li><a href="#ref-for-reject①">4. Anchor creation</a> <a href="#ref-for-reject②">(2)</a> <a href="#ref-for-reject③">(3)</a> <a href="#ref-for-reject④">(4)</a> <a href="#ref-for-reject⑤">(5)</a> <a href="#ref-for-reject⑥">(6)</a>
     <li><a href="#ref-for-reject⑦">5. Anchor updates</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-resolve">
-   <a href="https://webidl.spec.whatwg.org/#resolve">https://webidl.spec.whatwg.org/#resolve</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-f4f973f92274819781816b033aea1f11" class="dfn-panel" data-for="f4f973f92274819781816b033aea1f11" id="infopanel-for-f4f973f92274819781816b033aea1f11">
+   <span id="infopaneltitle-for-f4f973f92274819781816b033aea1f11" style="display:none">Info about the 'resolve' external reference.</span><a href="https://webidl.spec.whatwg.org/#resolve">https://webidl.spec.whatwg.org/#resolve</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-resolve">3.1. XRAnchor</a> <a href="#ref-for-resolve①">(2)</a>
     <li><a href="#ref-for-resolve②">5. Anchor updates</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-idl-undefined">
-   <a href="https://webidl.spec.whatwg.org/#idl-undefined">https://webidl.spec.whatwg.org/#idl-undefined</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-cee863f1f2ec91066cfb7f5d309d59dc" class="dfn-panel" data-for="cee863f1f2ec91066cfb7f5d309d59dc" id="infopanel-for-cee863f1f2ec91066cfb7f5d309d59dc">
+   <span id="infopaneltitle-for-cee863f1f2ec91066cfb7f5d309d59dc" style="display:none">Info about the 'undefined' external reference.</span><a href="https://webidl.spec.whatwg.org/#idl-undefined">https://webidl.spec.whatwg.org/#idl-undefined</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-idl-undefined">3.1. XRAnchor</a>
     <li><a href="#ref-for-idl-undefined①">4. Anchor creation</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-dom-xrsessionmode-immersive-vr">
-   <a href="https://immersive-web.github.io/webxr/#dom-xrsessionmode-immersive-vr">https://immersive-web.github.io/webxr/#dom-xrsessionmode-immersive-vr</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-d44fb277afe307546b3a51932b9382a4" class="dfn-panel" data-for="d44fb277afe307546b3a51932b9382a4" id="infopanel-for-d44fb277afe307546b3a51932b9382a4">
+   <span id="infopaneltitle-for-d44fb277afe307546b3a51932b9382a4" style="display:none">Info about the '"immersive-vr"' external reference.</span><a href="https://immersive-web.github.io/webxr/#dom-xrsessionmode-immersive-vr">https://immersive-web.github.io/webxr/#dom-xrsessionmode-immersive-vr</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-xrsessionmode-immersive-vr">7.1. Native anchor</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-xrframe">
-   <a href="https://immersive-web.github.io/webxr/#xrframe">https://immersive-web.github.io/webxr/#xrframe</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-596977dcd94762bb11bdde4ab8e407b5" class="dfn-panel" data-for="596977dcd94762bb11bdde4ab8e407b5" id="infopanel-for-596977dcd94762bb11bdde4ab8e407b5">
+   <span id="infopaneltitle-for-596977dcd94762bb11bdde4ab8e407b5" style="display:none">Info about the 'XRFrame' external reference.</span><a href="https://immersive-web.github.io/webxr/#xrframe">https://immersive-web.github.io/webxr/#xrframe</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrframe">4. Anchor creation</a> <a href="#ref-for-xrframe①">(2)</a> <a href="#ref-for-xrframe②">(3)</a>
     <li><a href="#ref-for-xrframe③">5. Anchor updates</a> <a href="#ref-for-xrframe④">(2)</a> <a href="#ref-for-xrframe⑤">(3)</a>
     <li><a href="#ref-for-xrframe⑥">7.1. Native anchor</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-xrrigidtransform">
-   <a href="https://immersive-web.github.io/webxr/#xrrigidtransform">https://immersive-web.github.io/webxr/#xrrigidtransform</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-0980efedcc382890ad08b4d590b1894a" class="dfn-panel" data-for="0980efedcc382890ad08b4d590b1894a" id="infopanel-for-0980efedcc382890ad08b4d590b1894a">
+   <span id="infopaneltitle-for-0980efedcc382890ad08b4d590b1894a" style="display:none">Info about the 'XRRigidTransform' external reference.</span><a href="https://immersive-web.github.io/webxr/#xrrigidtransform">https://immersive-web.github.io/webxr/#xrrigidtransform</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrrigidtransform">4. Anchor creation</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-xrsession">
-   <a href="https://immersive-web.github.io/webxr/#xrsession">https://immersive-web.github.io/webxr/#xrsession</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-77ec9a92d6985121a28037297802b7ba" class="dfn-panel" data-for="77ec9a92d6985121a28037297802b7ba" id="infopanel-for-77ec9a92d6985121a28037297802b7ba">
+   <span id="infopaneltitle-for-77ec9a92d6985121a28037297802b7ba" style="display:none">Info about the 'XRSession' external reference.</span><a href="https://immersive-web.github.io/webxr/#xrsession">https://immersive-web.github.io/webxr/#xrsession</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrsession">4. Anchor creation</a> <a href="#ref-for-xrsession①">(2)</a> <a href="#ref-for-xrsession②">(3)</a> <a href="#ref-for-xrsession③">(4)</a> <a href="#ref-for-xrsession④">(5)</a> <a href="#ref-for-xrsession⑤">(6)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-xrspace">
-   <a href="https://immersive-web.github.io/webxr/#xrspace">https://immersive-web.github.io/webxr/#xrspace</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-81d38bc4c9f63ab509668b59b3e58f93" class="dfn-panel" data-for="81d38bc4c9f63ab509668b59b3e58f93" id="infopanel-for-81d38bc4c9f63ab509668b59b3e58f93">
+   <span id="infopaneltitle-for-81d38bc4c9f63ab509668b59b3e58f93" style="display:none">Info about the 'XRSpace' external reference.</span><a href="https://immersive-web.github.io/webxr/#xrspace">https://immersive-web.github.io/webxr/#xrspace</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrspace">3.1. XRAnchor</a> <a href="#ref-for-xrspace①">(2)</a> <a href="#ref-for-xrspace②">(3)</a>
     <li><a href="#ref-for-xrspace③">4. Anchor creation</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-xrsystem">
-   <a href="https://immersive-web.github.io/webxr/#xrsystem">https://immersive-web.github.io/webxr/#xrsystem</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-fd4e84bd3bd481c9ac21d3164092bed2" class="dfn-panel" data-for="fd4e84bd3bd481c9ac21d3164092bed2" id="infopanel-for-fd4e84bd3bd481c9ac21d3164092bed2">
+   <span id="infopaneltitle-for-fd4e84bd3bd481c9ac21d3164092bed2" style="display:none">Info about the 'XRSystem' external reference.</span><a href="https://immersive-web.github.io/webxr/#xrsystem">https://immersive-web.github.io/webxr/#xrsystem</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrsystem">3.1. XRAnchor</a> <a href="#ref-for-xrsystem①">(2)</a>
     <li><a href="#ref-for-xrsystem②">4. Anchor creation</a> <a href="#ref-for-xrsystem③">(2)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-xrframe-active">
-   <a href="https://www.w3.org/TR/webxr/#xrframe-active">https://www.w3.org/TR/webxr/#xrframe-active</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-1c8f701e24939749dc3074c6cb284d25" class="dfn-panel" data-for="1c8f701e24939749dc3074c6cb284d25" id="infopanel-for-1c8f701e24939749dc3074c6cb284d25">
+   <span id="infopaneltitle-for-1c8f701e24939749dc3074c6cb284d25" style="display:none">Info about the 'active' external reference.</span><a href="https://www.w3.org/TR/webxr/#xrframe-active">https://www.w3.org/TR/webxr/#xrframe-active</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrframe-active">4. Anchor creation</a> <a href="#ref-for-xrframe-active①">(2)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-capable-of-supporting">
-   <a href="https://www.w3.org/TR/webxr/#capable-of-supporting">https://www.w3.org/TR/webxr/#capable-of-supporting</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-b2bd91e589832aa6319a00857c3b1eca" class="dfn-panel" data-for="b2bd91e589832aa6319a00857c3b1eca" id="infopanel-for-b2bd91e589832aa6319a00857c3b1eca">
+   <span id="infopaneltitle-for-b2bd91e589832aa6319a00857c3b1eca" style="display:none">Info about the 'capable of supporting' external reference.</span><a href="https://www.w3.org/TR/webxr/#capable-of-supporting">https://www.w3.org/TR/webxr/#capable-of-supporting</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-capable-of-supporting">2.1. Feature descriptor</a> <a href="#ref-for-capable-of-supporting①">(2)</a>
     <li><a href="#ref-for-capable-of-supporting②">7.1. Native anchor</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-xrspace-effective-origin">
-   <a href="https://www.w3.org/TR/webxr/#xrspace-effective-origin">https://www.w3.org/TR/webxr/#xrspace-effective-origin</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-14f7c5b503802706983232b83c83b45a" class="dfn-panel" data-for="14f7c5b503802706983232b83c83b45a" id="infopanel-for-14f7c5b503802706983232b83c83b45a">
+   <span id="infopaneltitle-for-14f7c5b503802706983232b83c83b45a" style="display:none">Info about the 'effective origin' external reference.</span><a href="https://www.w3.org/TR/webxr/#xrspace-effective-origin">https://www.w3.org/TR/webxr/#xrspace-effective-origin</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrspace-effective-origin">4. Anchor creation</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-feature-descriptor">
-   <a href="https://www.w3.org/TR/webxr/#feature-descriptor">https://www.w3.org/TR/webxr/#feature-descriptor</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-d61792e8e88973946f189474bb47a38a" class="dfn-panel" data-for="d61792e8e88973946f189474bb47a38a" id="infopanel-for-d61792e8e88973946f189474bb47a38a">
+   <span id="infopaneltitle-for-d61792e8e88973946f189474bb47a38a" style="display:none">Info about the 'feature descriptor' external reference.</span><a href="https://www.w3.org/TR/webxr/#feature-descriptor">https://www.w3.org/TR/webxr/#feature-descriptor</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-feature-descriptor">2.1. Feature descriptor</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-inline-xr-device">
-   <a href="https://www.w3.org/TR/webxr/#inline-xr-device">https://www.w3.org/TR/webxr/#inline-xr-device</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-ac2c6499beb2d213806fe92fdc5d6b93" class="dfn-panel" data-for="ac2c6499beb2d213806fe92fdc5d6b93" id="infopanel-for-ac2c6499beb2d213806fe92fdc5d6b93">
+   <span id="infopaneltitle-for-ac2c6499beb2d213806fe92fdc5d6b93" style="display:none">Info about the 'inline xr device' external reference.</span><a href="https://www.w3.org/TR/webxr/#inline-xr-device">https://www.w3.org/TR/webxr/#inline-xr-device</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-inline-xr-device">2.1. Feature descriptor</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-xrsession-list-of-frame-updates">
-   <a href="https://www.w3.org/TR/webxr/#xrsession-list-of-frame-updates">https://www.w3.org/TR/webxr/#xrsession-list-of-frame-updates</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-868307d6690595c598e153c0557d64d1" class="dfn-panel" data-for="868307d6690595c598e153c0557d64d1" id="infopanel-for-868307d6690595c598e153c0557d64d1">
+   <span id="infopaneltitle-for-868307d6690595c598e153c0557d64d1" style="display:none">Info about the 'list of frame updates' external reference.</span><a href="https://www.w3.org/TR/webxr/#xrsession-list-of-frame-updates">https://www.w3.org/TR/webxr/#xrsession-list-of-frame-updates</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrsession-list-of-frame-updates">4. Anchor creation</a> <a href="#ref-for-xrsession-list-of-frame-updates①">(2)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-xrsession-mode">
-   <a href="https://www.w3.org/TR/webxr/#xrsession-mode">https://www.w3.org/TR/webxr/#xrsession-mode</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-4fda892f45ff566cb96c105cee32f5b3" class="dfn-panel" data-for="4fda892f45ff566cb96c105cee32f5b3" id="infopanel-for-4fda892f45ff566cb96c105cee32f5b3">
+   <span id="infopaneltitle-for-4fda892f45ff566cb96c105cee32f5b3" style="display:none">Info about the 'mode' external reference.</span><a href="https://www.w3.org/TR/webxr/#xrsession-mode">https://www.w3.org/TR/webxr/#xrsession-mode</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrsession-mode">2.1. Feature descriptor</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-xrspace-native-origin">
-   <a href="https://www.w3.org/TR/webxr/#xrspace-native-origin">https://www.w3.org/TR/webxr/#xrspace-native-origin</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-bf5999d4e3362c9120db2a3712a5e6b6" class="dfn-panel" data-for="bf5999d4e3362c9120db2a3712a5e6b6" id="infopanel-for-bf5999d4e3362c9120db2a3712a5e6b6">
+   <span id="infopaneltitle-for-bf5999d4e3362c9120db2a3712a5e6b6" style="display:none">Info about the 'native origin' external reference.</span><a href="https://www.w3.org/TR/webxr/#xrspace-native-origin">https://www.w3.org/TR/webxr/#xrspace-native-origin</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrspace-native-origin">3.1. XRAnchor</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-xrspace-session">
-   <a href="https://www.w3.org/TR/webxr/#xrspace-session">https://www.w3.org/TR/webxr/#xrspace-session</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-fe29497eb4e3a3f8342191796d3fa92f" class="dfn-panel" data-for="fe29497eb4e3a3f8342191796d3fa92f" id="infopanel-for-fe29497eb4e3a3f8342191796d3fa92f">
+   <span id="infopaneltitle-for-fe29497eb4e3a3f8342191796d3fa92f" style="display:none">Info about the 'session (for XRFrame)' external reference.</span><a href="https://www.w3.org/TR/webxr/#dom-xrframe-session">https://www.w3.org/TR/webxr/#dom-xrframe-session</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrframe-session">4. Anchor creation</a> <a href="#ref-for-dom-xrframe-session①">(2)</a>
+    <li><a href="#ref-for-dom-xrframe-session②">5. Anchor updates</a>
+    <li><a href="#ref-for-dom-xrframe-session③">6. Anchor removal</a>
+   </ul>
+  </aside>
+  <aside aria-labelledby="infopaneltitle-for-0e50dc8432c1db8c3bd7486751a062bb" class="dfn-panel" data-for="0e50dc8432c1db8c3bd7486751a062bb" id="infopanel-for-0e50dc8432c1db8c3bd7486751a062bb">
+   <span id="infopaneltitle-for-0e50dc8432c1db8c3bd7486751a062bb" style="display:none">Info about the 'session (for XRSpace)' external reference.</span><a href="https://www.w3.org/TR/webxr/#xrspace-session">https://www.w3.org/TR/webxr/#xrspace-session</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrspace-session">3.1. XRAnchor</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-xrframe-time">
-   <a href="https://www.w3.org/TR/webxr/#xrframe-time">https://www.w3.org/TR/webxr/#xrframe-time</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-d201a070d2494418528eab4534b97c88" class="dfn-panel" data-for="d201a070d2494418528eab4534b97c88" id="infopanel-for-d201a070d2494418528eab4534b97c88">
+   <span id="infopaneltitle-for-d201a070d2494418528eab4534b97c88" style="display:none">Info about the 'time' external reference.</span><a href="https://www.w3.org/TR/webxr/#xrframe-time">https://www.w3.org/TR/webxr/#xrframe-time</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrframe-time">4. Anchor creation</a> <a href="#ref-for-xrframe-time①">(2)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-xrsession-xr-device">
-   <a href="https://www.w3.org/TR/webxr/#xrsession-xr-device">https://www.w3.org/TR/webxr/#xrsession-xr-device</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-3f7cb7797011d7a4657b78a27c6c53c5" class="dfn-panel" data-for="3f7cb7797011d7a4657b78a27c6c53c5" id="infopanel-for-3f7cb7797011d7a4657b78a27c6c53c5">
+   <span id="infopaneltitle-for-3f7cb7797011d7a4657b78a27c6c53c5" style="display:none">Info about the 'xr device' external reference.</span><a href="https://www.w3.org/TR/webxr/#xr-device">https://www.w3.org/TR/webxr/#xr-device</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-xr-device">4. Anchor creation</a>
+    <li><a href="#ref-for-xr-device①">7.1. Native anchor</a>
+   </ul>
+  </aside>
+  <aside aria-labelledby="infopaneltitle-for-00ff6dc8f6cd3081e6303cc2b49669d9" class="dfn-panel" data-for="00ff6dc8f6cd3081e6303cc2b49669d9" id="infopanel-for-00ff6dc8f6cd3081e6303cc2b49669d9">
+   <span id="infopaneltitle-for-00ff6dc8f6cd3081e6303cc2b49669d9" style="display:none">Info about the 'xr device (for XRSession)' external reference.</span><a href="https://www.w3.org/TR/webxr/#xrsession-xr-device">https://www.w3.org/TR/webxr/#xrsession-xr-device</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrsession-xr-device">4. Anchor creation</a> <a href="#ref-for-xrsession-xr-device①">(2)</a>
     <li><a href="#ref-for-xrsession-xr-device②">5. Anchor updates</a>
     <li><a href="#ref-for-xrsession-xr-device③">6. Anchor removal</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-xrhittestresult">
-   <a href="https://immersive-web.github.io/hit-test/#xrhittestresult">https://immersive-web.github.io/hit-test/#xrhittestresult</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-1aeaf5277e7c784ac0e5984ae9fbb76c" class="dfn-panel" data-for="1aeaf5277e7c784ac0e5984ae9fbb76c" id="infopanel-for-1aeaf5277e7c784ac0e5984ae9fbb76c">
+   <span id="infopaneltitle-for-1aeaf5277e7c784ac0e5984ae9fbb76c" style="display:none">Info about the 'XRHitTestResult' external reference.</span><a href="https://immersive-web.github.io/hit-test/#xrhittestresult">https://immersive-web.github.io/hit-test/#xrhittestresult</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrhittestresult">4. Anchor creation</a> <a href="#ref-for-xrhittestresult①">(2)</a> <a href="#ref-for-xrhittestresult②">(3)</a> <a href="#ref-for-xrhittestresult③">(4)</a>
     <li><a href="#ref-for-xrhittestresult④">7.1. Native anchor</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-xrhittestresult-frame">
-   <a href="https://immersive-web.github.io/hit-test/#xrhittestresult-frame">https://immersive-web.github.io/hit-test/#xrhittestresult-frame</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-4a3a1120f9a6a729fe09b66292026ddf" class="dfn-panel" data-for="4a3a1120f9a6a729fe09b66292026ddf" id="infopanel-for-4a3a1120f9a6a729fe09b66292026ddf">
+   <span id="infopaneltitle-for-4a3a1120f9a6a729fe09b66292026ddf" style="display:none">Info about the 'frame' external reference.</span><a href="https://immersive-web.github.io/hit-test/#xrhittestresult-frame">https://immersive-web.github.io/hit-test/#xrhittestresult-frame</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrhittestresult-frame">4. Anchor creation</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-hit-test">
-   <a href="https://immersive-web.github.io/hit-test/#hit-test">https://immersive-web.github.io/hit-test/#hit-test</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-ecbcd7df6bd4ca43c48b275bdf06e297" class="dfn-panel" data-for="ecbcd7df6bd4ca43c48b275bdf06e297" id="infopanel-for-ecbcd7df6bd4ca43c48b275bdf06e297">
+   <span id="infopaneltitle-for-ecbcd7df6bd4ca43c48b275bdf06e297" style="display:none">Info about the 'hit-test' external reference.</span><a href="https://immersive-web.github.io/hit-test/#hit-test">https://immersive-web.github.io/hit-test/#hit-test</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-hit-test">8. Privacy &amp; Security Considerations</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-xrhittestresult-native-origin">
-   <a href="https://immersive-web.github.io/hit-test/#xrhittestresult-native-origin">https://immersive-web.github.io/hit-test/#xrhittestresult-native-origin</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-dafc04b03a348d2145d836892b6db57e" class="dfn-panel" data-for="dafc04b03a348d2145d836892b6db57e" id="infopanel-for-dafc04b03a348d2145d836892b6db57e">
+   <span id="infopaneltitle-for-dafc04b03a348d2145d836892b6db57e" style="display:none">Info about the 'native origin' external reference.</span><a href="https://immersive-web.github.io/hit-test/#xrhittestresult-native-origin">https://immersive-web.github.io/hit-test/#xrhittestresult-native-origin</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrhittestresult-native-origin">4. Anchor creation</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-dom-xrsessionmode-immersive-ar">
-   <a href="https://immersive-web.github.io/webxr-ar-module/#dom-xrsessionmode-immersive-ar">https://immersive-web.github.io/webxr-ar-module/#dom-xrsessionmode-immersive-ar</a><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-eff3cf3f9d2357ddf6b6dbb15ec50217" class="dfn-panel" data-for="eff3cf3f9d2357ddf6b6dbb15ec50217" id="infopanel-for-eff3cf3f9d2357ddf6b6dbb15ec50217">
+   <span id="infopaneltitle-for-eff3cf3f9d2357ddf6b6dbb15ec50217" style="display:none">Info about the '"immersive-ar"' external reference.</span><a href="https://immersive-web.github.io/webxr-ar-module/#dom-xrsessionmode-immersive-ar">https://immersive-web.github.io/webxr-ar-module/#dom-xrsessionmode-immersive-ar</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-xrsessionmode-immersive-ar">2.1. Feature descriptor</a>
     <li><a href="#ref-for-dom-xrsessionmode-immersive-ar①">7.1. Native anchor</a>
@@ -1507,64 +1602,67 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <li>
     <a data-link-type="biblio">[HTML]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-concept-relevant-realm">relevant realm</span>
+     <li><span class="dfn-paneled" id="8ee6ba3007ddbcc1bac5ed5548b8cb0e">relevant realm</span>
     </ul>
    <li>
     <a data-link-type="biblio">[MEDIACAPTURE-STREAMS]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-track-ended">ended</span>
+     <li><span class="dfn-paneled" id="dfc38f270cd02572756621c3be8c1f1d">ended</span>
     </ul>
    <li>
     <a data-link-type="biblio">[WEBIDL]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-idl-DOMString">DOMString</span>
-     <li><span class="dfn-paneled" id="term-for-Exposed">Exposed</span>
-     <li><span class="dfn-paneled" id="term-for-invalidstateerror">InvalidStateError</span>
-     <li><span class="dfn-paneled" id="term-for-idl-promise">Promise</span>
-     <li><span class="dfn-paneled" id="term-for-SameObject">SameObject</span>
-     <li><span class="dfn-paneled" id="term-for-SecureContext">SecureContext</span>
-     <li><span class="dfn-paneled" id="term-for-a-new-promise">a new promise</span>
-     <li><span class="dfn-paneled" id="term-for-reject">reject</span>
-     <li><span class="dfn-paneled" id="term-for-resolve">resolve</span>
-     <li><span class="dfn-paneled" id="term-for-idl-undefined">undefined</span>
+     <li><span class="dfn-paneled" id="d0f238a61de9310f1738a214749fab18">DOMString</span>
+     <li><span class="dfn-paneled" id="dde049eb112f043fc45407ec0d4cb457">Exposed</span>
+     <li><span class="dfn-paneled" id="30e8367dc9a547b9096d98ba691987d9">FrozenArray</span>
+     <li><span class="dfn-paneled" id="e2a06375a2fb70c61a8b4cd0abe9d4f1">InvalidStateError</span>
+     <li><span class="dfn-paneled" id="93669c631ec1ef8e696b4c083bdbe12c">Promise</span>
+     <li><span class="dfn-paneled" id="f572762cd4679aeacd36722d99d2b741">SameObject</span>
+     <li><span class="dfn-paneled" id="cdf224ec60dc3b08449a2fbdf3a90406">SecureContext</span>
+     <li><span class="dfn-paneled" id="bbe33fc7ac016834e4aaddbfd1b084a1">a new promise</span>
+     <li><span class="dfn-paneled" id="f7204c0306e7ffcb24c31adf6e629e1d">reject</span>
+     <li><span class="dfn-paneled" id="f4f973f92274819781816b033aea1f11">resolve</span>
+     <li><span class="dfn-paneled" id="cee863f1f2ec91066cfb7f5d309d59dc">undefined</span>
     </ul>
    <li>
     <a data-link-type="biblio">[WEBXR]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-dom-xrsessionmode-immersive-vr">"immersive-vr"</span>
-     <li><span class="dfn-paneled" id="term-for-xrframe">XRFrame</span>
-     <li><span class="dfn-paneled" id="term-for-xrrigidtransform">XRRigidTransform</span>
-     <li><span class="dfn-paneled" id="term-for-xrsession">XRSession</span>
-     <li><span class="dfn-paneled" id="term-for-xrspace">XRSpace</span>
-     <li><span class="dfn-paneled" id="term-for-xrsystem">XRSystem</span>
+     <li><span class="dfn-paneled" id="d44fb277afe307546b3a51932b9382a4">"immersive-vr"</span>
+     <li><span class="dfn-paneled" id="596977dcd94762bb11bdde4ab8e407b5">XRFrame</span>
+     <li><span class="dfn-paneled" id="0980efedcc382890ad08b4d590b1894a">XRRigidTransform</span>
+     <li><span class="dfn-paneled" id="77ec9a92d6985121a28037297802b7ba">XRSession</span>
+     <li><span class="dfn-paneled" id="81d38bc4c9f63ab509668b59b3e58f93">XRSpace</span>
+     <li><span class="dfn-paneled" id="fd4e84bd3bd481c9ac21d3164092bed2">XRSystem</span>
     </ul>
    <li>
     <a data-link-type="biblio">[WEBXR DEVICE API - LEVEL 1]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-xrframe-active">active</span>
-     <li><span class="dfn-paneled" id="term-for-capable-of-supporting">capable of supporting</span>
-     <li><span class="dfn-paneled" id="term-for-xrspace-effective-origin">effective origin</span>
-     <li><span class="dfn-paneled" id="term-for-feature-descriptor">feature descriptor</span>
-     <li><span class="dfn-paneled" id="term-for-inline-xr-device">inline xr device</span>
-     <li><span class="dfn-paneled" id="term-for-xrsession-list-of-frame-updates">list of frame updates</span>
-     <li><span class="dfn-paneled" id="term-for-xrsession-mode">mode</span>
-     <li><span class="dfn-paneled" id="term-for-xrspace-native-origin">native origin</span>
-     <li><span class="dfn-paneled" id="term-for-xrspace-session">session <small>(for XRSpace)</small></span>
-     <li><span class="dfn-paneled" id="term-for-xrframe-time">time</span>
-     <li><span class="dfn-paneled" id="term-for-xrsession-xr-device">xr device <small>(for XRSession)</small></span>
+     <li><span class="dfn-paneled" id="1c8f701e24939749dc3074c6cb284d25">active</span>
+     <li><span class="dfn-paneled" id="b2bd91e589832aa6319a00857c3b1eca">capable of supporting</span>
+     <li><span class="dfn-paneled" id="14f7c5b503802706983232b83c83b45a">effective origin</span>
+     <li><span class="dfn-paneled" id="d61792e8e88973946f189474bb47a38a">feature descriptor</span>
+     <li><span class="dfn-paneled" id="ac2c6499beb2d213806fe92fdc5d6b93">inline xr device</span>
+     <li><span class="dfn-paneled" id="868307d6690595c598e153c0557d64d1">list of frame updates</span>
+     <li><span class="dfn-paneled" id="4fda892f45ff566cb96c105cee32f5b3">mode</span>
+     <li><span class="dfn-paneled" id="bf5999d4e3362c9120db2a3712a5e6b6">native origin</span>
+     <li><span class="dfn-paneled" id="fe29497eb4e3a3f8342191796d3fa92f">session <small>(for XRFrame)</small></span>
+     <li><span class="dfn-paneled" id="0e50dc8432c1db8c3bd7486751a062bb">session <small>(for XRSpace)</small></span>
+     <li><span class="dfn-paneled" id="d201a070d2494418528eab4534b97c88">time</span>
+     <li><span class="dfn-paneled" id="3f7cb7797011d7a4657b78a27c6c53c5">xr device</span>
+     <li><span class="dfn-paneled" id="00ff6dc8f6cd3081e6303cc2b49669d9">xr device <small>(for XRSession)</small></span>
     </ul>
    <li>
     <a data-link-type="biblio">[WEBXR HIT TEST MODULE]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-xrhittestresult">XRHitTestResult</span>
-     <li><span class="dfn-paneled" id="term-for-xrhittestresult-frame">frame</span>
-     <li><span class="dfn-paneled" id="term-for-hit-test">hit-test</span>
-     <li><span class="dfn-paneled" id="term-for-xrhittestresult-native-origin">native origin</span>
+     <li><span class="dfn-paneled" id="1aeaf5277e7c784ac0e5984ae9fbb76c">XRHitTestResult</span>
+     <li><span class="dfn-paneled" id="4a3a1120f9a6a729fe09b66292026ddf">frame</span>
+     <li><span class="dfn-paneled" id="ecbcd7df6bd4ca43c48b275bdf06e297">hit-test</span>
+     <li><span class="dfn-paneled" id="dafc04b03a348d2145d836892b6db57e">native origin</span>
     </ul>
    <li>
     <a data-link-type="biblio">[WEBXR-AR-MODULE-1]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-dom-xrsessionmode-immersive-ar">"immersive-ar"</span>
+     <li><span class="dfn-paneled" id="eff3cf3f9d2357ddf6b6dbb15ec50217">"immersive-ar"</span>
     </ul>
   </ul>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
@@ -1600,6 +1698,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 };
 
 <c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrsession"><c- g>XRSession</c-></a> {
+  <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-frozen-array"><c- b>FrozenArray</c-></a>&lt;<a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString"><c- b>DOMString</c-></a>> <a data-readonly data-type="FrozenArray<DOMString>" href="#dom-xrsession-persistentanchors"><code><c- g>persistentAnchors</c-></code></a>;
+
   <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise"><c- b>Promise</c-></a>&lt;<a data-link-type="idl-name" href="#xranchor"><c- n>XRAnchor</c-></a>> <a href="#dom-xrsession-restorepersistentanchor"><code><c- g>restorePersistentAnchor</c-></code></a>(<a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString"><c- b>DOMString</c-></a> <a href="#dom-xrsession-restorepersistentanchor-uuid-uuid"><code><c- g>uuid</c-></code></a>);
   <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise"><c- b>Promise</c-></a>&lt;<a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-undefined"><c- b>undefined</c-></a>> <a href="#dom-xrsession-deletepersistentanchor"><code><c- g>deletePersistentAnchor</c-></code></a>(<a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString"><c- b>DOMString</c-></a> <a href="#dom-xrsession-deletepersistentanchor-uuid-uuid"><code><c- g>uuid</c-></code></a>);
 };
@@ -1623,14 +1723,14 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <div class="issue"> Session’s "list of frame updates" might need to have a way of specifying ordering - some algorithms may depend on others. <a class="issue-return" href="#issue-02fc6c42" title="Jump to section">↵</a></div>
    <div class="issue"> I’m not aware of devices that support tracking general objects that move - should they be considered by the spec at all? Are there any examples of such devices? <a class="issue-return" href="#issue-8bf9de01" title="Jump to section">↵</a></div>
   </div>
-  <aside class="dfn-panel" data-for="anchors">
-   <b><a href="#anchors">#anchors</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-anchors" class="dfn-panel" data-for="anchors" id="infopanel-for-anchors">
+   <span id="infopaneltitle-for-anchors" style="display:none">Info about the 'anchors' definition.</span><b><a href="#anchors">#anchors</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-anchors">7.1. Native anchor</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="xranchor">
-   <b><a href="#xranchor">#xranchor</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-xranchor" class="dfn-panel" data-for="xranchor" id="infopanel-for-xranchor">
+   <span id="infopaneltitle-for-xranchor" style="display:none">Info about the 'XRAnchor' definition.</span><b><a href="#xranchor">#xranchor</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xranchor">3.1. XRAnchor</a> <a href="#ref-for-xranchor①">(2)</a> <a href="#ref-for-xranchor②">(3)</a> <a href="#ref-for-xranchor③">(4)</a> <a href="#ref-for-xranchor④">(5)</a> <a href="#ref-for-xranchor⑤">(6)</a>
     <li><a href="#ref-for-xranchor⑥">4. Anchor creation</a> <a href="#ref-for-xranchor⑦">(2)</a> <a href="#ref-for-xranchor⑧">(3)</a> <a href="#ref-for-xranchor⑨">(4)</a> <a href="#ref-for-xranchor①⓪">(5)</a> <a href="#ref-for-xranchor①①">(6)</a> <a href="#ref-for-xranchor①②">(7)</a>
@@ -1638,34 +1738,34 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <li><a href="#ref-for-xranchor①④">6. Anchor removal</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="dom-xranchor-anchorspace">
-   <b><a href="#dom-xranchor-anchorspace">#dom-xranchor-anchorspace</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-dom-xranchor-anchorspace" class="dfn-panel" data-for="dom-xranchor-anchorspace" id="infopanel-for-dom-xranchor-anchorspace">
+   <span id="infopaneltitle-for-dom-xranchor-anchorspace" style="display:none">Info about the 'anchorSpace' definition.</span><b><a href="#dom-xranchor-anchorspace">#dom-xranchor-anchorspace</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-xranchor-anchorspace">3.1. XRAnchor</a> <a href="#ref-for-dom-xranchor-anchorspace①">(2)</a>
     <li><a href="#ref-for-dom-xranchor-anchorspace②">6. Anchor removal</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="dom-xranchor-requestpersistenthandle">
-   <b><a href="#dom-xranchor-requestpersistenthandle">#dom-xranchor-requestpersistenthandle</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-dom-xranchor-requestpersistenthandle" class="dfn-panel" data-for="dom-xranchor-requestpersistenthandle" id="infopanel-for-dom-xranchor-requestpersistenthandle">
+   <span id="infopaneltitle-for-dom-xranchor-requestpersistenthandle" style="display:none">Info about the 'requestPersistentHandle' definition.</span><b><a href="#dom-xranchor-requestpersistenthandle">#dom-xranchor-requestpersistenthandle</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-xranchor-requestpersistenthandle">3.1. XRAnchor</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="dom-xranchor-delete">
-   <b><a href="#dom-xranchor-delete">#dom-xranchor-delete</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-dom-xranchor-delete" class="dfn-panel" data-for="dom-xranchor-delete" id="infopanel-for-dom-xranchor-delete">
+   <span id="infopaneltitle-for-dom-xranchor-delete" style="display:none">Info about the 'delete' definition.</span><b><a href="#dom-xranchor-delete">#dom-xranchor-delete</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-xranchor-delete">6. Anchor removal</a> <a href="#ref-for-dom-xranchor-delete①">(2)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="xranchor-deleted">
-   <b><a href="#xranchor-deleted">#xranchor-deleted</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-xranchor-deleted" class="dfn-panel" data-for="xranchor-deleted" id="infopanel-for-xranchor-deleted">
+   <span id="infopaneltitle-for-xranchor-deleted" style="display:none">Info about the 'deleted' definition.</span><b><a href="#xranchor-deleted">#xranchor-deleted</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xranchor-deleted">3.1. XRAnchor</a> <a href="#ref-for-xranchor-deleted①">(2)</a> <a href="#ref-for-xranchor-deleted②">(3)</a>
     <li><a href="#ref-for-xranchor-deleted③">6. Anchor removal</a> <a href="#ref-for-xranchor-deleted④">(2)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="xranchor-native-origin">
-   <b><a href="#xranchor-native-origin">#xranchor-native-origin</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-xranchor-native-origin" class="dfn-panel" data-for="xranchor-native-origin" id="infopanel-for-xranchor-native-origin">
+   <span id="infopaneltitle-for-xranchor-native-origin" style="display:none">Info about the 'native origin' definition.</span><b><a href="#xranchor-native-origin">#xranchor-native-origin</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xranchor-native-origin">3.1. XRAnchor</a> <a href="#ref-for-xranchor-native-origin①">(2)</a>
     <li><a href="#ref-for-xranchor-native-origin②">5. Anchor updates</a>
@@ -1673,200 +1773,409 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <li><a href="#ref-for-xranchor-native-origin④">7.1. Native anchor</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="xranchor-session">
-   <b><a href="#xranchor-session">#xranchor-session</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-xranchor-session" class="dfn-panel" data-for="xranchor-session" id="infopanel-for-xranchor-session">
+   <span id="infopaneltitle-for-xranchor-session" style="display:none">Info about the 'session' definition.</span><b><a href="#xranchor-session">#xranchor-session</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xranchor-session">3.1. XRAnchor</a> <a href="#ref-for-xranchor-session①">(2)</a> <a href="#ref-for-xranchor-session②">(3)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="create-new-anchor-object">
-   <b><a href="#create-new-anchor-object">#create-new-anchor-object</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-create-new-anchor-object" class="dfn-panel" data-for="create-new-anchor-object" id="infopanel-for-create-new-anchor-object">
+   <span id="infopaneltitle-for-create-new-anchor-object" style="display:none">Info about the 'create new anchor object' definition.</span><b><a href="#create-new-anchor-object">#create-new-anchor-object</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-create-new-anchor-object">4. Anchor creation</a> <a href="#ref-for-create-new-anchor-object①">(2)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="xrsession-set-of-tracked-anchors">
-   <b><a href="#xrsession-set-of-tracked-anchors">#xrsession-set-of-tracked-anchors</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-xrsession-set-of-tracked-anchors" class="dfn-panel" data-for="xrsession-set-of-tracked-anchors" id="infopanel-for-xrsession-set-of-tracked-anchors">
+   <span id="infopaneltitle-for-xrsession-set-of-tracked-anchors" style="display:none">Info about the 'set of tracked anchors' definition.</span><b><a href="#xrsession-set-of-tracked-anchors">#xrsession-set-of-tracked-anchors</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrsession-set-of-tracked-anchors">4. Anchor creation</a> <a href="#ref-for-xrsession-set-of-tracked-anchors①">(2)</a> <a href="#ref-for-xrsession-set-of-tracked-anchors②">(3)</a>
     <li><a href="#ref-for-xrsession-set-of-tracked-anchors③">5. Anchor updates</a> <a href="#ref-for-xrsession-set-of-tracked-anchors④">(2)</a> <a href="#ref-for-xrsession-set-of-tracked-anchors⑤">(3)</a>
     <li><a href="#ref-for-xrsession-set-of-tracked-anchors⑥">6. Anchor removal</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="xrsession-map-of-persistent-anchors">
-   <b><a href="#xrsession-map-of-persistent-anchors">#xrsession-map-of-persistent-anchors</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-xrsession-map-of-persistent-anchors" class="dfn-panel" data-for="xrsession-map-of-persistent-anchors" id="infopanel-for-xrsession-map-of-persistent-anchors">
+   <span id="infopaneltitle-for-xrsession-map-of-persistent-anchors" style="display:none">Info about the 'map of persistent anchors' definition.</span><b><a href="#xrsession-map-of-persistent-anchors">#xrsession-map-of-persistent-anchors</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrsession-map-of-persistent-anchors">3.1. XRAnchor</a> <a href="#ref-for-xrsession-map-of-persistent-anchors①">(2)</a> <a href="#ref-for-xrsession-map-of-persistent-anchors②">(3)</a>
-    <li><a href="#ref-for-xrsession-map-of-persistent-anchors③">4. Anchor creation</a> <a href="#ref-for-xrsession-map-of-persistent-anchors④">(2)</a> <a href="#ref-for-xrsession-map-of-persistent-anchors⑤">(3)</a> <a href="#ref-for-xrsession-map-of-persistent-anchors⑥">(4)</a> <a href="#ref-for-xrsession-map-of-persistent-anchors⑦">(5)</a>
+    <li><a href="#ref-for-xrsession-map-of-persistent-anchors③">4. Anchor creation</a> <a href="#ref-for-xrsession-map-of-persistent-anchors④">(2)</a> <a href="#ref-for-xrsession-map-of-persistent-anchors⑤">(3)</a> <a href="#ref-for-xrsession-map-of-persistent-anchors⑥">(4)</a> <a href="#ref-for-xrsession-map-of-persistent-anchors⑦">(5)</a> <a href="#ref-for-xrsession-map-of-persistent-anchors⑧">(6)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="xrsession-map-of-new-anchors">
-   <b><a href="#xrsession-map-of-new-anchors">#xrsession-map-of-new-anchors</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-xrsession-map-of-new-anchors" class="dfn-panel" data-for="xrsession-map-of-new-anchors" id="infopanel-for-xrsession-map-of-new-anchors">
+   <span id="infopaneltitle-for-xrsession-map-of-new-anchors" style="display:none">Info about the 'map of new anchors' definition.</span><b><a href="#xrsession-map-of-new-anchors">#xrsession-map-of-new-anchors</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrsession-map-of-new-anchors">4. Anchor creation</a> <a href="#ref-for-xrsession-map-of-new-anchors①">(2)</a> <a href="#ref-for-xrsession-map-of-new-anchors②">(3)</a> <a href="#ref-for-xrsession-map-of-new-anchors③">(4)</a>
     <li><a href="#ref-for-xrsession-map-of-new-anchors④">5. Anchor updates</a> <a href="#ref-for-xrsession-map-of-new-anchors⑤">(2)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="dom-xrframe-createanchor">
-   <b><a href="#dom-xrframe-createanchor">#dom-xrframe-createanchor</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-dom-xrframe-createanchor" class="dfn-panel" data-for="dom-xrframe-createanchor" id="infopanel-for-dom-xrframe-createanchor">
+   <span id="infopaneltitle-for-dom-xrframe-createanchor" style="display:none">Info about the 'createAnchor' definition.</span><b><a href="#dom-xrframe-createanchor">#dom-xrframe-createanchor</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-xrframe-createanchor">4. Anchor creation</a> <a href="#ref-for-dom-xrframe-createanchor①">(2)</a> <a href="#ref-for-dom-xrframe-createanchor②">(3)</a> <a href="#ref-for-dom-xrframe-createanchor③">(4)</a>
     <li><a href="#ref-for-dom-xrframe-createanchor④">7.1. Native anchor</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="dom-xrsession-restorepersistentanchor">
-   <b><a href="#dom-xrsession-restorepersistentanchor">#dom-xrsession-restorepersistentanchor</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-dom-xrsession-persistentanchors" class="dfn-panel" data-for="dom-xrsession-persistentanchors" id="infopanel-for-dom-xrsession-persistentanchors">
+   <span id="infopaneltitle-for-dom-xrsession-persistentanchors" style="display:none">Info about the 'persistentAnchors' definition.</span><b><a href="#dom-xrsession-persistentanchors">#dom-xrsession-persistentanchors</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrsession-persistentanchors">4. Anchor creation</a>
+   </ul>
+  </aside>
+  <aside aria-labelledby="infopaneltitle-for-dom-xrsession-restorepersistentanchor" class="dfn-panel" data-for="dom-xrsession-restorepersistentanchor" id="infopanel-for-dom-xrsession-restorepersistentanchor">
+   <span id="infopaneltitle-for-dom-xrsession-restorepersistentanchor" style="display:none">Info about the 'restorePersistentAnchor' definition.</span><b><a href="#dom-xrsession-restorepersistentanchor">#dom-xrsession-restorepersistentanchor</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-xrsession-restorepersistentanchor">4. Anchor creation</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="dom-xrsession-deletepersistentanchor">
-   <b><a href="#dom-xrsession-deletepersistentanchor">#dom-xrsession-deletepersistentanchor</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-dom-xrsession-deletepersistentanchor" class="dfn-panel" data-for="dom-xrsession-deletepersistentanchor" id="infopanel-for-dom-xrsession-deletepersistentanchor">
+   <span id="infopaneltitle-for-dom-xrsession-deletepersistentanchor" style="display:none">Info about the 'deletePersistentAnchor' definition.</span><b><a href="#dom-xrsession-deletepersistentanchor">#dom-xrsession-deletepersistentanchor</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-xrsession-deletepersistentanchor">4. Anchor creation</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="dom-xrhittestresult-createanchor">
-   <b><a href="#dom-xrhittestresult-createanchor">#dom-xrhittestresult-createanchor</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-dom-xrhittestresult-createanchor" class="dfn-panel" data-for="dom-xrhittestresult-createanchor" id="infopanel-for-dom-xrhittestresult-createanchor">
+   <span id="infopaneltitle-for-dom-xrhittestresult-createanchor" style="display:none">Info about the 'createAnchor' definition.</span><b><a href="#dom-xrhittestresult-createanchor">#dom-xrhittestresult-createanchor</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-xrhittestresult-createanchor">4. Anchor creation</a> <a href="#ref-for-dom-xrhittestresult-createanchor①">(2)</a>
     <li><a href="#ref-for-dom-xrhittestresult-createanchor②">7.1. Native anchor</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="xrhittestresult-native-entity">
-   <b><a href="#xrhittestresult-native-entity">#xrhittestresult-native-entity</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-xrhittestresult-native-entity" class="dfn-panel" data-for="xrhittestresult-native-entity" id="infopanel-for-xrhittestresult-native-entity">
+   <span id="infopaneltitle-for-xrhittestresult-native-entity" style="display:none">Info about the 'native entity' definition.</span><b><a href="#xrhittestresult-native-entity">#xrhittestresult-native-entity</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrhittestresult-native-entity">4. Anchor creation</a> <a href="#ref-for-xrhittestresult-native-entity①">(2)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="create-an-anchor-from-frame">
-   <b><a href="#create-an-anchor-from-frame">#create-an-anchor-from-frame</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-create-an-anchor-from-frame" class="dfn-panel" data-for="create-an-anchor-from-frame" id="infopanel-for-create-an-anchor-from-frame">
+   <span id="infopaneltitle-for-create-an-anchor-from-frame" style="display:none">Info about the 'create an anchor from frame' definition.</span><b><a href="#create-an-anchor-from-frame">#create-an-anchor-from-frame</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-create-an-anchor-from-frame">4. Anchor creation</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="create-an-anchor-from-hit-test-result">
-   <b><a href="#create-an-anchor-from-hit-test-result">#create-an-anchor-from-hit-test-result</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-create-an-anchor-from-hit-test-result" class="dfn-panel" data-for="create-an-anchor-from-hit-test-result" id="infopanel-for-create-an-anchor-from-hit-test-result">
+   <span id="infopaneltitle-for-create-an-anchor-from-hit-test-result" style="display:none">Info about the 'create an anchor from hit test result' definition.</span><b><a href="#create-an-anchor-from-hit-test-result">#create-an-anchor-from-hit-test-result</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-create-an-anchor-from-hit-test-result">4. Anchor creation</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="xranchorset">
-   <b><a href="#xranchorset">#xranchorset</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-xranchorset" class="dfn-panel" data-for="xranchorset" id="infopanel-for-xranchorset">
+   <span id="infopaneltitle-for-xranchorset" style="display:none">Info about the 'XRAnchorSet' definition.</span><b><a href="#xranchorset">#xranchorset</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xranchorset">5. Anchor updates</a> <a href="#ref-for-xranchorset①">(2)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="dom-xrframe-trackedanchors">
-   <b><a href="#dom-xrframe-trackedanchors">#dom-xrframe-trackedanchors</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-dom-xrframe-trackedanchors" class="dfn-panel" data-for="dom-xrframe-trackedanchors" id="infopanel-for-dom-xrframe-trackedanchors">
+   <span id="infopaneltitle-for-dom-xrframe-trackedanchors" style="display:none">Info about the 'trackedAnchors' definition.</span><b><a href="#dom-xrframe-trackedanchors">#dom-xrframe-trackedanchors</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-xrframe-trackedanchors">5. Anchor updates</a> <a href="#ref-for-dom-xrframe-trackedanchors①">(2)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="update-anchors">
-   <b><a href="#update-anchors">#update-anchors</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-update-anchors" class="dfn-panel" data-for="update-anchors" id="infopanel-for-update-anchors">
+   <span id="infopaneltitle-for-update-anchors" style="display:none">Info about the 'update anchors' definition.</span><b><a href="#update-anchors">#update-anchors</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-update-anchors">4. Anchor creation</a> <a href="#ref-for-update-anchors①">(2)</a>
     <li><a href="#ref-for-update-anchors②">5. Anchor updates</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="delete-an-anchor">
-   <b><a href="#delete-an-anchor">#delete-an-anchor</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-delete-an-anchor" class="dfn-panel" data-for="delete-an-anchor" id="infopanel-for-delete-an-anchor">
+   <span id="infopaneltitle-for-delete-an-anchor" style="display:none">Info about the 'delete an anchor' definition.</span><b><a href="#delete-an-anchor">#delete-an-anchor</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-delete-an-anchor">6. Anchor removal</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="tracked">
-   <b><a href="#tracked">#tracked</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-tracked" class="dfn-panel" data-for="tracked" id="infopanel-for-tracked">
+   <span id="infopaneltitle-for-tracked" style="display:none">Info about the 'tracked' definition.</span><b><a href="#tracked">#tracked</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-tracked">5. Anchor updates</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="attached">
-   <b><a href="#attached">#attached</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-attached" class="dfn-panel" data-for="attached" id="infopanel-for-attached">
+   <span id="infopaneltitle-for-attached" style="display:none">Info about the 'attached' definition.</span><b><a href="#attached">#attached</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-attached">4. Anchor creation</a>
     <li><a href="#ref-for-attached①">7.1. Native anchor</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="emulated-native-anchors">
-   <b><a href="#emulated-native-anchors">#emulated-native-anchors</a></b><b>Referenced in:</b>
+  <aside aria-labelledby="infopaneltitle-for-emulated-native-anchors" class="dfn-panel" data-for="emulated-native-anchors" id="infopanel-for-emulated-native-anchors">
+   <span id="infopaneltitle-for-emulated-native-anchors" style="display:none">Info about the 'emulated native anchors' definition.</span><b><a href="#emulated-native-anchors">#emulated-native-anchors</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-emulated-native-anchors">7.1. Native anchor</a>
    </ul>
   </aside>
+  <details class="mdn-anno unpositioned" data-anno-for="dom-xranchor-anchorspace">
+   <summary><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></summary>
+   <div class="feature">
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRAnchor/anchorSpace" title="The read-only anchorSpace property of the XRAnchor interface returns an XRSpace object to locate the anchor relative to other XRSpace objects. It can be passed to XRFrame.getPose() subsequently.">XRAnchor/anchorSpace</a></p>
+    <p class="less-than-two-engines-text">In only one current engine.</p>
+    <div class="support">
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
+     <hr>
+     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
+     <hr>
+     <span class="edge no"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>IE</span><span>None</span></span>
+     <hr>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+    </div>
+   </div>
+  </details>
+  <details class="mdn-anno unpositioned" data-anno-for="dom-xranchor-delete">
+   <summary><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></summary>
+   <div class="feature">
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRAnchor/delete" title="The delete() method of the XRAnchor interface removes an anchor. This can be useful when an application is no longer interested in receiving updates to an anchor.">XRAnchor/delete</a></p>
+    <p class="less-than-two-engines-text">In only one current engine.</p>
+    <div class="support">
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
+     <hr>
+     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
+     <hr>
+     <span class="edge no"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>IE</span><span>None</span></span>
+     <hr>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+    </div>
+   </div>
+  </details>
+  <details class="mdn-anno unpositioned" data-anno-for="xr-anchor">
+   <summary><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></summary>
+   <div class="feature">
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRAnchor" title="The XRAnchor interface creates anchors which keep track of the pose that is fixed relative to the real world. With anchors, you can specify poses in the world that need to be updated to correctly reflect the evolving understanding of the world, such that the poses remain aligned with the same place in the physical world. That helps to build an illusion that the placed objects are really present in the user&apos;s environment.">XRAnchor</a></p>
+    <p class="less-than-two-engines-text">In only one current engine.</p>
+    <div class="support">
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
+     <hr>
+     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
+     <hr>
+     <span class="edge no"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>IE</span><span>None</span></span>
+     <hr>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+    </div>
+   </div>
+  </details>
+  <details class="mdn-anno unpositioned" data-anno-for="xranchorset">
+   <summary><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></summary>
+   <div class="feature">
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRAnchorSet" title="The XRAnchorSet interface exposes a collection of anchors. It is returned by XRFrame.trackedAnchors and is a Set-like object.">XRAnchorSet</a></p>
+    <p class="less-than-two-engines-text">In only one current engine.</p>
+    <div class="support">
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
+     <hr>
+     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
+     <hr>
+     <span class="edge no"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>IE</span><span>None</span></span>
+     <hr>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+    </div>
+   </div>
+  </details>
+  <details class="mdn-anno unpositioned" data-anno-for="dom-xrframe-createanchor">
+   <summary><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></summary>
+   <div class="feature">
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRFrame/createAnchor" title="The createAnchor() method of the XRFrame interface creates a free-floating XRAnchor which will be fixed relative to the real world.">XRFrame/createAnchor</a></p>
+    <p class="less-than-two-engines-text">In only one current engine.</p>
+    <div class="support">
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
+     <hr>
+     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
+     <hr>
+     <span class="edge no"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>IE</span><span>None</span></span>
+     <hr>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+    </div>
+   </div>
+  </details>
+  <details class="mdn-anno unpositioned" data-anno-for="dom-xrframe-trackedanchors">
+   <summary><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></summary>
+   <div class="feature">
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRFrame/trackedAnchors" title="The read-only trackedAnchor property of the XRFrame interface returns an XRAnchorSet object containing all anchors still tracked in the frame.">XRFrame/trackedAnchors</a></p>
+    <p class="less-than-two-engines-text">In only one current engine.</p>
+    <div class="support">
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
+     <hr>
+     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
+     <hr>
+     <span class="edge no"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>IE</span><span>None</span></span>
+     <hr>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+    </div>
+   </div>
+  </details>
+  <details class="mdn-anno unpositioned" data-anno-for="dom-xrhittestresult-createanchor">
+   <summary><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></summary>
+   <div class="feature">
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRHitTestResult/createAnchor" title="The createAnchor() method of the XRHitTestResult interface creates an XRAnchor from a hit test result that is attached to a real world object.">XRHitTestResult/createAnchor</a></p>
+    <p class="less-than-two-engines-text">In only one current engine.</p>
+    <div class="support">
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
+     <hr>
+     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
+     <hr>
+     <span class="edge no"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>IE</span><span>None</span></span>
+     <hr>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+    </div>
+   </div>
+  </details>
+<script>/* position-annos */
+"use strict";
+{
+
+function repositionAnnoPanels(){
+    const panels = [...document.querySelectorAll("[data-anno-for]")];
+    const main = document.querySelector("main");
+    let mainRect;
+    if(main) mainRect = main.getBoundingClientRect();
+    for(const panel of panels) {
+        const dfn = document.getElementById(panel.getAttribute("data-anno-for"));
+        if(!dfn) {
+            console.log("Can't find the annotation panel target:", panel);
+            continue;
+        }
+        const rect = dfn.getBoundingClientRect();
+        const top = window.scrollY + rect.top
+        panel.style.top = top + "px";
+        panel.top = top;
+        panel.height = rect.height;
+        panel.classList.remove("unpositioned");
+        const panelRect = panel.getBoundingClientRect()
+        if(main) {
+            panel.classList.toggle("overlapping-main", panelRect.left < mainRect.right)
+        }
+    }
+    let vSoFar = 0;
+    for(const panel of panels.sort(cmpTops)) {
+        console.log(panel.top, vSoFar);
+        if(panel.top < vSoFar) {
+            panel.top = vSoFar;
+            panel.style.top = vSoFar + "px";
+        }
+        vSoFar = panel.top + panel.height + 15;
+    }
+}
+
+function cmpTops(a,b) {
+    return a.top - b.top;
+}
+
+window.addEventListener("load", repositionAnnoPanels);
+window.addEventListener("resize", repositionAnnoPanels);
+}</script>
 <script>/* script-dfn-panel */
-
-document.body.addEventListener("click", function(e) {
-    var queryAll = function(sel) { return [].slice.call(document.querySelectorAll(sel)); }
-    // Find the dfn element or panel, if any, that was clicked on.
-    var el = e.target;
-    var target;
-    var hitALink = false;
-    while(el.parentElement) {
-        if(el.tagName == "A") {
-            // Clicking on a link in a <dfn> shouldn't summon the panel
-            hitALink = true;
-        }
-        if(el.classList.contains("dfn-paneled")) {
-            target = "dfn";
-            break;
-        }
-        if(el.classList.contains("dfn-panel")) {
-            target = "dfn-panel";
-            break;
-        }
-        el = el.parentElement;
+"use strict";
+{
+    function queryAll(sel) {
+        return [].slice.call(document.querySelectorAll(sel));
     }
-    if(target != "dfn-panel") {
+
+    // Add popup behavior to all dfns to show the corresponding dfn-panel.
+    var dfns = document.querySelectorAll('.dfn-paneled');
+    for (let dfn of dfns) { insertDfnPopupAction(dfn); }
+
+    document.body.addEventListener("click", (e) => {
+        // If not handled already, just hide all dfn panels.
+        hideAllDfnPanels();
+    });
+
+    function hideAllDfnPanels() {
         // Turn off any currently "on" or "activated" panels.
-        queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(function(el){
-            el.classList.remove("on");
-            el.classList.remove("activated");
-        });
+        queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(el=>hideDfnPanel(el));
     }
-    if(target == "dfn" && !hitALink) {
-        // open the panel
-        var dfnPanel = document.querySelector(".dfn-panel[data-for='" + el.id + "']");
-        if(dfnPanel) {
-            dfnPanel.classList.add("on");
-            var rect = el.getBoundingClientRect();
-            dfnPanel.style.left = window.scrollX + rect.right + 5 + "px";
-            dfnPanel.style.top = window.scrollY + rect.top + "px";
-            var panelRect = dfnPanel.getBoundingClientRect();
-            var panelWidth = panelRect.right - panelRect.left;
-            if(panelRect.right > document.body.scrollWidth && (rect.left - (panelWidth + 5)) > 0) {
-                // Reposition, because the panel is overflowing
-                dfnPanel.style.left = window.scrollX + rect.left - (panelWidth + 5) + "px";
-            }
-        } else {
-            console.log("Couldn't find .dfn-panel[data-for='" + el.id + "']");
+
+    function showDfnPanel(dfnPanel, dfn) {
+        hideAllDfnPanels(); // Only display one at this time.
+        dfn.setAttribute("aria-expanded", "true");
+        dfnPanel.classList.add("on");
+        dfnPanel.style.left = "5px";
+        dfnPanel.style.top = "0px";
+        const panelRect = dfnPanel.getBoundingClientRect();
+        const panelWidth = panelRect.right - panelRect.left;
+        if (panelRect.right > document.body.scrollWidth) {
+            // Panel's overflowing the screen.
+            // Just drop it below the dfn and flip it rightward instead.
+            // This still wont' fix things if the screen is *really* wide,
+            // but fixing that's a lot harder without 'anchor()'.
+            dfnPanel.style.top = "1.5em";
+            dfnPanel.style.left = "auto";
+            dfnPanel.style.right = "0px";
         }
-    } else if(target == "dfn-panel") {
-        // Switch it to "activated" state, which pins it.
-        el.classList.add("activated");
-        el.style.left = null;
-        el.style.top = null;
     }
 
-});
-</script>
-<script>/* script-mdn-anno */
+    function pinDfnPanel(dfnPanel) {
+        // Switch it to "activated" state, which pins it.
+        dfnPanel.classList.add("activated");
+        dfnPanel.style.left = null;
+        dfnPanel.style.top = null;
+    }
 
-            document.body.addEventListener("click", (e) => {
-                if(e.target.closest(".mdn-anno-btn")) {
-                    e.target.closest(".mdn-anno").classList.toggle("wrapped");
+    function hideDfnPanel(dfnPanel, dfn) {
+        if(!dfn) {
+            dfn = document.getElementById(dfnPanel.getAttribute("data-for"));
+        }
+        dfn.setAttribute("aria-expanded", "false")
+        dfnPanel.classList.remove("on");
+        dfnPanel.classList.remove("activated");
+    }
+
+    function toggleDfnPanel(dfnPanel, dfn) {
+        if(dfnPanel.classList.contains("on")) {
+            hideDfnPanel(dfnPanel, dfn);
+        } else {
+            showDfnPanel(dfnPanel, dfn);
+        }
+    }
+
+    function insertDfnPopupAction(dfn) {
+        // Find dfn panel
+        const dfnPanel = document.querySelector(`.dfn-panel[data-for='${dfn.id}']`);
+        if (dfnPanel) {
+            const panelWrapper = document.createElement('span');
+            panelWrapper.appendChild(dfnPanel);
+            panelWrapper.style.position = "relative";
+            panelWrapper.style.height = "0px";
+            dfn.insertAdjacentElement("afterend", panelWrapper);
+            dfn.setAttribute('role', 'button');
+            dfn.setAttribute('aria-expanded', 'false')
+            dfn.tabIndex = 0;
+            dfn.classList.add('has-dfn-panel');
+            dfn.addEventListener('click', (event) => {
+                showDfnPanel(dfnPanel, dfn);
+                event.stopPropagation();
+            });
+            dfn.addEventListener('keypress', (event) => {
+                const kc = event.keyCode;
+                // 32->Space, 13->Enter
+                if(kc == 32 || kc == 13) {
+                    toggleDfnPanel(dfnPanel, dfn);
+                    event.stopPropagation();
+                    event.preventDefault();
                 }
             });
-            </script>
+
+            dfnPanel.addEventListener('click', (event) => {
+                pinDfnPanel(dfnPanel);
+                event.stopPropagation();
+            });
+
+            dfnPanel.addEventListener('keydown', (event) => {
+                if(event.keyCode == 27) { // Escape key
+                    hideDfnPanel(dfnPanel, dfn);
+                    event.stopPropagation();
+                    event.preventDefault();
+                }
+            })
+
+        } else {
+            console.log("Couldn't find .dfn-panel[data-for='" + dfn.id + "']");
+        }
+    }
+}
+</script>
 <script>/* script-var-click-highlighting */
 
-    document.addEventListener("click", e=>{
-        if(e.target.nodeName == "VAR") {
-            highlightSameAlgoVars(e.target);
-        }
-    });
+    "use strict";
     {
+        document.addEventListener("click", e=>{
+            if(e.target.nodeName == "VAR") {
+                highlightSameAlgoVars(e.target);
+            }
+        });
         const indexCounts = new Map();
         const indexNames = new Map();
         function highlightSameAlgoVars(v) {
