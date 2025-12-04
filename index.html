@@ -5,9 +5,9 @@
   <title>WebXR Anchors Module</title>
   <meta content="ED" name="w3c-status">
   <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" rel="stylesheet">
-  <meta content="Bikeshed version 618007319, updated Thu Jun 26 17:23:55 2025 -0700" name="generator">
+  <meta content="Bikeshed version 3c53a5b02, updated Thu Nov 27 17:03:30 2025 +0000" name="generator">
   <link href="https://immersive-web.github.io/anchors/" rel="canonical">
-  <meta content="67e9d820fc471ffa7ed16667d0d929157d1e26b2" name="revision">
+  <meta content="cc161a251b9833d39b7de4d63c2710534287b71b" name="revision">
   <meta content="dark light" name="color-scheme">
   <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css">
 <style>
@@ -378,7 +378,7 @@ body {
 }
 .invalid.example:not(.no-marker)::before,
 .illegal.example:not(.no-marker)::before {
-    content: "Invalid Example" counter(example);
+    content: "Invalid Example " counter(example);
 }
 
 figcaption {
@@ -1022,9 +1022,9 @@ var[data-var-color="6"] { --var-vg: #FFBCF2; }
     <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
 </a>
 </p>
-   <h1 class="p-name no-ref" id="title">WebXR Anchors Module</h1>
+   <h1 class="no-ref p-name" id="title">WebXR Anchors Module</h1>
    <p id="w3c-state"><a href="https://www.w3.org/standards/types/#ED">Editor’s Draft</a>,
-    <time class="dt-updated" datetime="2025-07-08">8 July 2025</time></p>
+    <time class="dt-updated" datetime="2025-12-04">4 December 2025</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -1035,9 +1035,9 @@ var[data-var-color="6"] { --var-vg: #FFBCF2; }
       <dd><a href="https://github.com/immersive-web/anchors/issues/">GitHub</a>
       <dd><a href="#issues-index">Inline In Spec</a>
       <dt class="editor">Editor:
-      <dd class="editor p-author h-card vcard" data-editor-id="114716"><a class="p-name fn u-email email" href="mailto:alcooper@google.com">Alex Cooper</a> (<a class="p-org org" href="http://google.com/">Google</a>)
+      <dd class="editor h-card p-author vcard" data-editor-id="114716"><a class="email fn p-name u-email" href="mailto:alcooper@google.com">Alex Cooper</a> (<a class="org p-org" href="http://google.com/">Google</a>)
       <dt class="editor">Former Editor:
-      <dd class="editor p-author h-card vcard" data-editor-id="114482"><a class="p-name fn u-email email" href="mailto:bialpio@google.com">Piotr Bialecki</a> (<a class="p-org org" href="https://google.com/">Google</a>)
+      <dd class="editor h-card p-author vcard" data-editor-id="114482"><a class="email fn p-name u-email" href="mailto:bialpio@google.com">Piotr Bialecki</a> (<a class="org p-org" href="https://google.com/">Google</a>)
       <dt>Participate:
       <dd><a href="https://github.com/immersive-web/anchors/issues/new">File an issue</a> (<a href="https://github.com/immersive-web/anchors/issues">open issues</a>)
       <dd><a href="https://lists.w3.org/Archives/Public/public-immersive-web-wg/">Mailing list archive</a>
@@ -1051,10 +1051,10 @@ var[data-var-color="6"] { --var-vg: #FFBCF2; }
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
-   <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
+   <h2 class="heading no-num no-ref no-toc settled" id="abstract"><span class="content">Abstract</span></h2>
    <p>Describes a method to create anchors tracked by underlying system.</p>
   </div>
-  <h2 class="no-num no-toc no-ref heading settled" id="sotd"><span class="content">Status of this document</span></h2>
+  <h2 class="heading no-num no-ref no-toc settled" id="sotd"><span class="content">Status of this document</span></h2>
   <div data-fill-with="status">
    <p>
     <em>This section describes the status of this document at the time of its publication. A list of current
@@ -1089,13 +1089,13 @@ var[data-var-color="6"] { --var-vg: #FFBCF2; }
     6 of the W3C Patent Policy</a>.
   </p>
    <p>
-    This document is governed by the <a href="https://www.w3.org/policies/process/20231103/" id="w3c_process_revision">03 November 2023 W3C Process Document</a>.
+    This document is governed by the <a href="https://www.w3.org/policies/process/20250818/" id="w3c_process_revision">18 August 2025 W3C Process Document</a>.
   </p>
   </div>
   <div data-fill-with="at-risk"></div>
   <nav data-fill-with="table-of-contents" id="toc">
-   <h2 class="no-num no-toc no-ref" id="contents">Table of Contents</h2>
-   <ol class="toc" role="directory">
+   <h2 class="no-num no-ref no-toc" id="contents">Table of Contents</h2>
+   <ol class="toc">
     <li>
      <a href="#intro"><span class="secno">1</span> <span class="content">Introduction</span></a>
      <ol class="toc">
@@ -1157,7 +1157,7 @@ var[data-var-color="6"] { --var-vg: #FFBCF2; }
    <p class="note" role="note"><span class="marker">Note:</span> Even though anchors feature support is not required, anchors are one of the basic features needed by the AR-enabled applications to provide good user experience. Therefore, it is *highly* recommended that the user agents support them for <code>"immersive-ar"</code> sessions.</p>
    <h2 class="heading settled" data-level="3" id="anchors-section"><span class="secno">3. </span><span class="content">Anchors</span><a class="self-link" href="#anchors-section"></a></h2>
    <h3 class="heading settled" data-level="3.1" id="xr-anchor"><span class="secno">3.1. </span><span class="content">XRAnchor</span><a class="self-link" href="#xr-anchor"></a></h3>
-<pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SecureContext" id="ref-for-SecureContext"><c- g>SecureContext</c-></a>, <a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed" id="ref-for-Exposed"><c- g>Exposed</c-></a>=<c- n>Window</c->]
+<pre class="def highlight idl">[<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SecureContext" id="ref-for-SecureContext"><c- g>SecureContext</c-></a>, <a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed" id="ref-for-Exposed"><c- g>Exposed</c-></a>=<c- n>Window</c->]
 <c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="xranchor"><code><c- g>XRAnchor</c-></code></dfn> {
   <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace"><c- n>XRSpace</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="XRAnchor" data-dfn-type="attribute" data-export data-readonly data-type="XRSpace" id="dom-xranchor-anchorspace"><code><c- g>anchorSpace</c-></code></dfn>;
 
@@ -1231,7 +1231,7 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-requestpersist
     <p>The <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession①">XRSession</a></code> is extended to contain an associated <dfn class="dfn-paneled" data-dfn-for="XRSession" data-dfn-type="dfn" data-noexport id="xrsession-map-of-persistent-anchors">map of persistent anchors</dfn> that is keyed with a UUID string and maps to an <code class="idl"><a data-link-type="idl" href="#xranchor" id="ref-for-xranchor⑥">XRAnchor</a></code>.</p>
    </div>
    <p>The <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession②">XRSession</a></code> is extended to contain an associated <dfn class="dfn-paneled" data-dfn-for="XRSession" data-dfn-type="dfn" data-noexport id="xrsession-map-of-new-anchors">map of new anchors</dfn> that is keyed with <code class="idl"><a data-link-type="idl" href="#xranchor" id="ref-for-xranchor⑦">XRAnchor</a></code> object and maps to <code><code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#idl-promise" id="ref-for-idl-promise①">Promise</a></code>&lt;<code class="idl"><a data-link-type="idl" href="#xranchor" id="ref-for-xranchor⑧">XRAnchor</a></code>></code> object.</p>
-<pre class="idl highlight def"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe"><c- g>XRFrame</c-></a> {
+<pre class="def highlight idl"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe"><c- g>XRFrame</c-></a> {
   <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise" id="ref-for-idl-promise②"><c- b>Promise</c-></a>&lt;<a data-link-type="idl-name" href="#xranchor" id="ref-for-xranchor⑨"><c- n>XRAnchor</c-></a>> <dfn class="dfn-paneled idl-code" data-dfn-for="XRFrame" data-dfn-type="method" data-export data-lt="createAnchor(pose, space)" id="dom-xrframe-createanchor"><code><c- g>createAnchor</c-></code></dfn>(<a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrrigidtransform" id="ref-for-xrrigidtransform"><c- n>XRRigidTransform</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="XRFrame/createAnchor(pose, space)" data-dfn-type="argument" data-export id="dom-xrframe-createanchor-pose-space-pose"><code><c- g>pose</c-></code></dfn>, <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace③"><c- n>XRSpace</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="XRFrame/createAnchor(pose, space)" data-dfn-type="argument" data-export id="dom-xrframe-createanchor-pose-space-space"><code><c- g>space</c-></code></dfn>);
 };
 
@@ -1365,7 +1365,7 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xrhittestresult-createa
    <p class="note" role="note"><span class="marker">Note:</span> The same remark that is present on <code class="idl"><a data-link-type="idl" href="#dom-xrframe-createanchor" id="ref-for-dom-xrframe-createanchor③">createAnchor(pose, space)</a></code> method applies here as well.</p>
    <p class="issue" id="issue-02fc6c42"><a class="self-link" href="#issue-02fc6c42"></a> Session’s "list of frame updates" might need to have a way of specifying ordering - some algorithms may depend on others.</p>
    <h2 class="heading settled" data-level="5" id="anchor-updates"><span class="secno">5. </span><span class="content">Anchor updates</span><a class="self-link" href="#anchor-updates"></a></h2>
-<pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed" id="ref-for-Exposed①"><c- g>Exposed</c-></a>=<c- n>Window</c->]
+<pre class="def highlight idl">[<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed" id="ref-for-Exposed①"><c- g>Exposed</c-></a>=<c- n>Window</c->]
 <c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="xranchorset"><code><c- g>XRAnchorSet</c-></code></dfn> {
   <c- b>readonly</c-> <c- b>setlike</c->&lt;<a data-link-type="idl-name" href="#xranchor" id="ref-for-xranchor①③"><c- n>XRAnchor</c-></a>>;
 };
@@ -1452,7 +1452,7 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="re
        <p>It returns a result that can be treated as a <a data-link-type="dfn" href="#xranchor-native-origin" id="ref-for-xranchor-native-origin④">native origin</a> by the user agents.</p>
      </ul>
     <li data-md>
-     <p>Native anchors are continuously <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="tracked">tracked</dfn> by the underlying XR system and can be queried for their most up-to-date state. When the underlying system deems that the native anchor’s location is never going to be known, it SHOULD report that the native anchor is no longer tracked.</p>
+     <p>Native anchors are continuously <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="tracked">tracked</dfn> by the underlying XR system and can usually be queried for their most up-to-date state. However, there may be frames where their location is not known and thus the user agent MAY report that the pose is unlocatable for a time. When the underlying system deems that the native anchor’s location is never going to be known again, it SHOULD report that the native anchor is no longer tracked.</p>
     <li data-md>
      <p>Optionally, native anchors can be <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="attached">attached</dfn> to native entities. A native anchor that is attached to a native entity attempts to maintain its position fixed relative to the entity to which it is attached (as opposed to the real world in case of free-floating anchors). When the device detects that the pose of the object to which the anchor is attached changes, the anchor will be updated accordingly. This does not imply that the object itself moved - it may be that the system’s understanding of its location changed. If the underlying system is capable of tracking moving objects, the native anchors attached to moving objects should be updated as well.</p>
    </ul>
@@ -1467,8 +1467,8 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="re
    <p>The following individuals have contributed to the design of the WebXR Anchors specification:</p>
   </main>
   <div data-fill-with="conformance">
-   <h2 class="no-ref no-num heading settled" id="w3c-conformance"><span class="content">Conformance</span><a class="self-link" href="#w3c-conformance"></a></h2>
-   <h3 class="no-ref no-num heading settled" id="w3c-conventions"><span class="content">Document conventions</span><a class="self-link" href="#w3c-conventions"></a></h3>
+   <h2 class="heading no-num no-ref settled" id="w3c-conformance"><span class="content">Conformance</span><a class="self-link" href="#w3c-conformance"></a></h2>
+   <h3 class="heading no-num no-ref settled" id="w3c-conventions"><span class="content">Document conventions</span><a class="self-link" href="#w3c-conventions"></a></h3>
    <p>Conformance requirements are expressed
     with a combination of descriptive assertions
     and RFC 2119 terminology.
@@ -1503,7 +1503,7 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="re
     </p>
    <p class="note" role="note">Note, this is an informative note.</p>
    <section>
-    <h3 class="no-ref no-num heading settled" id="w3c-conformant-algorithms"><span class="content">Conformant Algorithms</span><a class="self-link" href="#w3c-conformant-algorithms"></a></h3>
+    <h3 class="heading no-num no-ref settled" id="w3c-conformant-algorithms"><span class="content">Conformant Algorithms</span><a class="self-link" href="#w3c-conformant-algorithms"></a></h3>
     <p>Requirements phrased in the imperative as part of algorithms
     (such as "strip any leading space characters"
     or "return false and abort these steps")
@@ -1523,8 +1523,8 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="re
    </section>
   </div>
   <script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script>
-  <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
-  <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
+  <h2 class="heading no-num no-ref settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
+  <h3 class="heading no-num no-ref settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
   <ul class="index">
    <li><a href="#anchors">anchors</a><span>, in § 2.1</span>
    <li><a href="#dom-xranchor-anchorspace">anchorSpace</a><span>, in § 3.1</span>
@@ -1554,7 +1554,7 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="re
    <li><a href="#xranchor">XRAnchor</a><span>, in § 3.1</span>
    <li><a href="#xranchorset">XRAnchorSet</a><span>, in § 5</span>
   </ul>
-  <h3 class="no-num no-ref heading settled" id="index-defined-elsewhere"><span class="content">Terms defined by reference</span><a class="self-link" href="#index-defined-elsewhere"></a></h3>
+  <h3 class="heading no-num no-ref settled" id="index-defined-elsewhere"><span class="content">Terms defined by reference</span><a class="self-link" href="#index-defined-elsewhere"></a></h3>
   <ul class="index">
    <li>
     <a data-link-type="biblio">[CSS-WRITING-MODES-4]</a> defines the following terms:
@@ -1622,8 +1622,8 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="re
      <li><span class="dfn-paneled" id="ac906c0c">"immersive-ar"</span>
     </ul>
   </ul>
-  <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
-  <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
+  <h2 class="heading no-num no-ref settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
+  <h3 class="heading no-num no-ref settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
   <dl>
    <dt id="biblio-css-writing-modes-4">[CSS-WRITING-MODES-4]
    <dd>Elika Etemad; Koji Ishii. <a href="https://drafts.csswg.org/css-writing-modes-4/"><cite>CSS Writing Modes Level 4</cite></a>. URL: <a href="https://drafts.csswg.org/css-writing-modes-4/">https://drafts.csswg.org/css-writing-modes-4/</a>
@@ -1640,8 +1640,8 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="re
    <dt id="biblio-webxr-ar-module-1">[WEBXR-AR-MODULE-1]
    <dd>Brandon Jones; Manish Goregaokar; Rik Cabanier. <a href="https://immersive-web.github.io/webxr-ar-module/"><cite>WebXR Augmented Reality Module - Level 1</cite></a>. URL: <a href="https://immersive-web.github.io/webxr-ar-module/">https://immersive-web.github.io/webxr-ar-module/</a>
   </dl>
-  <h2 class="no-num no-ref heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
-<pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SecureContext"><c- g>SecureContext</c-></a>, <a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed"><c- g>Exposed</c-></a>=<c- n>Window</c->]
+  <h2 class="heading no-num no-ref settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
+<pre class="def highlight idl">[<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SecureContext"><c- g>SecureContext</c-></a>, <a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed"><c- g>Exposed</c-></a>=<c- n>Window</c->]
 <c- b>interface</c-> <a href="#xranchor"><code><c- g>XRAnchor</c-></code></a> {
   <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace"><c- n>XRSpace</c-></a> <a data-readonly data-type="XRSpace" href="#dom-xranchor-anchorspace"><code><c- g>anchorSpace</c-></code></a>;
 
@@ -1675,7 +1675,7 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="re
 };
 
 </pre>
-  <h2 class="no-num no-ref heading settled" id="issues-index"><span class="content">Issues Index</span><a class="self-link" href="#issues-index"></a></h2>
+  <h2 class="heading no-num no-ref settled" id="issues-index"><span class="content">Issues Index</span><a class="self-link" href="#issues-index"></a></h2>
   <div style="counter-reset:issue">
    <div class="issue"> Session’s "list of frame updates" might need to have a way of specifying ordering - some algorithms may depend on others. <a class="issue-return" href="#issue-02fc6c42" title="Jump to section">↵</a></div>
    <div class="issue"> I’m not aware of devices that support tracking general objects that move - should they be considered by the spec at all? Are there any examples of such devices? <a class="issue-return" href="#issue-8bf9de01" title="Jump to section">↵</a></div>
@@ -1686,13 +1686,13 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="re
     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRAnchor/anchorSpace" title="The read-only anchorSpace property of the XRAnchor interface returns an XRSpace object to locate the anchor relative to other XRSpace objects. It can be passed to XRFrame.getPose() subsequently.">XRAnchor/anchorSpace</a></p>
     <p class="less-than-two-engines-text">In only one current engine.</p>
     <div class="support">
-     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="no safari"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
      <hr>
-     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
+     <span class="no opera"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
      <hr>
      <span class="edge no"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>IE</span><span>None</span></span>
      <hr>
-     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="no safari_ios"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="no webview_android"><span>Android WebView</span><span>None</span></span><span class="no samsunginternet_android"><span>Samsung Internet</span><span>?</span></span><span class="no opera_android"><span>Opera Mobile</span><span>?</span></span>
     </div>
    </div>
   </details>
@@ -1702,13 +1702,13 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="re
     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRAnchor/delete" title="The delete() method of the XRAnchor interface removes an anchor. This can be useful when an application is no longer interested in receiving updates to an anchor.">XRAnchor/delete</a></p>
     <p class="less-than-two-engines-text">In only one current engine.</p>
     <div class="support">
-     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="no safari"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
      <hr>
-     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
+     <span class="no opera"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
      <hr>
      <span class="edge no"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>IE</span><span>None</span></span>
      <hr>
-     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="no safari_ios"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="no webview_android"><span>Android WebView</span><span>None</span></span><span class="no samsunginternet_android"><span>Samsung Internet</span><span>?</span></span><span class="no opera_android"><span>Opera Mobile</span><span>?</span></span>
     </div>
    </div>
   </details>
@@ -1718,13 +1718,13 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="re
     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRAnchor" title="The XRAnchor interface creates anchors which keep track of the pose that is fixed relative to the real world. With anchors, you can specify poses in the world that need to be updated to correctly reflect the evolving understanding of the world, such that the poses remain aligned with the same place in the physical world. That helps to build an illusion that the placed objects are really present in the user&apos;s environment.">XRAnchor</a></p>
     <p class="less-than-two-engines-text">In only one current engine.</p>
     <div class="support">
-     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="no safari"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
      <hr>
-     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
+     <span class="no opera"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
      <hr>
      <span class="edge no"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>IE</span><span>None</span></span>
      <hr>
-     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="no safari_ios"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="no webview_android"><span>Android WebView</span><span>None</span></span><span class="no samsunginternet_android"><span>Samsung Internet</span><span>?</span></span><span class="no opera_android"><span>Opera Mobile</span><span>?</span></span>
     </div>
    </div>
   </details>
@@ -1734,13 +1734,13 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="re
     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRAnchorSet" title="The XRAnchorSet interface exposes a collection of anchors. Its instances are returned by XRFrame.trackedAnchors and are Set-like objects.">XRAnchorSet</a></p>
     <p class="less-than-two-engines-text">In only one current engine.</p>
     <div class="support">
-     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="no safari"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
      <hr>
-     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
+     <span class="no opera"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
      <hr>
      <span class="edge no"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>IE</span><span>None</span></span>
      <hr>
-     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="no safari_ios"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="no webview_android"><span>Android WebView</span><span>None</span></span><span class="no samsunginternet_android"><span>Samsung Internet</span><span>?</span></span><span class="no opera_android"><span>Opera Mobile</span><span>?</span></span>
     </div>
    </div>
   </details>
@@ -1750,13 +1750,13 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="re
     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRFrame/createAnchor" title="The createAnchor() method of the XRFrame interface creates a free-floating XRAnchor which will be fixed relative to the real world.">XRFrame/createAnchor</a></p>
     <p class="less-than-two-engines-text">In only one current engine.</p>
     <div class="support">
-     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="no safari"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
      <hr>
-     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
+     <span class="no opera"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
      <hr>
      <span class="edge no"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>IE</span><span>None</span></span>
      <hr>
-     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="no safari_ios"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="no webview_android"><span>Android WebView</span><span>None</span></span><span class="no samsunginternet_android"><span>Samsung Internet</span><span>?</span></span><span class="no opera_android"><span>Opera Mobile</span><span>?</span></span>
     </div>
    </div>
   </details>
@@ -1766,13 +1766,13 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="re
     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRFrame/trackedAnchors" title="The read-only trackedAnchor property of the XRFrame interface returns an XRAnchorSet object containing all anchors still tracked in the frame.">XRFrame/trackedAnchors</a></p>
     <p class="less-than-two-engines-text">In only one current engine.</p>
     <div class="support">
-     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="no safari"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
      <hr>
-     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
+     <span class="no opera"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
      <hr>
      <span class="edge no"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>IE</span><span>None</span></span>
      <hr>
-     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="no safari_ios"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="no webview_android"><span>Android WebView</span><span>None</span></span><span class="no samsunginternet_android"><span>Samsung Internet</span><span>?</span></span><span class="no opera_android"><span>Opera Mobile</span><span>?</span></span>
     </div>
    </div>
   </details>
@@ -1782,13 +1782,13 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="re
     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRHitTestResult/createAnchor" title="The createAnchor() method of the XRHitTestResult interface creates an XRAnchor from a hit test result that is attached to a real-world object.">XRHitTestResult/createAnchor</a></p>
     <p class="less-than-two-engines-text">In only one current engine.</p>
     <div class="support">
-     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="no safari"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>85+</span></span>
      <hr>
-     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
+     <span class="no opera"><span>Opera</span><span>?</span></span><span class="edge_blink yes"><span>Edge</span><span>85+</span></span>
      <hr>
      <span class="edge no"><span>Edge (Legacy)</span><span>?</span></span><span class="ie no"><span>IE</span><span>None</span></span>
      <hr>
-     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="no safari_ios"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="no webview_android"><span>Android WebView</span><span>None</span></span><span class="no samsunginternet_android"><span>Samsung Internet</span><span>?</span></span><span class="no opera_android"><span>Opera Mobile</span><span>?</span></span>
     </div>
    </div>
   </details>
