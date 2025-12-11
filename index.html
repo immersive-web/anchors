@@ -5,9 +5,9 @@
   <title>WebXR Anchors Module</title>
   <meta content="ED" name="w3c-status">
   <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" rel="stylesheet">
-  <meta content="Bikeshed version 3c53a5b02, updated Thu Nov 27 17:03:30 2025 +0000" name="generator">
+  <meta content="Bikeshed version ac6b08744, updated Wed Dec 10 23:44:49 2025 +0000" name="generator">
   <link href="https://immersive-web.github.io/anchors/" rel="canonical">
-  <meta content="cc161a251b9833d39b7de4d63c2710534287b71b" name="revision">
+  <meta content="47a242b13e96ccc34661e8fabf35cb7b1134fb61" name="revision">
   <meta content="dark light" name="color-scheme">
   <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css">
 <style>
@@ -1024,7 +1024,7 @@ var[data-var-color="6"] { --var-vg: #FFBCF2; }
 </p>
    <h1 class="no-ref p-name" id="title">WebXR Anchors Module</h1>
    <p id="w3c-state"><a href="https://www.w3.org/standards/types/#ED">Editor’s Draft</a>,
-    <time class="dt-updated" datetime="2025-12-04">4 December 2025</time></p>
+    <time class="dt-updated" datetime="2025-12-11">11 December 2025</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -1215,7 +1215,7 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-requestpersist
      <li data-md>
       <p>Let <var>uuid</var> be the empty string.</p>
      <li data-md>
-      <p>Generate a UUID <a data-link-type="biblio" href="#biblio-rfc4122" title="Universally Unique IDentifiers (UUIDs)">[RFC4122]</a> as a string and append it to <var>uuid</var>.</p>
+      <p>Generate a UUID <a data-link-type="biblio" href="#biblio-rfc9562" title="Universally Unique IDentifiers (UUIDs)">[RFC9562]</a> as a string and append it to <var>uuid</var>.</p>
      <li data-md>
       <p>Add <var>uuid</var> and <var>anchor</var> to <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors②">map of persistent anchors</a>.</p>
      <li data-md>
@@ -1298,7 +1298,7 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xrsession-restorepersis
      <li data-md>
       <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors④">map of persistent anchors</a> does not contain a mapping from <var>uuid</var> to an <code class="idl"><a data-link-type="idl" href="#xranchor" id="ref-for-xranchor①②">XRAnchor</a></code>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject②">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror③">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
      <li data-md>
-      <p>If <var>session</var>’s <a data-link-type="dfn" href="https://drafts.csswg.org/css-writing-modes-4/#css-end" id="ref-for-css-end">ended</a> value is `true`, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject③">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror④">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
+      <p>If <var>session</var>’s <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/webxr/#xrsession-ended" id="ref-for-xrsession-ended">ended</a></code> value is `true`, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject③">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror④">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
      <li data-md>
       <p>Let <var>anchor</var> be the value of mapping from <var>uuid</var> on <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors⑤">map of persistent anchors</a>.</p>
      <li data-md>
@@ -1557,11 +1557,6 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="re
   <h3 class="heading no-num no-ref settled" id="index-defined-elsewhere"><span class="content">Terms defined by reference</span><a class="self-link" href="#index-defined-elsewhere"></a></h3>
   <ul class="index">
    <li>
-    <a data-link-type="biblio">[CSS-WRITING-MODES-4]</a> defines the following terms:
-    <ul>
-     <li><span class="dfn-paneled" id="7bc19a34">end</span>
-    </ul>
-   <li>
     <a data-link-type="biblio">[HTML]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="5991ccfb">relevant realm</span>
@@ -1597,6 +1592,7 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="re
      <li><span class="dfn-paneled" id="9db6ca78">active</span>
      <li><span class="dfn-paneled" id="00413661">capable of supporting</span>
      <li><span class="dfn-paneled" id="92219559">effective origin</span>
+     <li><span class="dfn-paneled" id="41384e5e">ended</span>
      <li><span class="dfn-paneled" id="6779156f">feature descriptor</span>
      <li><span class="dfn-paneled" id="e76130a4">inline XR device</span>
      <li><span class="dfn-paneled" id="c5fba419">list of frame updates</span>
@@ -1625,13 +1621,11 @@ The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="re
   <h2 class="heading no-num no-ref settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
   <h3 class="heading no-num no-ref settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
   <dl>
-   <dt id="biblio-css-writing-modes-4">[CSS-WRITING-MODES-4]
-   <dd>Elika Etemad; Koji Ishii. <a href="https://drafts.csswg.org/css-writing-modes-4/"><cite>CSS Writing Modes Level 4</cite></a>. URL: <a href="https://drafts.csswg.org/css-writing-modes-4/">https://drafts.csswg.org/css-writing-modes-4/</a>
    <dt id="biblio-html">[HTML]
    <dd>Anne van Kesteren; et al. <a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
    <dt id="biblio-rfc2119">[RFC2119]
    <dd>S. Bradner. <a href="https://datatracker.ietf.org/doc/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>
-   <dt id="biblio-rfc4122">[RFC4122]
+   <dt id="biblio-rfc9562">[RFC9562]
    <dd>K. Davis; B. Peabody; P. Leach. <a href="https://www.rfc-editor.org/rfc/rfc9562"><cite>Universally Unique IDentifiers (UUIDs)</cite></a>. May 2024. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc9562">https://www.rfc-editor.org/rfc/rfc9562</a>
    <dt id="biblio-webidl">[WEBIDL]
    <dd>Edgar Chen; Timothy Gu. <a href="https://webidl.spec.whatwg.org/"><cite>Web IDL Standard</cite></a>. Living Standard. URL: <a href="https://webidl.spec.whatwg.org/">https://webidl.spec.whatwg.org/</a>
@@ -1998,6 +1992,7 @@ let dfnPanelData = {
 "0dbbcc01": {"dfnID":"0dbbcc01","dfnText":"XR device","external":true,"refSections":[{"refs":[{"id":"ref-for-xr-device"}],"title":"4. Anchor creation"},{"refs":[{"id":"ref-for-xr-device\u2460"}],"title":"7.1. Native anchor"}],"url":"https://www.w3.org/TR/webxr/#xr-device"},
 "28b7a237": {"dfnID":"28b7a237","dfnText":"session (for XRFrame)","external":true,"refSections":[{"refs":[{"id":"ref-for-dom-xrframe-session"},{"id":"ref-for-dom-xrframe-session\u2460"}],"title":"4. Anchor creation"},{"refs":[{"id":"ref-for-dom-xrframe-session\u2461"}],"title":"5. Anchor updates"},{"refs":[{"id":"ref-for-dom-xrframe-session\u2462"}],"title":"6. Anchor removal"}],"url":"https://www.w3.org/TR/webxr/#dom-xrframe-session"},
 "3b90bdcd": {"dfnID":"3b90bdcd","dfnText":"resolve","external":true,"refSections":[{"refs":[{"id":"ref-for-resolve"},{"id":"ref-for-resolve\u2460"}],"title":"3.1. XRAnchor"},{"refs":[{"id":"ref-for-resolve\u2461"}],"title":"5. Anchor updates"}],"url":"https://webidl.spec.whatwg.org/#resolve"},
+"41384e5e": {"dfnID":"41384e5e","dfnText":"ended","external":true,"refSections":[{"refs":[{"id":"ref-for-xrsession-ended"}],"title":"4. Anchor creation"}],"url":"https://www.w3.org/TR/webxr/#xrsession-ended"},
 "511280ad": {"dfnID":"511280ad","dfnText":"XRRigidTransform","external":true,"refSections":[{"refs":[{"id":"ref-for-xrrigidtransform"}],"title":"4. Anchor creation"}],"url":"https://immersive-web.github.io/webxr/#xrrigidtransform"},
 "5991ccfb": {"dfnID":"5991ccfb","dfnText":"relevant realm","external":true,"refSections":[{"refs":[{"id":"ref-for-concept-relevant-realm"}],"title":"3.1. XRAnchor"},{"refs":[{"id":"ref-for-concept-relevant-realm\u2460"},{"id":"ref-for-concept-relevant-realm\u2461"}],"title":"4. Anchor creation"}],"url":"https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm"},
 "5f90bbfb": {"dfnID":"5f90bbfb","dfnText":"undefined","external":true,"refSections":[{"refs":[{"id":"ref-for-idl-undefined"}],"title":"3.1. XRAnchor"},{"refs":[{"id":"ref-for-idl-undefined\u2460"}],"title":"4. Anchor creation"}],"url":"https://webidl.spec.whatwg.org/#idl-undefined"},
@@ -2006,7 +2001,6 @@ let dfnPanelData = {
 "79693d31": {"dfnID":"79693d31","dfnText":"\"immersive-vr\"","external":true,"refSections":[{"refs":[{"id":"ref-for-dom-xrsessionmode-immersive-vr"}],"title":"7.1. Native anchor"}],"url":"https://immersive-web.github.io/webxr/#dom-xrsessionmode-immersive-vr"},
 "797018a7": {"dfnID":"797018a7","dfnText":"InvalidStateError","external":true,"refSections":[{"refs":[{"id":"ref-for-invalidstateerror"},{"id":"ref-for-invalidstateerror\u2460"}],"title":"3.1. XRAnchor"},{"refs":[{"id":"ref-for-invalidstateerror\u2461"},{"id":"ref-for-invalidstateerror\u2462"},{"id":"ref-for-invalidstateerror\u2463"},{"id":"ref-for-invalidstateerror\u2464"},{"id":"ref-for-invalidstateerror\u2465"},{"id":"ref-for-invalidstateerror\u2466"}],"title":"4. Anchor creation"}],"url":"https://webidl.spec.whatwg.org/#invalidstateerror"},
 "7a030114": {"dfnID":"7a030114","dfnText":"XRFrame","external":true,"refSections":[{"refs":[{"id":"ref-for-xrframe"},{"id":"ref-for-xrframe\u2460"},{"id":"ref-for-xrframe\u2461"}],"title":"4. Anchor creation"},{"refs":[{"id":"ref-for-xrframe\u2462"},{"id":"ref-for-xrframe\u2463"},{"id":"ref-for-xrframe\u2464"}],"title":"5. Anchor updates"},{"refs":[{"id":"ref-for-xrframe\u2465"}],"title":"7.1. Native anchor"}],"url":"https://immersive-web.github.io/webxr/#xrframe"},
-"7bc19a34": {"dfnID":"7bc19a34","dfnText":"end","external":true,"refSections":[{"refs":[{"id":"ref-for-css-end"}],"title":"4. Anchor creation"}],"url":"https://drafts.csswg.org/css-writing-modes-4/#css-end"},
 "8855a9aa": {"dfnID":"8855a9aa","dfnText":"DOMString","external":true,"refSections":[{"refs":[{"id":"ref-for-idl-DOMString"}],"title":"3.1. XRAnchor"},{"refs":[{"id":"ref-for-idl-DOMString\u2460"},{"id":"ref-for-idl-DOMString\u2461"},{"id":"ref-for-idl-DOMString\u2462"}],"title":"4. Anchor creation"}],"url":"https://webidl.spec.whatwg.org/#idl-DOMString"},
 "889e932f": {"dfnID":"889e932f","dfnText":"Exposed","external":true,"refSections":[{"refs":[{"id":"ref-for-Exposed"}],"title":"3.1. XRAnchor"},{"refs":[{"id":"ref-for-Exposed\u2460"}],"title":"5. Anchor updates"}],"url":"https://webidl.spec.whatwg.org/#Exposed"},
 "8f974556": {"dfnID":"8f974556","dfnText":"XRSystem","external":true,"refSections":[{"refs":[{"id":"ref-for-xrsystem"},{"id":"ref-for-xrsystem\u2460"}],"title":"3.1. XRAnchor"},{"refs":[{"id":"ref-for-xrsystem\u2461"},{"id":"ref-for-xrsystem\u2462"}],"title":"4. Anchor creation"}],"url":"https://immersive-web.github.io/webxr/#xrsystem"},
@@ -2532,7 +2526,6 @@ let refsData = {
 "#xrsession-map-of-new-anchors": {"displayText":"map of new anchors","export":true,"for_":["XRSession"],"level":"1","normative":true,"shortname":"webxr-anchors","spec":"webxr-anchors-1","status":"local","text":"map of new anchors","type":"dfn","url":"#xrsession-map-of-new-anchors"},
 "#xrsession-map-of-persistent-anchors": {"displayText":"map of persistent anchors","export":true,"for_":["XRSession"],"level":"1","normative":true,"shortname":"webxr-anchors","spec":"webxr-anchors-1","status":"local","text":"map of persistent anchors","type":"dfn","url":"#xrsession-map-of-persistent-anchors"},
 "#xrsession-set-of-tracked-anchors": {"displayText":"set of tracked anchors","export":true,"for_":["XRSession"],"level":"1","normative":true,"shortname":"webxr-anchors","spec":"webxr-anchors-1","status":"local","text":"set of tracked anchors","type":"dfn","url":"#xrsession-set-of-tracked-anchors"},
-"https://drafts.csswg.org/css-writing-modes-4/#css-end": {"displayText":"end","export":true,"for_":["CSS"],"level":"4","normative":true,"shortname":"css-writing-modes","spec":"css-writing-modes-4","status":"current","text":"end","type":"dfn","url":"https://drafts.csswg.org/css-writing-modes-4/#css-end"},
 "https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm": {"displayText":"relevant realm","export":true,"for_":[],"level":"1","normative":true,"shortname":"html","spec":"html","status":"current","text":"relevant realm","type":"dfn","url":"https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm"},
 "https://immersive-web.github.io/hit-test/#hit-test": {"displayText":"hit-test","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr hit test module","spec":"webxr hit test module","status":"anchor-block","text":"hit-test","type":"dfn","url":"https://immersive-web.github.io/hit-test/#hit-test"},
 "https://immersive-web.github.io/hit-test/#xrhittestresult": {"displayText":"XRHitTestResult","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr hit test module","spec":"webxr hit test module","status":"anchor-block","text":"XRHitTestResult","type":"interface","url":"https://immersive-web.github.io/hit-test/#xrhittestresult"},
@@ -2563,6 +2556,7 @@ let refsData = {
 "https://www.w3.org/TR/webxr/#xr-device": {"displayText":"XR device","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"xr device","type":"dfn","url":"https://www.w3.org/TR/webxr/#xr-device"},
 "https://www.w3.org/TR/webxr/#xrframe-active": {"displayText":"active","export":true,"for_":["XRFrame"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"active","type":"dfn","url":"https://www.w3.org/TR/webxr/#xrframe-active"},
 "https://www.w3.org/TR/webxr/#xrframe-time": {"displayText":"time","export":true,"for_":["XRFrame"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"time","type":"dfn","url":"https://www.w3.org/TR/webxr/#xrframe-time"},
+"https://www.w3.org/TR/webxr/#xrsession-ended": {"displayText":"ended","export":true,"for_":["XRSession"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"ended","type":"attribute","url":"https://www.w3.org/TR/webxr/#xrsession-ended"},
 "https://www.w3.org/TR/webxr/#xrsession-list-of-frame-updates": {"displayText":"list of frame updates","export":true,"for_":["XRSession"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"list of frame updates","type":"dfn","url":"https://www.w3.org/TR/webxr/#xrsession-list-of-frame-updates"},
 "https://www.w3.org/TR/webxr/#xrsession-mode": {"displayText":"mode","export":true,"for_":["XRSession"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"mode","type":"dfn","url":"https://www.w3.org/TR/webxr/#xrsession-mode"},
 "https://www.w3.org/TR/webxr/#xrsession-xr-device": {"displayText":"XR device","export":true,"for_":["XRSession"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"xr device","type":"dfn","url":"https://www.w3.org/TR/webxr/#xrsession-xr-device"},
