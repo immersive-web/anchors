@@ -50,6 +50,8 @@ spec: WebXR Hit Test Module; urlPrefix: https://immersive-web.github.io/hit-test
         type: dfn; text: frame; url: xrhittestresult-frame
         type: dfn; text: native origin; url: xrhittestresult-native-origin
     type: dfn; text: hit-test; url: hit-test
+spec:html; urlPrefix: https://html.spec.whatwg.org/multipage/
+    type: dfn; text: origin; url: origin.html#concept-origin
 </pre>
 
 <style>
@@ -201,6 +203,7 @@ The {{XRSession}} is extended to contain an associated <dfn for=XRSession>set of
 <div class="unstable">
 
 The {{XRSession}} is extended to contain an associated <dfn for=XRSession>map of persistent anchors</dfn> that is keyed with a UUID string and maps to an {{XRAnchor}}.
+This map is populated and stored by the [=XRSession/XR device=] and restricted to only the set of persistent anchors created and not yet destroyed by any {{XRSession}} on [=origin=].
 The size of this map is determined by the user agent. The user agent MAY delete entries from this map for any reason. For instance, if the maximum number of system anchors
 is reached for all maps for all origins, the user agent MAY free up an entry to make space for the newly requested anchor.
 
